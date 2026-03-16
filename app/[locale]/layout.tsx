@@ -5,6 +5,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import Header from "../_components/partials/Header";
+import Footer from "../_components/partials/Footer";
 
 const pixelifySans = Pixelify_Sans({
   variable: "--font-pixelify-sans",
@@ -27,6 +29,42 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
+    keywords: [
+      "agensi website",
+      "moderenisasi website",
+      "buat website",
+      "layanan website",
+    ],
+
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: t("title"),
+        },
+      ],
+      type: "website",
+      locale: locale,
+      siteName: t("title"),
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: t("title"),
+        },
+      ],
+    },
   };
 }
 
@@ -49,7 +87,9 @@ export default async function RootLayout({ children, params }: Props) {
         className={`${pixelifySans.variable} ${manrope.variable} antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <Header />
+          <main>{children}</main>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

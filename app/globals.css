@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary-50: #e6eaff;
+  --color-primary-100: #ccd5ff;
+  --color-primary-200: #99abff;
+  --color-primary-300: #6680ff;
+  --color-primary-400: #3356ff;
+  --color-primary-500: #002df8;
+  --color-primary-600: #0024c6;
+  --color-primary-700: #001b95;
+  --color-primary-800: #001263;
+  --color-primary-900: #000932;
+  --color-primary-1000: #000419;
+
+  --color-secondary-50: #e6f1ff;
+  --color-secondary-100: #cce4ff;
+  --color-secondary-200: #99c9ff;
+  --color-secondary-300: #66adff;
+  --color-secondary-400: #3392ff;
+  --color-secondary-500: #0077ff;
+  --color-secondary-600: #005fcc;
+  --color-secondary-700: #004799;
+  --color-secondary-800: #002f66;
+  --color-secondary-900: #001833;
+  --color-secondary-1000: #000c1a;
+
+  --color-success-50: #e6feff;
+  --color-success-100: #ccfdff;
+  --color-success-200: #99fbff;
+  --color-success-300: #66f9ff;
+  --color-success-400: #33f7ff;
+  --color-success-500: #00fbff;
+  --color-success-600: #00c8cc;
+  --color-success-700: #009699;
+  --color-success-800: #006466;
+  --color-success-900: #003233;
+  --color-success-1000: #00191a;
+
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f4f4f5;
+  --color-neutral-200: #e4e4e7;
+  --color-neutral-300: #d4d4d8;
+  --color-neutral-400: #a1a1aa;
+  --color-neutral-500: #71717a;
+  --color-neutral-600: #52525b;
+  --color-neutral-700: #3f3f46;
+  --color-neutral-800: #27272a;
+  --color-neutral-900: #111113;
+
+  --color-background: #050505;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+  --color-primary-1000: var(--color-primary-1000);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-secondary-50: var(--color-secondary-50);
+  --color-secondary-100: var(--color-secondary-100);
+  --color-secondary-200: var(--color-secondary-200);
+  --color-secondary-300: var(--color-secondary-300);
+  --color-secondary-400: var(--color-secondary-400);
+  --color-secondary-500: var(--color-secondary-500);
+  --color-secondary-600: var(--color-secondary-600);
+  --color-secondary-700: var(--color-secondary-700);
+  --color-secondary-800: var(--color-secondary-800);
+  --color-secondary-900: var(--color-secondary-900);
+  --color-secondary-1000: var(--color-secondary-1000);
+
+  --color-accent-50: var(--color-accent-50);
+  --color-accent-100: var(--color-accent-100);
+  --color-accent-200: var(--color-accent-200);
+  --color-accent-300: var(--color-accent-300);
+  --color-accent-400: var(--color-accent-400);
+  --color-accent-500: var(--color-accent-500);
+  --color-accent-600: var(--color-accent-600);
+  --color-accent-700: var(--color-accent-700);
+  --color-accent-800: var(--color-accent-800);
+  --color-accent-900: var(--color-accent-900);
+  --color-accent-1000: var(--color-accent-1000);
+
+  --color-neutral-50: var(--color-neutral-50);
+  --color-neutral-100: var(--color-neutral-100);
+  --color-neutral-200: var(--color-neutral-200);
+  --color-neutral-300: var(--color-neutral-300);
+  --color-neutral-400: var(--color-neutral-400);
+  --color-neutral-500: var(--color-neutral-500);
+  --color-neutral-600: var(--color-neutral-600);
+  --color-neutral-700: var(--color-neutral-700);
+  --color-neutral-800: var(--color-neutral-800);
+  --color-neutral-900: var(--color-neutral-900);
+
+  --color-background: var(--color-background);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-neutral-50);
+  font-family: var(--font-manrope);
 }

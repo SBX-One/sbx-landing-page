@@ -70,8 +70,10 @@ export default function Button({
    */
   const variantColorClass = {
     primary: {
-      default: "bg-primary-500 text-white hover:bg-primary-600",
-      outline: "border border-primary-500 text-primary-500 hover:bg-primary-50",
+      default:
+        "bg-secondary-500 text-white hover:bg-secondary-700 active:bg-secondary-800",
+      outline:
+        "border border-secondary-500 text-secondary-500 hover:bg-secondary-50",
     },
     white: {
       default:

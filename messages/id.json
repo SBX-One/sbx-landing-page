@@ -5,5 +5,10 @@
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio Desain",
     "description": "SBXOne Studio Desain UI/UX & Aplikasi Web yang menyediakan layanan desain dan pengembangan berkualitas tinggi untuk bisnis dari segala skala."
+  },
+  "Footer": {
+    "title": "Siap Memulai <br /> Transformasi Digital?",
+    "description": "Silakan hubungi kami untuk mulai bekerja sama atau sekadar bertanya mengenai masa depan proyek digital Anda. Kami siap mendengar",
+    "cta": "Dapatkan Penawaran"
   }
 }

@@ -18,9 +18,9 @@ export default function Header() {
               height={999}
               className="w-6 md:w-8 lg:w-12"
             />
-            <span className="text-body-lg md:text-body-xl lg:text-heading-6 font-semibold">
+            <strong className="text-body-lg md:text-body-xl lg:text-heading-6 font-semibold">
               SBXOne
-            </span>
+            </strong>
           </a>
           <span className="hidden lg:block">|</span>
           <Navigation />

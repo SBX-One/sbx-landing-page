@@ -5,5 +5,10 @@
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."
+  },
+  "Footer": {
+    "title": "Have a Project? <br /> Let&apos;s Light it Up!",
+    "description": "Feel free to reach our if you want to collaborate with us, or simply have a chat",
+    "cta": "Estimate Project"
   }
 }

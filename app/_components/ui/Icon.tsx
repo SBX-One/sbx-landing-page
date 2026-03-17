@@ -50,11 +50,13 @@ export default function Icon({
   width = 20,
   height = 20,
   theme = "light",
+  className = "",
 }: {
   type: IconType;
   width?: number;
   height?: number;
   theme?: Theme;
+  className?: string;
 }) {
   return (
     <Image
@@ -62,7 +64,7 @@ export default function Icon({
       alt={`${type} icon`}
       width={width}
       height={height}
-      className="object-contain"
+      className={`object-contain ${className}`}
     />
   );
 }

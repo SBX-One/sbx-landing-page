@@ -5,7 +5,9 @@ export default function Home() {
 
   return (
     <>
-      <section></section>
+      <section>
+        <span>{t("title")}</span>
+      </section>
     </>
   );
 }

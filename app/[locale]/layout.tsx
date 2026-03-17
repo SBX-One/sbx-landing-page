@@ -84,7 +84,7 @@ export default async function RootLayout({ children, params }: Props) {
   return (
     <html lang={locale}>
       <body
-        className={`${pixelifySans.variable} ${manrope.variable} antialiased`}
+        className={`${pixelifySans.variable} ${manrope.variable} antialiased ${pixelifySans.className} ${manrope.className}`}
       >
         <NextIntlClientProvider messages={messages}>
           <Header />

@@ -7,8 +7,8 @@ import Navigation from "../Navigation";
 
 export default function Header() {
   return (
-    <header className="px-4 md:px-8 lg:px-14 py-5 md:py-6 lg:py-8 border-b border-neutral-600 ">
-      <div className="flex items-center justify-between">
+    <header className="px-4 md:px-8 lg:px-14 py-5 md:py-6 lg:py-8  border-b border-neutral-600 ">
+      <div className="flex items-center justify-between 2xl:container mx-auto">
         <div className="flex items-center gap-8">
           <a href="#" className="flex items-center gap-4">
             <Image

@@ -74,7 +74,8 @@ export default function Button({
       outline: "border border-primary-500 text-primary-500 hover:bg-primary-50",
     },
     white: {
-      default: "bg-white text-neutral-900 hover:bg-neutral-100",
+      default:
+        "bg-white text-neutral-900  hover:shadow-[0px_0px_40px_0px] shadow-white/30 active:bg-neutral-200",
       outline: "border border-white text-white hover:bg-white/10",
     },
   };

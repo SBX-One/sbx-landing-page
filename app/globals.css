@@ -109,80 +109,78 @@ body {
   color: var(--color-neutral-50);
 }
 
-@layer components {
-  .text-display {
-    @apply font-manrope text-[64px] leading-[120%];
-  }
+@utility text-display {
+  @apply font-manrope text-[64px] leading-[120%];
+}
 
-  .text-heading-1 {
-    @apply font-manrope text-[52px] leading-[120%];
-  }
+@utility text-heading-1 {
+  @apply font-manrope text-[52px] leading-[120%];
+}
 
-  .text-heading-2 {
-    @apply font-manrope text-[40px] leading-[120%];
-  }
+@utility text-heading-2 {
+  @apply font-manrope text-[40px] leading-[120%];
+}
 
-  .text-heading-3 {
-    @apply font-manrope text-[40px] leading-[120%];
-  }
+@utility text-heading-3 {
+  @apply font-manrope text-[40px] leading-[120%];
+}
 
-  .text-heading-4 {
-    @apply font-manrope text-[36px] leading-[120%];
-  }
+@utility text-heading-4 {
+  @apply font-manrope text-[36px] leading-[120%];
+}
 
-  .text-heading-5 {
-    @apply font-manrope text-[32px] leading-[120%];
-  }
+@utility text-heading-5 {
+  @apply font-manrope text-[32px] leading-[120%];
+}
 
-  .text-heading-6 {
-    @apply font-manrope text-[24px] leading-[120%];
-  }
+@utility text-heading-6 {
+  @apply font-manrope text-[24px] leading-[120%];
+}
 
-  .text-body-xl {
-    @apply font-manrope text-[20px] leading-[150%];
-  }
+@utility text-body-xl {
+  @apply font-manrope text-[20px] leading-[150%];
+}
 
-  .text-body-lg {
-    @apply font-manrope text-[18px] leading-[150%];
-  }
+@utility text-body-lg {
+  @apply font-manrope text-[18px] leading-[150%];
+}
 
-  .text-body-base {
-    @apply font-manrope text-[16px] leading-[150%];
-  }
+@utility text-body-base {
+  @apply font-manrope text-[16px] leading-[150%];
+}
 
-  .text-body-sm {
-    @apply font-manrope text-[14px] leading-[150%];
-  }
+@utility text-body-sm {
+  @apply font-manrope text-[14px] leading-[150%];
+}
 
-  .text-body-caption {
-    @apply font-manrope text-[12px] leading-[150%];
-  }
+@utility text-body-caption {
+  @apply font-manrope text-[12px] leading-[150%];
+}
 
-  .text-label-large {
-    @apply font-manrope  text-[18px] leading-[120%];
-  }
+@utility text-label-large {
+  @apply font-manrope text-[18px] leading-[120%];
+}
 
-  .text-label-base {
-    @apply font-manrope  text-[16px] leading-[120%];
-  }
+@utility text-label-base {
+  @apply font-manrope text-[16px] leading-[120%];
+}
 
-  .text-label-sm {
-    @apply font-manrope  text-[14px] leading-[120%];
-  }
+@utility text-label-sm {
+  @apply font-manrope text-[14px] leading-[120%];
+}
 
-  .text-label-caption {
-    @apply font-manrope  text-[12px] leading-[120%];
-  }
+@utility text-label-caption {
+  @apply font-manrope text-[12px] leading-[120%];
+}
 
-  .text-pixel-lg {
-    @apply font-pixelify-sans text-[40px] leading-[110%];
-  }
+@utility text-pixel-lg {
+  @apply font-pixelify-sans text-[40px] leading-[110%];
+}
 
-  .text-pixel-base {
-    @apply font-pixelify-sans text-[24px] leading-[110%];
-  }
+@utility text-pixel-base {
+  @apply font-pixelify-sans text-[24px] leading-[110%];
+}
 
-  .text-pixel-sm {
-    @apply font-pixelify-sans text-[16px] leading-[110%];
-  }
+@utility text-pixel-sm {
+  @apply font-pixelify-sans text-[16px] leading-[110%];
 }

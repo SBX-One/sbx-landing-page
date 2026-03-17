@@ -2,106 +2,147 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { IoMenu } from "react-icons/io5";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import Button from "./ui/Button";
 import Icon from "./ui/Icon";
 import Tag from "./ui/Tag";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const container = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const menuItemsRef = useRef<(HTMLLIElement | null)[]>([]);
+  const socialItemsRef = useRef<(HTMLLIElement | null)[]>([]);
+
+  useGSAP(
+    () => {
+      if (isOpen) {
+        const tl = gsap.timeline({
+          defaults: { ease: "power4.out", duration: 0.8 },
+        });
+
+        tl.to(menuRef.current, {
+          yPercent: 90,
+          autoAlpha: 1,
+          duration: 0.8,
+        });
+
+        tl.fromTo(
+          menuItemsRef.current,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.1, duration: 0.6 },
+          "-=0.4",
+        );
+
+        tl.fromTo(
+          socialItemsRef.current,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.05, duration: 0.4 },
+          "-=0.4",
+        );
+      } else {
+        // Timeline for closing
+        gsap.to(menuRef.current, {
+          yPercent: 0,
+          autoAlpha: 0,
+          duration: 0.6,
+          ease: "power4.inOut",
+        });
+      }
+    },
+    { scope: container, dependencies: [isOpen] },
+  );
 
   return (
-    <>
-      <button onClick={() => setIsOpen(!isOpen)}>
-        <IoMenu className="text-2xl" />
+    <div ref={container} className="lg:hidden">
+      <button onClick={() => setIsOpen(true)}>
+        <IoMenu className="text-3xl" />
       </button>
 
-      {isOpen && (
-        <div className="fixed inset-0 z-40 bg-neutral-900 p-4 py-6 flex flex-col justify-between">
-          <div className="flex flex-col gap-16">
-            <div className="flex items-center justify-between">
-              <Image
-                src="/logo.svg"
-                alt="Logo"
-                width={999}
-                height={999}
-                className="w-12"
-              />
+      <div
+        ref={menuRef}
+        className="fixed left-0 right-0 -top-full min-h-screen z-50 bg-neutral-900 p-4 py-12 pb-16 flex flex-col justify-between invisible opacity-0"
+      >
+        <div className="flex flex-col gap-16">
+          <div className="flex items-center justify-between">
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              width={999}
+              height={999}
+              className="w-12"
+            />
 
-              <div className="flex items-center gap-3">
-                <Button
-                  as="link"
-                  color="white"
-                  style="standard"
-                  size="md"
-                  leftIcon={true}
-                  href="/about"
-                >
-                  Start a Project
-                </Button>
-                <button
-                  className="bg-neutral-600 p-3 rounded-full"
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  <Icon type="close" theme="light" height={24} width={24} />
-                </button>
-              </div>
+            <div className="flex items-center gap-3">
+              <Button
+                as="link"
+                color="white"
+                style="standard"
+                size="md"
+                leftIcon={true}
+                href="/about"
+              >
+                Start a Project
+              </Button>
+              <button
+                className="bg-neutral-600 p-3 rounded-full"
+                onClick={() => setIsOpen(false)}
+              >
+                <Icon type="close" theme="light" height={24} width={24} />
+              </button>
             </div>
-            <ul className="flex gap-2">
-              <li>
-                <Tag as="link" style="pixel" size="sm" href="#">
-                  Instagram
-                </Tag>
-              </li>
-              <li>
-                <Tag as="link" style="pixel" size="sm" href="#">
-                  Dribble
-                </Tag>
-              </li>
-              <li>
-                <Tag as="link" style="pixel" size="sm" href="#">
-                  Behance
-                </Tag>
-              </li>
-            </ul>
           </div>
-          <div>
-            <ul>
-              <li className="flex items-center justify-between py-8 border-b border-neutral-500">
-                <div className="flex items-center gap-5">
-                  <span className="font-pixelify-sans">[ 01 ]</span>
-                  <span className="text-heading-6 font-medium">About</span>
-                </div>
-                <Icon type="default" theme="light" height={32} width={32} />
+          <ul className="flex gap-2">
+            {[
+              { label: "Instagram", href: "#" },
+              { label: "Dribble", href: "#" },
+              { label: "Behance", href: "#" },
+            ].map((item, index) => (
+              <li
+                key={index}
+                ref={(el) => {
+                  socialItemsRef.current[index] = el;
+                }}
+              >
+                <Tag as="link" style="pixel" size="sm" href={item.href}>
+                  {item.label}
+                </Tag>
               </li>
-              <li className="flex items-center justify-between py-8 border-b border-neutral-500">
-                <div className="flex items-center gap-5">
-                  <span className="font-pixelify-sans">[ 02 ]</span>
-                  <span className="text-heading-6 font-medium">Projects</span>
-                </div>
-                <Icon type="default" theme="light" height={32} width={32} />
-              </li>
-              <li className="flex items-center justify-between py-8 border-b border-neutral-500">
-                <div className="flex items-center gap-5">
-                  <span className="font-pixelify-sans">[ 03 ]</span>
-                  <span className="text-heading-6 font-medium">Pricing</span>
-                </div>
-                <Icon type="default" theme="light" height={32} width={32} />
-              </li>
-              <li className="flex items-center justify-between py-8 border-b border-neutral-500">
-                <div className="flex items-center gap-5">
-                  <span className="font-pixelify-sans">[ 04 ]</span>
-                  <span className="text-heading-6 font-medium">FAQ</span>
-                </div>
-                <Icon type="default" theme="light" height={32} width={32} />
-              </li>
-            </ul>
-          </div>
+            ))}
+          </ul>
         </div>
-      )}
-    </>
+        <div>
+          <ul>
+            {[
+              { id: "01", label: "About" },
+              { id: "02", label: "Projects" },
+              { id: "03", label: "Pricing" },
+              { id: "04", label: "FAQ" },
+            ].map((item, index) => (
+              <li
+                key={index}
+                ref={(el) => {
+                  menuItemsRef.current[index] = el;
+                }}
+                className="flex items-center justify-between py-8 border-b border-neutral-500"
+              >
+                <div className="flex items-center gap-5">
+                  <span className="font-pixelify-sans">[ {item.id} ]</span>
+                  <span className="text-heading-6 font-medium">
+                    {item.label}
+                  </span>
+                </div>
+                <Icon type="default" theme="light" height={32} width={32} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }

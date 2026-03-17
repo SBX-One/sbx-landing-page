@@ -36,7 +36,7 @@ export default function Footer() {
       tl.from(leftSideRef.current?.children ?? [], {
         y: 50,
         opacity: 0,
-        duration: 1,
+        duration: 1.2,
         stagger: 0.2,
         ease: "power4.out",
       });
@@ -46,7 +46,7 @@ export default function Footer() {
         {
           x: 50,
           opacity: 0,
-          duration: 1,
+          duration: 1.2,
           stagger: 0.2,
           ease: "power4.out",
         },

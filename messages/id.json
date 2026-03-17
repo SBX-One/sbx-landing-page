@@ -1,6 +1,10 @@
 {
-  "HomePage": {
-    "title": "Halo dunia!"
+  "Hero": {
+    "trust": "50+ Orang Telah Membuktikan",
+    "title": "Bangun Fondasi Digital <highlight></highlight> Yang Siap Menghadapi Masa Depan",
+    "description": "Jangan biarkan teknologi usang menghambat pertumbuhan Anda. SBX menghadirkan perpaduan desain UI/UX kelas dunia dan engineering tingkat tinggi untuk memastikan bisnis Anda tetap relevan dan kompetitif",
+    "ctwa": "Konsultasi",
+    "cta": "Lihat Layanan"
   },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio Desain",

@@ -1,6 +1,10 @@
 {
-  "HomePage": {
-    "title": "Hello world!"
+  "Hero": {
+    "trust": "50+ Success Stories",
+    "title": "Power Up Your Business <highlight></highlight> with Elite Digital Infrastructure.",
+    "description": "We turn outdated, slow websites into modern platforms that actually work. No more clunky designs just a smooth, professional experience that wins your customers' trust.",
+    "ctwa": "Lets Talk",
+    "cta": "See Services"
   },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",

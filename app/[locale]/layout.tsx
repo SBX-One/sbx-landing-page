@@ -88,7 +88,7 @@ export default async function RootLayout({ children, params }: Props) {
       >
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main>{children}</main>
+          <main className="overflow-hidden relative">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

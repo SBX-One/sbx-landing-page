@@ -15,6 +15,14 @@
     "title": "Tentang",
     "description": "Kami adalah Studio Desain Web dengan performa tinggi yang dibangun untuk memperkuat eksistensi digital Anda.<br></br><br></br>Kami memadukan desain UI/UX modern dengan engineering tingkat tinggi untuk mengubah kebutuhan bisnis yang kompleks menjadi platform digital yang skalabel dan tahan lama."
   },
+  "Why": {
+    "title": "Why Choose",
+    "content-title-1": "Agile & High-Speed.",
+    "content-description-1": "Tim strategis yang terdiri dari pakar digital Gen-Z. Kami bergerak cepat, beradaptasi dengan efisien, dan menggunakan standar global memastikan Anda tetap di barisan terdepan.",
+    "content-description-2": "Didukung oleh React, Laravel, NextJs, dan Tailwind. Tanpa template berat atau teknologi usang hanya arsitektur yang kokoh, skalabel, dan aman untuk masa depan bisnis Anda.",
+    "content-title-3": "Purpose-Built Systems.",
+    "content-description-3": "Kami tidak hanya mengikuti instruksi kami menyelesaikan masalah bisnis. Setiap baris kode dan setiap piksel dirancang secara presisi untuk mendorong pertumbuhan dan efisiensi."
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio Desain",
     "description": "SBXOne Studio Desain UI/UX & Aplikasi Web yang menyediakan layanan desain dan pengembangan berkualitas tinggi untuk bisnis dari segala skala."

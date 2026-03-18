@@ -30,13 +30,12 @@ export default function About() {
           const text = node.textContent || "";
           const fragment = document.createDocumentFragment();
 
-          text.split(" ").forEach((char) => {
+          text.split("").forEach((char) => {
             const outer = document.createElement("span");
-            outer.className =
-              "inline-block overflow-hidden align-top mr-1 md:mr-1.5";
+            outer.className = "inline-block overflow-hidden align-top";
             const inner = document.createElement("span");
             inner.className = "about-char inline-block translate-y-[110%]";
-            inner.textContent = char + " ";
+            inner.innerHTML = char === " " ? "&nbsp;" : char;
             outer.appendChild(inner);
             fragment.appendChild(outer);
           });
@@ -60,7 +59,7 @@ export default function About() {
         },
         y: 0,
         duration: 1.2,
-        stagger: 0.05,
+        stagger: 0.01,
         ease: "power3.out",
       });
     },

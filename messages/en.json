@@ -15,6 +15,14 @@
     "title": "About Us",
     "description": "We are Web Design Studio. A high-speed team built to power up your digital presence. <highlight>Merging modern UI/UX design with modern engineering.</highlight><br></br><br></br>We transform complex business needs into scalable digital powerhouses that are built to last."
   },
+  "Why": {
+    "title": "Why Choose",
+    "content-title-1": "Agile & High-Speed.",
+    "content-description-1": "A strategic team of Gen-Z digital experts. We operate swiftly, adapt efficiently, and adhere to the latest global standards to ensure you remain at the forefront.",
+    "content-description-2": "Powered by React, NextJs, Laravel, and Tailwind. No bloated templates or outdated tech only robust, scalable, and secure architecture for the future.",
+    "content-title-3": " Purpose-Built Systems.",
+    "content-description-3": " We don't just follow instructions; we solve business problems. Every line of code and every pixel is engineered to drive growth and efficiency."
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."

@@ -165,7 +165,7 @@ export default function Hero() {
               ),
             })}
           </h1>
-          <p className="hero-content-item text-body-sm md:text-body-base font-medium text-neutral-100 lg:w-[48%]">
+          <p className="hero-content-item text-body-sm md:text-body-base font-medium text-neutral-100 lg:w-[47%]">
             {t("description")}
           </p>
         </div>

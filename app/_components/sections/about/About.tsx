@@ -30,12 +30,13 @@ export default function About() {
           const text = node.textContent || "";
           const fragment = document.createDocumentFragment();
 
-          text.split("").forEach((char) => {
+          text.split(" ").forEach((char) => {
             const outer = document.createElement("span");
-            outer.className = "inline-block overflow-hidden align-top";
+            outer.className =
+              "inline-block overflow-hidden align-top mr-1 md:mr-1.5";
             const inner = document.createElement("span");
             inner.className = "about-char inline-block translate-y-[110%]";
-            inner.textContent = char === " " ? "\u00A0" : char;
+            inner.textContent = char + " ";
             outer.appendChild(inner);
             fragment.appendChild(outer);
           });
@@ -58,8 +59,8 @@ export default function About() {
           toggleActions: "play none none none",
         },
         y: 0,
-        duration: 0.8,
-        stagger: 0.008,
+        duration: 1.2,
+        stagger: 0.05,
         ease: "power3.out",
       });
     },
@@ -76,8 +77,15 @@ export default function About() {
           <SectionTitle title={t("title")} />
         </div>
         <div className="lg:col-span-10">
+          <p className="sr-only">
+            {t.rich("description", {
+              highlight: (chunks) => chunks,
+              br: () => "\n",
+            })}
+          </p>
           <p
             ref={textRef}
+            aria-hidden="true"
             className="text-heading-6 md:text-heading-3 font-medium whitespace-pre-line "
           >
             {t.rich("description", {

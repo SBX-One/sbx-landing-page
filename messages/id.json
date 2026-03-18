@@ -11,6 +11,10 @@
     "trust": "Klien Kembali",
     "year": "Tahun Pengalaman"
   },
+  "About": {
+    "title": "Tentang",
+    "description": "Kami adalah Studio Desain Web dengan performa tinggi yang dibangun untuk memperkuat eksistensi digital Anda.<br></br><br></br> Kami memadukan desain UI/UX modern dengan engineering tingkat tinggi untuk mengubah kebutuhan bisnis yang kompleks menjadi platform digital yang skalabel dan tahan lama."
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio Desain",
     "description": "SBXOne Studio Desain UI/UX & Aplikasi Web yang menyediakan layanan desain dan pengembangan berkualitas tinggi untuk bisnis dari segala skala."

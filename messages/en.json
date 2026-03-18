@@ -11,6 +11,10 @@
     "trust": "Client Retention Rate",
     "year": "Years of Experience"
   },
+  "About": {
+    "title": "About Us",
+    "description": "We are Web Design Studio. A high-speed team built to power up your digital presence. <highlight>Merging modern UI/UX design with modern engineering.</highlight><br></br><br></br>We transform complex business needs into scalable digital powerhouses that are built to last."
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."

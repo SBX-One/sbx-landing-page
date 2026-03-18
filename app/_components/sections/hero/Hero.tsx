@@ -30,7 +30,7 @@ export default function Hero() {
       tl.to(".hero-particle", {
         opacity: 1,
         scale: 1,
-        duration: 1.5,
+        duration: 1.8,
         stagger: 0.2,
       })
         .to(

@@ -112,15 +112,30 @@ export default function Button({
    * CONTENT
    */
   const content = (
-    <>
+    <div className="flex items-center  relative h-[1.2em]">
       {leftIcon && (
-        <Icon type="default" width={20} height={20} theme={iconTheme} />
+        <div className="mr-2 transition-transform duration-500 ease-out group-hover:translate-x-1 group-hover:scale-110">
+          <Icon type="default" width={20} height={20} theme={iconTheme} />
+        </div>
       )}
-      {children}
+
+      <div className="relative overflow-hidden h-full flex flex-col justify-center">
+        <div className="transition-transform duration-200 cubic-bezier(0.19, 1, 0.22, 1) group-hover:-translate-y-full flex flex-col h-full items-center">
+          <span className="flex items-center h-full whitespace-nowrap min-w-max">
+            {children}
+          </span>
+          <span className="flex items-center h-full whitespace-nowrap min-w-max absolute top-full">
+            {children}
+          </span>
+        </div>
+      </div>
+
       {rightIcon && (
-        <Icon type="default" width={20} height={20} theme={iconTheme} />
+        <div className="ml-2 transition-all duration-500 cubic-bezier(0.19, 1, 0.22, 1) group-hover:translate-x-1 group-hover:-translate-y-1">
+          <Icon type="default" width={20} height={20} theme={iconTheme} />
+        </div>
       )}
-    </>
+    </div>
   );
 
   /**
@@ -128,7 +143,7 @@ export default function Button({
    */
   if (props.as === "link") {
     return (
-      <a href={props.href} className={classes}>
+      <a href={props.href} className={`group ${classes}`}>
         {content}
       </a>
     );
@@ -138,7 +153,7 @@ export default function Button({
    * BUTTON
    */
   return (
-    <button onClick={props.onClick} className={classes}>
+    <button onClick={props.onClick} className={`group ${classes}`}>
       {content}
     </button>
   );

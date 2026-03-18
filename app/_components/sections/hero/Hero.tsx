@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useRef } from "react";
-import AvatarStack from "../AvatarStack";
+import AvatarStack from "../../AvatarStack";
 import { useTranslations } from "next-intl";
-import Button from "../ui/Button";
+import Button from "../../ui/Button";
 import Image from "next/image";
 import mockup from "@/app/_assets/mockups/Free Laptop Mockup.png";
 import ProjectCarousel from "./ProjectCarousel";
@@ -103,7 +103,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="min-h-screen py-12.5 lg:py-25 relative overflow-hidden"
+      className="min-h-screen py-12.5 lg:pt-25 relative overflow-hidden"
     >
       <div
         className="absolute inset-0 pointer-events-none -z-10"

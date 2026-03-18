@@ -11,6 +11,7 @@ import closeLight from "@/app/_assets/icon/light/Property 1=close.svg";
 import downLight from "@/app/_assets/icon/light/Property 1=down.svg";
 import humbergerLight from "@/app/_assets/icon/light/Property 1=humberger.svg";
 import starLight from "@/app/_assets/icon/light/Property 1=star.svg";
+import wrapLight from "@/app/_assets/icon/light/Union.svg";
 
 /**
  * DARK ICONS
@@ -22,7 +23,14 @@ import downDark from "@/app/_assets/icon/dark/icon=down.svg";
 import humbergerDark from "@/app/_assets/icon/dark/icon=humberger.svg";
 import starDark from "@/app/_assets/icon/dark/icon=star.svg";
 
-type IconType = "default" | "check" | "close" | "down" | "humberger" | "star";
+type IconType =
+  | "default"
+  | "check"
+  | "close"
+  | "down"
+  | "humberger"
+  | "star"
+  | "wrap";
 
 type Theme = "light" | "dark";
 
@@ -34,6 +42,7 @@ const iconMap = {
     down: downLight,
     humberger: humbergerLight,
     star: starLight,
+    wrap: wrapLight,
   },
   dark: {
     default: defaultDark,
@@ -42,6 +51,7 @@ const iconMap = {
     down: downDark,
     humberger: humbergerDark,
     star: starDark,
+    wrap: wrapLight,
   },
 };
 

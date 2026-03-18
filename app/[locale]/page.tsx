@@ -1,9 +1,11 @@
-import Hero from "../_components/sections/Hero";
+import Hero from "../_components/sections/hero/Hero";
+import Stats from "../_components/sections/stats/Stats";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Stats />
     </>
   );
 }

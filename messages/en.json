@@ -6,6 +6,11 @@
     "ctwa": "Lets Talk",
     "cta": "See Services"
   },
+  "Stats": {
+    "portofolio": "Projects Done",
+    "trust": "Client Retention Rate",
+    "year": "Years of Experience"
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."

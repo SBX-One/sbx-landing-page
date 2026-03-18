@@ -128,7 +128,7 @@ export default function Hero() {
           alt="decoration"
           width={200}
           height={200}
-          className="hero-particle hero-particle-2 absolute top-100 left-40 w-50 h-50 object-cover hidden lg:block"
+          className="hero-particle hero-particle-2 absolute top-210 md:top-100 left-10 md:left-40 size-24 lg:size-50 object-cover"
         />
         <Image
           src={particle3}

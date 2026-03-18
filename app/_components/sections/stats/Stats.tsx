@@ -92,6 +92,7 @@ export default function Stats() {
   return (
     <section
       ref={container}
+      id="stats"
       className="px-4 md:px-8 lg:px-14 py-12 md:py-25 2xl:container mx-auto"
     >
       <dl className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-24">

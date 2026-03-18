@@ -69,6 +69,7 @@ export default function About() {
   return (
     <section
       ref={containerRef}
+      id="about"
       className="px-4 md:px-8 lg:px-14 py-12 md:py-25 2xl:container mx-auto"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">

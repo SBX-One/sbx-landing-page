@@ -23,6 +23,14 @@
     "content-title-3": " Purpose-Built Systems.",
     "content-description-3": " We don't just follow instructions; we solve business problems. Every line of code and every pixel is engineered to drive growth and efficiency."
   },
+  "Expertise": {
+    "title": "Expertise",
+    "heading": "Focused on What Matters Most",
+    "ui/ux": "Crafting intuitive, high-end interfaces built on deep user research and strategic information architecture. We don't just make it look good, we make it work seamlessly for your users.",
+    "website-modernization": "Transforming outdated systems and slow-loading websites into high-performance digital assets. We refresh your look while powering up your core technology.",
+    "website-development": "Building robust, scalable, and secure web applications using industry-standard tech stacks. Focused on clean architecture and long-term maintainability to support your business growth.",
+    "maintenance-support": "Providing ongoing maintenance and technical support to keep your product stable and up to date. From bug fixes to performance improvements."
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."

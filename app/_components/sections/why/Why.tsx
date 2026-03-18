@@ -32,7 +32,7 @@ export default function Why() {
       gsap.from(cards, {
         scrollTrigger: {
           trigger: container.current,
-          start: "top 80%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
         y: 100,
@@ -130,6 +130,7 @@ export default function Why() {
   return (
     <section
       ref={container}
+      id="why-us"
       className="px-4 md:px-8 lg:px-14 py-12 md:py-25 2xl:container mx-auto relative"
     >
       <div className="flex justify-end mb-16 overflow-hidden">
@@ -214,14 +215,14 @@ export default function Why() {
         alt=""
         width={48}
         height={48}
-        className="why-particle size-12 lg:size-25 why-particle-1 absolute bottom-110 md:bottom-0 left-0 -z-10 opacity-50"
+        className="why-particle size-12 lg:size-25 why-particle-1 absolute bottom-110 md:bottom-18 left-0 -z-10 opacity-50"
       />
       <Image
         src={particle2}
         alt=""
         width={97}
         height={97}
-        className="why-particle size-24.25 lg:size-50 why-particle-2 absolute bottom-4 md:bottom-0 right-0 -z-10 opacity-50"
+        className="why-particle size-24.25 lg:size-50 why-particle-2 absolute bottom-4 md:bottom-18 right-0 -z-10 opacity-50"
       />
     </section>
   );

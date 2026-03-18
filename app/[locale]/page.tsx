@@ -1,4 +1,5 @@
 import About from "../_components/sections/about/About";
+import Expertise from "../_components/sections/expertise/Expertise";
 import Hero from "../_components/sections/hero/Hero";
 import Stats from "../_components/sections/stats/Stats";
 import Why from "../_components/sections/why/Why";
@@ -10,6 +11,7 @@ export default function Home() {
       <Stats />
       <About />
       <Why />
+      <Expertise />
     </>
   );
 }

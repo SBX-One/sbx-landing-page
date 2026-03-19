@@ -31,6 +31,10 @@
     "website-development": "Building robust, scalable, and secure web applications using industry-standard tech stacks. Focused on clean architecture and long-term maintainability to support your business growth.",
     "maintenance-support": "Providing ongoing maintenance and technical support to keep your product stable and up to date. From bug fixes to performance improvements."
   },
+  "Projects": {
+    "title": "Projects",
+    "heading": "A Glimpse into Our World of Precision Engineering and Modern Design"
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."

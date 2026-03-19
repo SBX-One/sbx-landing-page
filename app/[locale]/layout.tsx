@@ -8,6 +8,8 @@ import { routing } from "@/i18n/routing";
 import Header from "../_components/partials/Header";
 import Footer from "../_components/partials/Footer";
 import SmoothScroll from "../_components/SmoothScroll";
+import LoadingScreen from "../_components/LoadingScreen";
+import { LoadingProvider } from "../_components/LoadingContext";
 
 const pixelifySans = Pixelify_Sans({
   variable: "--font-pixelify-sans",
@@ -88,10 +90,13 @@ export default async function RootLayout({ children, params }: Props) {
         className={`${pixelifySans.variable} ${manrope.variable} antialiased ${pixelifySans.className} ${manrope.className}`}
       >
         <NextIntlClientProvider messages={messages}>
-          <SmoothScroll />
-          <Header />
-          <main className="relative overflow-x-clip">{children}</main>
-          <Footer />
+          <LoadingProvider>
+            <SmoothScroll />
+            <LoadingScreen />
+            <Header />
+            <main className="relative overflow-x-clip">{children}</main>
+            <Footer />
+          </LoadingProvider>
         </NextIntlClientProvider>
       </body>
     </html>

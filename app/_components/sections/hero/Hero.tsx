@@ -13,15 +13,18 @@ import particle2 from "@/app/_assets/hero/Frame 1984079749.png";
 import particle3 from "@/app/_assets/hero/Frame 1984079750.png";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useLoading } from "../../LoadingContext";
 
 export default function Hero() {
   const t = useTranslations("Hero");
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
+  const { isLoadingDone } = useLoading();
 
   useGSAP(
     () => {
+      if (!isLoadingDone) return;
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       gsap.set(".hero-particle", { opacity: 0, scale: 0.8 });
@@ -96,7 +99,7 @@ export default function Hero() {
 
       return () => window.removeEventListener("mousemove", handleMouseMove);
     },
-    { scope: sectionRef },
+    { scope: sectionRef, dependencies: [isLoadingDone] },
   );
 
   return (

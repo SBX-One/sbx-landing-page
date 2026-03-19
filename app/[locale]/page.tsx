@@ -6,6 +6,7 @@ import Pricing from "../_components/sections/pricing/Pricing";
 import Projects from "../_components/sections/projects/Projects";
 import Stats from "../_components/sections/stats/Stats";
 import Why from "../_components/sections/why/Why";
+import Faq from "../_components/sections/faq/Faq";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Projects />
       <Pricing />
       <HowItWorks />
+      <Faq />
     </>
   );
 }

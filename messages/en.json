@@ -349,6 +349,21 @@
     "step-6-title": "Completion",
     "step-6-description": "Delivering the final result The project is finalized and delivered, ready for use and future growth."
   },
+  "Faq": {
+    "title": "Frequently Asked Questions",
+    "footer": "Still Have a Question?",
+    "cta": "Contact Us",
+    "question-1": "How long does it take to complete a project?",
+    "answer-1": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi.",
+    "question-2": "How does the payment system work and can it be paid in installments?",
+    "answer-2": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi.",
+    "question-3": "Are there revisions? How many revisions are given?",
+    "answer-3": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi.",
+    "question-4": "Do I get the source code and full ownership after the project is completed?",
+    "answer-4": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi.",
+    "question-5": "Are my business data and information safe?",
+    "answer-5": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi."
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."

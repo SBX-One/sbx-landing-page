@@ -347,6 +347,21 @@
     "step-6-title": "Penyelesaian",
     "step-6-description": "Penyerahan sistem final dengan performa terbaik. Infrastruktur Anda kini siap beroperasi dan mendukung ekspansi bisnis."
   },
+  "Faq": {
+    "title": "Frequently Asked Questions",
+    "footer": "Masih punya pertanyaan?",
+    "cta": "Hubungi Kami",
+    "question-1": "Berapa lama waktu pengerjaan proyek?",
+    "answer-1": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi.",
+    "question-2": "Bagaimana sistem pembayaran dan apakah bisa dicicil?",
+    "answer-2": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi.",
+    "question-3": "Apakah ada revisi? Berapa kali revisi yang diberikan?",
+    "answer-3": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi.",
+    "question-4": "Apakah saya mendapatkan source code dan hak milik penuh setelah proyek selesai?",
+    "answer-4": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi.",
+    "question-5": "Apakah data dan informasi bisnis saya aman?",
+    "answer-5": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi."
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio Desain",
     "description": "SBXOne Studio Desain UI/UX & Aplikasi Web yang menyediakan layanan desain dan pengembangan berkualitas tinggi untuk bisnis dari segala skala."

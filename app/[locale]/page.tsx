@@ -7,6 +7,7 @@ import Projects from "../_components/sections/projects/Projects";
 import Stats from "../_components/sections/stats/Stats";
 import Why from "../_components/sections/why/Why";
 import Faq from "../_components/sections/faq/Faq";
+import Testimonials from "../_components/sections/Testimonials/Testimonials";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <Pricing />
       <HowItWorks />
       <Faq />
+      <Testimonials />
     </>
   );
 }

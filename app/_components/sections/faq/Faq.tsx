@@ -31,7 +31,7 @@ export default function Faq() {
       gsap.to(".faq-content-item", {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 75%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
         opacity: 1,
@@ -45,7 +45,7 @@ export default function Faq() {
       gsap.to(".faq-accordion-item", {
         scrollTrigger: {
           trigger: ".faq-accordion-item",
-          start: "top 85%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
         opacity: 1,
@@ -59,7 +59,7 @@ export default function Faq() {
       const mockupTl = gsap.timeline({
         scrollTrigger: {
           trigger: ".faq-mockup-wrapper",
-          start: "top 80%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
       });

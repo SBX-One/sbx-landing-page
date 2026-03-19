@@ -364,6 +364,10 @@
     "question-5": "Are my business data and information safe?",
     "answer-5": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem voluptatum voluptas quo, magnam dignissimos ducimus exercitationem rem reiciendis adipisci dolor veniam nam sunt vitae sit delectus illum, dolorum quasi."
   },
+  "Testimonials": {
+    "title": "Testimonials",
+    "heading": "Feedback From People We Work With"
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."

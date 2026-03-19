@@ -70,7 +70,7 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="px-4 md:px-8 lg:px-14 py-6 md:py-6 lg:py-8 bg-neutral-900 min-h-[85vh] overflow-hidden"
+      className="px-4 md:px-8 lg:px-14 py-6 md:py-6 lg:py-8 lg:pt-24 bg-neutral-900 min-h-[85vh] overflow-hidden"
     >
       <div className="2xl:container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 lg:mb-24">

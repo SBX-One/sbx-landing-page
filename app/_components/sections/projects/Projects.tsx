@@ -64,7 +64,7 @@ export default function Projects() {
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 20%",
+          start: "top 40%",
           toggleActions: "play none none none",
         },
       });

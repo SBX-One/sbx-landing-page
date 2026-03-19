@@ -131,7 +131,7 @@ export default function Projects() {
       // Reveal Section Content From Black (Triggers when entering section)
       gsap.fromTo(
         overlayRef.current,
-        { opacity: 0 },
+        { opacity: 0.2 },
         {
           opacity: 1,
           ease: "none",
@@ -242,11 +242,11 @@ export default function Projects() {
       <div className="lg:hidden px-4 md:px-8 gap-12 mb-12">
         {[
           { img: project1, title: "Anna Hendra" },
-          { img: project2, title: "Anna Hendra" },
-          { img: project3, title: "Anna Hendra" },
-          { img: project4, title: "Anna Hendra" },
-          { img: project5, title: "Anna Hendra" },
-          { img: project6, title: "Anna Hendra" },
+          { img: project2, title: "Amanda Terrada" },
+          { img: project3, title: "Oasys" },
+          { img: project4, title: "Mola" },
+          { img: project5, title: "Vaulted" },
+          { img: project6, title: "Nova Agency" },
         ].map((proj, idx) => (
           <div key={idx} className="project-card-wrapper mb-12">
             <ProjectCard image={proj.img} title={proj.title} year="2025" />

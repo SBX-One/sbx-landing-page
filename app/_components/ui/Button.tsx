@@ -17,6 +17,7 @@ type BaseProps = {
   leftIcon?: boolean;
   rightIcon?: boolean;
   className?: string;
+  fullWidth?: boolean;
 };
 
 /**
@@ -43,6 +44,7 @@ export default function Button({
   leftIcon = false,
   rightIcon = false,
   className = "",
+  fullWidth = false,
   ...props
 }: ButtonProps) {
   /**
@@ -105,6 +107,7 @@ export default function Button({
     ${baseClass}
     ${sizeStyleClass[size][style]}
     ${variantColorClass[color][variant]}
+    ${fullWidth ? "w-full" : ""}
     ${className}
   `;
 

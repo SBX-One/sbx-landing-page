@@ -126,12 +126,24 @@ export default function Footer() {
                 { id: "02", label: "Projects" },
                 { id: "03", label: "Pricing" },
               ].map((item, index) => (
-                <li key={index}>
-                  <span className="hidden md:block">
-                    <Selector number={item.id} label={item.label} size="md" />
+                <li key={index} className="">
+                  <span className="hidden md:flex items-center justify-between py-8 border-b border-neutral-500">
+                    <div className="flex items-center gap-5">
+                      <span className="font-pixelify-sans">[ {item.id} ]</span>
+                      <span className="text-heading-6 font-medium">
+                        {item.label}
+                      </span>
+                    </div>
+                    <Icon type="default" theme="light" height={32} width={32} />
                   </span>
-                  <span className="md:hidden">
-                    <Selector number={item.id} label={item.label} size="sm" />
+                  <span className="flex md:hidden items-center justify-between py-8 border-b border-neutral-500">
+                    <div className="flex items-center gap-5">
+                      <span className="font-pixelify-sans">[ {item.id} ]</span>
+                      <span className="text-heading-6 font-medium">
+                        {item.label}
+                      </span>
+                    </div>
+                    <Icon type="default" theme="light" height={32} width={32} />
                   </span>
                 </li>
               ))}

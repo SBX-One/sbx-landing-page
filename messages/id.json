@@ -35,6 +35,302 @@
     "title": "Proyek",
     "heading": "Sekilas ke Dunia Engineering Presisi dan Desain Modern Kami."
   },
+  "Pricing": {
+    "title": "Harga",
+    "heading": "Investasi Digital untuk Performa Tanpa Batas.",
+    "testimonial": "Orang puas dengan harga kami",
+    "categories": {
+      "landing-page": {
+        "title": "Landing Page",
+        "plans": [
+          {
+            "title": "Starter Kit",
+            "description": "Solusi praktis untuk profesional yang butuh validasi digital instan. Dirancang untuk membangun kredibilitas dan memberikan kesan pertama yang meyakinkan.",
+            "price": "IDR 1,000,000",
+            "type": "fixed",
+            "features": [
+              "Implementasi AOS Dynamic Animation",
+              "Hosting Gratis Selama 6 Bulan",
+              "Domain Profesional (.com)",
+              "Penyimpanan Cloud 1GB",
+              "CTA Fokus untuk Konversi (WA/Form)",
+              "Copywriting Marketing",
+              "Desain Minimalis & Modern"
+            ]
+          },
+          {
+            "title": "Business Pro",
+            "description": "Solusi tepat bagi bisnis yang ingin berekspansi dan meningkatkan kredibilitas di mata pelanggan.",
+            "price": "IDR 2,000,000",
+            "type": "fixed",
+            "features": [
+              "Seluruh Fitur Starter Kit",
+              "Hosting Performa Tinggi Gratis (1 Tahun)",
+              "Desain Interaktif (Interactive Motion)",
+              "Optimasi SEO Fundamental",
+              "Integrasi Google Analytics",
+              "Desain Visual Premium",
+              "Modul Interaksi Interaktif"
+            ]
+          },
+          {
+            "title": "Ultimate",
+            "description": "Bangun sistem kustom kokoh untuk menopang ambisi bisnis di level tertinggi dengan infrastruktur berefisiensi tinggi dan skalabilitas tanpa batas.",
+            "price": "IDR 2,700,000",
+            "type": "fixed",
+            "features": [
+              "Seluruh Fitur Business Pro",
+              "Desain Kustom",
+              "Engineering Performa Tingkat Tinggi",
+              "Optimasi SEO Teknis Menyeluruh",
+              "Ekspansi Hingga 3 Halaman Spesialis",
+              "Fitur Interaktif Kustom (Sesuai Kebutuhan)",
+              "Optimasi Kecepatan",
+              "Animasi GSAP Kompleks & Kustom",
+              "Domain Eksklusif (.id)"
+            ]
+          }
+        ]
+      },
+
+      "company-profile": {
+        "title": "Company Profile",
+        "plans": [
+          {
+            "title": "Starter Kit",
+            "description": "Solusi profil bisnis dengan struktur informasi yang bersih demi menciptakan impresi profesional serta kredibilitas instan di pasar.",
+            "price": "IDR 1,700,000",
+            "type": "fixed",
+            "features": [
+              "Arsitektur Strategis (4 Halaman Utama)",
+              "Implementasi AOS Dynamic Animation",
+              "Gratis Hosting 6 Bulan",
+              "Domain Profesional (.com)",
+              "Penyimpanan Cloud Dedikasi 1GB",
+              "Copywriting Bisnis Persuasif",
+              "Desain Korporat Modern"
+            ]
+          },
+          {
+            "title": "Business Pro",
+            "description": "Solusi profil bisnis yang skalabel dengan fitur manajemen konten strategis untuk menjangkau pasar lebih luas dan memantau setiap pergerakan pengunjung.",
+            "price": "IDR 2,400,000",
+            "type": "fixed",
+            "features": [
+              "Arsitektur Luas (Hingga 6 Halaman)",
+              "Seluruh Fitur Starter Kit",
+              "Sistem Blog (CMS) Terintegrasi",
+              "Formulir Kontak & Reservasi Pintar",
+              "Hosting Performa Tinggi Gratis (1 Tahun)",
+              "Optimasi SEO Fundamental",
+              "Integrasi Google Analytics",
+              "Modul Interaksi Interaktif"
+            ]
+          },
+          {
+            "title": "Ultimate",
+            "description": "Dominasi pasar dengan infrastruktur kapasitas tinggi dan fitur kustom. Dirancang untuk menangani konten berat serta interaksi pengguna yang sangat kompleks.",
+            "price": "IDR 3,500,000",
+            "type": "fixed",
+            "features": [
+              "Arsitektur Komprehensif (Hingga 10 Halaman)",
+              "Seluruh Fitur Business Pro",
+              "Domain Eksklusif (.id)",
+              "Sistem Reservasi Interaktif Terintegrasi",
+              "Engineering Performa Tingkat Tinggi",
+              "Optimasi SEO Teknis Menyeluruh",
+              "Desain Kustom",
+              "Optimasi Performa Premium",
+              "Implementasi GSAP Animation"
+            ]
+          }
+        ]
+      },
+
+      "booking-rental": {
+        "title": "Booking & Rental",
+        "plans": [
+          {
+            "title": "Starter Kit",
+            "description": "Solusi reservasi instan yang memudahkan pelanggan mengirim detail pesanan langsung ke WhatsApp Anda dengan struktur format yang profesional.",
+            "price": "IDR 2,000,000",
+            "type": "fixed",
+            "features": [
+              "Arsitektur Fungsional (4 Halaman Utama)",
+              "Sistem Form Booking WhatsApp atau Email Instan",
+              "Implementasi AOS Narrative Animation",
+              "Gratis Hosting 6 Bulan",
+              "Domain Profesional (.com)",
+              "Penyimpanan Cloud Dedikasi 1GB",
+              "Copywriting Konversi"
+            ]
+          },
+          {
+            "title": "Business Pro",
+            "description": "Solusi manajemen cerdas untuk menyederhanakan alur booking dan skalabilitas bisnis yang lebih efisien.",
+            "price": "IDR 3,500,000",
+            "type": "fixed",
+            "features": [
+              "Semua Fitur Starter Kit",
+              "Dasbor Manajemen Dasar",
+              "Arsitektur Luas (8 Halaman Utama)",
+              "Penyimpanan Performa Tinggi 10GB",
+              "Sistem Blog & SEO Terintegrasi",
+              "Google Analytics",
+              "Hosting Performa Tinggi Gratis (1 Tahun)"
+            ]
+          },
+          {
+            "title": "Ultimate",
+            "description": "Solusi ekosistem digital mandiri untuk otoritas penuh atas data bisnis dan efisiensi kerja otomatis.",
+            "price": "IDR 4,500,000",
+            "type": "start",
+            "features": [
+              "Semua Fitur Business Pro",
+              "Sistem Otomasi Total",
+              "Dashboard Admin Profesional",
+              "Engineering Performa",
+              "Strategi Domain Eksklusif (.id)",
+              "SEO Menyeluruh",
+              "Integrasi Data Real-Time",
+              "Infrastruktur Premium yang Skalabel",
+              "Fully Customized"
+            ]
+          }
+        ]
+      },
+
+      "ecommerce": {
+        "title": "E-Commerce",
+        "plans": [
+          {
+            "title": "Starter Kit",
+            "description": "Katalog produk esensial dengan sistem order langsung ke WhatsApp untuk menangkap pesanan secara instan.",
+            "price": "IDR 2,500,000",
+            "type": "fixed",
+            "features": [
+              "Katalog Produk Terintegrasi",
+              "Checkout Instan (WhatsApp/Email)",
+              "Implementasi AOS Animation",
+              "Gratis Hosting 6 Bulan",
+              "Domain Profesional (.com)",
+              "Cloud Storage 2GB",
+              "Layout Modern & Responsif"
+            ]
+          },
+          {
+            "title": "Business Pro",
+            "description": "Kelola produk dan pesanan melalui dasbor terpusat dengan infrastruktur performa tinggi.",
+            "price": "IDR 4,000,000",
+            "type": "fixed",
+            "features": [
+              "Semua Fitur Starter Kit",
+              "Dashboard Stok & Pesanan",
+              "Formulir Kontak & Penawaran Otomatis",
+              "Performance Hosting 5GB",
+              "Sistem Blog & SEO Core",
+              "Google Analytics & Sales Tracking",
+              "Animasi Produk Interaktif",
+              "Copywriting Konversi"
+            ]
+          },
+          {
+            "title": "Ultimate",
+            "description": "Sistem e-commerce penuh dengan integrasi pembayaran otomatis dan kontrol penuh melalui admin panel.",
+            "price": "Custom (Hubungi Kami)",
+            "type": "",
+            "features": [
+              "Integrasi Payment Gateway",
+              "Panel Kontrol Stok Lanjut",
+              "Optimasi Performa Tinggi",
+              "Strategi Domain Eksklusif (.id)",
+              "Mastery SEO & Marketing",
+              "Infrastruktur Cloud Premium"
+            ]
+          }
+        ]
+      },
+
+      "ui-design": {
+        "title": "UI Design",
+        "plans": [
+          {
+            "title": "High End Web Design",
+            "price": "IDR 1,500,000",
+            "type": "start",
+            "features": [
+              "Fondasi Struktur & Alur Navigasi User",
+              "Visual Eksklusif (Non-Template)",
+              "Responsif (Desktop & Mobile)",
+              "Prototype Interaktif",
+              "Komponen UI Kustom",
+              "Dokumentasi Desain (Figma)"
+            ]
+          },
+          {
+            "title": "Mobile App UI/UX",
+            "price": "IDR 2,500,000",
+            "type": "start",
+            "features": [
+              "Pemetaan Alur Pengguna",
+              "Sistem Komponen iOS/Android",
+              "Desain Pixel-Perfect",
+              "Micro-Interaction",
+              "Riset UX",
+              "Design System Scalable"
+            ]
+          },
+          {
+            "title": "Dashboard Design",
+            "price": "IDR 3,500,000",
+            "type": "start",
+            "features": [
+              "Visualisasi Data",
+              "Widget & Komponen Kustom",
+              "Role & Permission System",
+              "High-Density Layout",
+              "Interaction States Lanjutan"
+            ]
+          }
+        ]
+      },
+
+      "etc": {
+        "title": "Lainnya",
+        "plans": [
+          {
+            "title": "Custom Project",
+            "price": "Custom (Hubungi Kami)",
+            "type": "",
+            "description": "Butuh fitur spesifik tanpa membayar paket penuh? Sesuaikan kebutuhan Anda lewat Custom Project untuk penawaran harga yang lebih presisi.",
+            "features": [
+              "Arsitektur Sistem Kustom",
+              "Integrasi API & IoT",
+              "Keamanan Data & Enkripsi",
+              "Scalable Engineering",
+              "Clean Code & Full Ownership",
+              "Support & Maintenance"
+            ]
+          },
+          {
+            "title": "Website Modernization",
+            "price": "Custom (Hubungi Kami)",
+            "type": "",
+            "description": "Solusi untuk Perusahaan dengan sistem lama yang lambat dan tampilannya mulai menghambat konversi.",
+            "features": [
+              "Audit Performa",
+              "Optimasi Lighthouse (90+)",
+              "UI/UX Modern Refresh",
+              "Migrasi Teknologi",
+              "SEO & Conversion Strategy",
+              "Transfer Data"
+            ]
+          }
+        ]
+      }
+    },
+    "cta": "Mulai Transformasi"
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio Desain",
     "description": "SBXOne Studio Desain UI/UX & Aplikasi Web yang menyediakan layanan desain dan pengembangan berkualitas tinggi untuk bisnis dari segala skala."

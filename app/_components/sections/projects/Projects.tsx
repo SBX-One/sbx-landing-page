@@ -73,7 +73,7 @@ export default function Projects() {
       const chars = gsap.utils.toArray(".project-heading-char");
       timeline.to(chars, {
         y: 0,
-        duration: 1.2,
+        duration: 0.8,
         stagger: 0.01,
         ease: "power3.out",
       });
@@ -105,7 +105,7 @@ export default function Projects() {
           toggleActions: "play none none none",
         },
         opacity: (i, target) => {
-          if (target.classList.contains("ellipse-particle")) return 0.8;
+          if (target.classList.contains("ellipse-particle")) return 1;
           return 0.5;
         },
         scale: 1,
@@ -133,7 +133,7 @@ export default function Projects() {
         overlayRef.current,
         { opacity: 0 },
         {
-          opacity: 0.8,
+          opacity: 1,
           ease: "none",
           scrollTrigger: {
             trigger: containerRef.current,
@@ -179,13 +179,17 @@ export default function Projects() {
   );
 
   return (
-    <section ref={containerRef} id="projects" className="relative  ">
+    <section
+      ref={containerRef}
+      id="projects"
+      className="relative overflow-clip"
+    >
       {/* Sticky Header Wrapper (Desktop) */}
       <div
         ref={overlayRef}
         className="absolute hidden lg:block inset-0 bg-background z-20 pointer-events-none"
       ></div>
-      <div className="projects-sticky-header lg:sticky top-0 lg:h-screen lg:flex lg:flex-col lg:justify-center   z-10 w-full">
+      <div className="projects-sticky-header lg:sticky top-0 lg:h-screen lg:flex lg:flex-col lg:justify-center z-10 w-full">
         {/* Background Particles inside pinned container so they pin with the header */}
         <Image
           src={particleElipse1}
@@ -199,7 +203,7 @@ export default function Projects() {
           alt=""
           width={1200}
           height={800}
-          className="projects-particle ellipse-particle ellipse-particle-2 absolute md:-bottom-60 -left-80 size-200 object-cover -z-1"
+          className="projects-particle ellipse-particle ellipse-particle-2 absolute md:-bottom-60 -left-40 md:-left-80 size-127.75 md:size-200 object-cover -z-1"
         />
         <Image
           src={particle1}
@@ -223,7 +227,7 @@ export default function Projects() {
           className="projects-particle projects-particle-3 absolute top-65 left-0 size-24 object-cover -z-1 lg:hidden"
         />
 
-        <div className="flex flex-col justify-center items-center gap-6 mb-20 px-4 md:px-8 lg:px-14">
+        <div className="flex flex-col justify-center items-center gap-6 mb-16 px-4 md:px-8 lg:px-14 py-12 md:py-25">
           <SectionTitle title={t("title")} />
           <h1
             ref={headingRef}

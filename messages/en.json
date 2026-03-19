@@ -35,6 +35,304 @@
     "title": "Projects",
     "heading": "A Glimpse into Our World of Precision Engineering and Modern Design"
   },
+  "Pricing": {
+    "title": "Pricing",
+    "heading": "Tailored Investments Designed to Modernize Your Digital Infrastructure",
+    "testimonial": "Satisfied with our pricing",
+    "categories": {
+      "landing-page": {
+        "title": "Landing Page",
+        "plans": [
+          {
+            "title": "Starter Kit",
+            "description": "Streamlined digital foundation focused on clarity and speed. Combining aesthetics to ensure your brand makes a powerful first impression.",
+            "price": "IDR 1,000,000",
+            "type": "fixed",
+            "features": [
+              "AOS Dynamic Animation",
+              "6-Month High-Speed Hosting",
+              "Professional .com Domain",
+              "1GB Dedicated Cloud Storage",
+              "Direct Conversion CTA (WA/Form)",
+              "Strategic Narrative Copywriting",
+              "Modern Minimalist Design"
+            ]
+          },
+          {
+            "title": "Business Pro",
+            "description": "Engineered for scale and performance. Dedicated infrastructure to handle higher traffic volumes and reinforce your company’s professional and reliable image.",
+            "price": "IDR 2,000,000",
+            "type": "fixed",
+            "features": [
+              "All Starter Kit Features Included",
+              "1-Year Dedicated Performance Hosting",
+              "Advanced Interactive Motion Design",
+              "Foundational SEO Optimization",
+              "Google Analytics Integration",
+              "Premium Visual Design",
+              "GSAP Basic Animation"
+            ]
+          },
+          {
+            "title": "Ultimate",
+            "description": "High-end brands and tech-forward ventures demanding total customization and industry-leading technical execution.",
+            "price": "IDR 2,700,000",
+            "type": "fixed",
+            "features": [
+              "All Business Pro Features Included",
+              "Custom Visual Design",
+              "Advanced Performance Engineering",
+              "Advanced SEO Optimization",
+              "Expansion Up to 3 Specialized Pages",
+              "Custom Interactive Features",
+              "Extreme Load-Speed Optimization",
+              "Custom GSAP Animation"
+            ]
+          }
+        ]
+      },
+
+      "company-profile": {
+        "title": "Company Profile",
+        "plans": [
+          {
+            "title": "Starter Kit",
+            "description": "A refined multi-page architecture that presents your brand clearly and builds client trust.",
+            "price": "IDR 1,700,000",
+            "type": "fixed",
+            "features": [
+              "4-Page Strategic Architecture",
+              "AOS Dynamic Animations",
+              "6-Month High-Speed Hosting",
+              "Professional .com Domain",
+              "1GB Dedicated Cloud Storage",
+              "Persuasive Business Copywriting",
+              "Modern Corporate Template Design"
+            ]
+          },
+          {
+            "title": "Business Pro",
+            "description": "Built for scalability and engagement, with content marketing tools and advanced tracking to grow your digital reach.",
+            "price": "IDR 2,400,000",
+            "type": "fixed",
+            "features": [
+              "6-Page Extended Architecture",
+              "All Starter Kit Features Included",
+              "Integrated CMS Blog System",
+              "Smart Contact & Reach-Out Forms",
+              "1-Year Dedicated Performance Hosting",
+              "Foundational SEO Optimization",
+              "Full Google Analytics Integration",
+              "Interactive Engagement Modules"
+            ]
+          },
+          {
+            "title": "Ultimate",
+            "description": "Engineered for local market dominance with a specialized high-capacity infrastructure to support heavy content and complex interactions.",
+            "price": "IDR 3,500,000",
+            "type": "fixed",
+            "features": [
+              "8-Page Comprehensive Architecture",
+              "All Business Pro Features Included",
+              "Specialized .id Domain Strategy",
+              "Advanced Performance Engineering",
+              "Advanced SEO Optimization",
+              "Custom Visual Design",
+              "Premium Performance-Optimized Hosting",
+              "GSAP Animation"
+            ]
+          }
+        ]
+      },
+
+      "booking-rental": {
+        "title": "Booking & Rental",
+        "plans": [
+          {
+            "title": "Starter Kit",
+            "description": "The essential foundation for professionals and rental businesses needing instant digital credibility.",
+            "price": "IDR 2,000,000",
+            "type": "fixed",
+            "features": [
+              "4-Page Functional Architecture",
+              "Instant Email & WhatsApp Booking",
+              "AOS Narrative Animations",
+              "6-Month High-Speed Hosting",
+              "Professional .com Domain",
+              "1GB Dedicated Cloud Storage",
+              "Precision Conversion Copywriting"
+            ]
+          },
+          {
+            "title": "Business Pro",
+            "description": "Take full control of your business data with a simple dashboard to monitor bookings.",
+            "price": "IDR 3,500,000",
+            "type": "fixed",
+            "features": [
+              "All Starter Kit Features Included",
+              "Basic Management Dashboard",
+              "8-Page Extended Architecture",
+              "10GB High-Performance Storage",
+              "Integrated Blog CMS",
+              "Foundational SEO Optimization",
+              "Google Analytics Integration",
+              "1-Year Dedicated Performance Hosting",
+              "Smart Reach-Out Form Modules"
+            ]
+          },
+          {
+            "title": "Ultimate",
+            "description": "A fully automated ecosystem with a custom admin dashboard designed to handle complex workflows.",
+            "price": "IDR 4,500,000",
+            "type": "start",
+            "features": [
+              "All Business Pro Features Included",
+              "Full-Automated System",
+              "Advanced Admin Control Panel",
+              "Extreme Performance Engineering",
+              "Specialized .id Domain Architecture",
+              "Full Technical SEO Optimization",
+              "Real-Time Data Integration",
+              "Premium Scalable Infrastructure"
+            ]
+          }
+        ]
+      },
+
+      "ecommerce": {
+        "title": "E-Commerce",
+        "plans": [
+          {
+            "title": "Starter Kit",
+            "description": "A sleek, focused e-commerce foundation designed to showcase your products and capture orders efficiently.",
+            "price": "IDR 2,500,000",
+            "type": "fixed",
+            "features": [
+              "Integrated Product Catalog",
+              "Secure Direct WhatsApp/Email Checkout",
+              "AOS Dynamic Narrative Animations",
+              "6-Month High Speed Hosting",
+              "Professional .com Domain",
+              "2GB Dedicated Cloud Storage",
+              "Modern Responsive E-commerce Layout"
+            ]
+          },
+          {
+            "title": "Business Pro",
+            "description": "Includes a dedicated dashboard to manage products and orders with optimized performance.",
+            "price": "IDR 4,000,000",
+            "type": "fixed",
+            "features": [
+              "All Starter Kit Features Included",
+              "Centralized Inventory & Order Dashboard",
+              "Automated Reach-Out & Lead Forms",
+              "5GB Performance-Optimized Hosting",
+              "Integrated Blog & SEO Core System",
+              "Full Google Analytics & Sales Tracking",
+              "Advanced Interactive Product Motion",
+              "Strategic Conversion Copywriting"
+            ]
+          },
+          {
+            "title": "Ultimate",
+            "description": "A full-scale e-commerce powerhouse with payment gateway integration and custom admin system.",
+            "price": "Custom (Contact Us)",
+            "type": "",
+            "features": [
+              "Fully Automated Checkout Engine",
+              "Third-Party Payment Gateway Integration",
+              "Advanced Admin & Stock Control Panel",
+              "Extreme Performance Engineering",
+              "Specialized .id Domain Architecture",
+              "Full Technical SEO & Marketing Optimization",
+              "Premium Scalable Infrastructure"
+            ]
+          }
+        ]
+      },
+
+      "ui-design": {
+        "title": "UI Design",
+        "plans": [
+          {
+            "title": "High-End Web Design",
+            "price": "IDR 1,500,000",
+            "type": "start",
+            "features": [
+              "Strategic Information Architecture",
+              "Custom Visual Design",
+              "Responsive Layouts (Desktop & Mobile)",
+              "High-Fidelity Prototyping",
+              "Interactive Element Design",
+              "Developer-Ready Handoff (Figma)"
+            ]
+          },
+          {
+            "title": "Mobile App UI/UX",
+            "price": "IDR 2,500,000",
+            "type": "start",
+            "features": [
+              "Comprehensive User Flow Mapping",
+              "Platform-Specific Component Systems",
+              "Pixel-Perfect Interface Design",
+              "Micro-Interaction Design",
+              "Usability-Focused UX Research",
+              "Design System Documentation"
+            ]
+          },
+          {
+            "title": "Dashboard Design",
+            "price": "IDR 3,500,000",
+            "type": "start",
+            "features": [
+              "Data Visualization Strategy",
+              "Custom Widget & Component Library",
+              "Admin & User Role Permissions Flow",
+              "High-Density Information Layouts",
+              "Dark/Light Mode Optimization",
+              "Advanced Interaction States"
+            ]
+          }
+        ]
+      },
+
+      "etc": {
+        "title": "Others",
+        "plans": [
+          {
+            "title": "Custom Project",
+            "price": "Custom (Contact Us)",
+            "type": "",
+            "description": "Need specific features without the full package or have unique project requirements? Custom Project is here built to match your exact needs and budget.",
+            "features": [
+              "Custom System Architecture",
+              "Third-Party API & IoT Integration",
+              "Advanced Data Security & Encryption",
+              "Scalable Engineering",
+              "Full Ownership & Clean Source Code",
+              "Dedicated Technical Support & Maintenance",
+              "Problem-Based Solutions"
+            ]
+          },
+          {
+            "title": "Website Modernization",
+            "price": "Custom (Contact Us)",
+            "type": "",
+            "description": "We audit your current system, strip away the bloat, and re-engineer it into a fast, high-converting digital asset.",
+            "features": [
+              "Comprehensive Performance Audit",
+              "Lighthouse Speed Optimization (90+ Score)",
+              "Modern UI/UX Visual Refresh",
+              "Legacy Code-to-Modern Migration",
+              "SEO & Conversion Architecture",
+              "Seamless Data & Content Transfer"
+            ]
+          }
+        ]
+      }
+    },
+    "cta": "Get Started"
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."

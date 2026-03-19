@@ -333,6 +333,22 @@
     },
     "cta": "Get Started"
   },
+  "HowItWorks": {
+    "title": "How it Works",
+    "heading": "A Transparent Roadmap Built to Power Your Vision with Modern Engineering",
+    "step-1-title": "Brief & Understanding",
+    "step-1-description": "Understanding your goals and expectations We start by gathering information about your needs, objectives, and project context.",
+    "step-2-title": "Timeline & Agreement",
+    "step-2-description": "Aligning schedule, scope, and cost We define the timeline, deliverables, and pricing to ensure clarity before moving forward.",
+    "step-3-title": "Iteration",
+    "step-3-description": "Exploring ideas and early Initial ideas and design directions are developed and refined through collaboration.",
+    "step-4-title": "Progressing",
+    "step-4-description": "Moving forward with structured execution Design and development progress based on the agreed plan, with regular updates along the way. Also we will send you weekly report of our progress",
+    "step-5-title": "Validation & Revision",
+    "step-5-description": "Reviewing, refining, and improving We validate the results together and apply revisions to ensure everything meets expectations.",
+    "step-6-title": "Completion",
+    "step-6-description": "Delivering the final result The project is finalized and delivered, ready for use and future growth."
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."

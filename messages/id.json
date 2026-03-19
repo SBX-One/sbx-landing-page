@@ -331,6 +331,22 @@
     },
     "cta": "Mulai Transformasi"
   },
+  "HowItWorks": {
+    "title": "Alur Kerja",
+    "heading": "Alur Kerja  untuk Mewujudkan Visi Anda.",
+    "step-1-title": "Diskusi  & Pemahaman Visi",
+    "step-1-description": "Memahami tujuan dan harapan Anda. Kami mulai dengan mengumpulkan informasi tentang kebutuhan, tujuan, dan konteks proyek Anda.",
+    "step-2-title": "Timeline & Perjanjian",
+    "step-2-description": "Menyelaraskan jadwal, ruang lingkup, dan biaya. Kami menentukan timeline, hasil yang diharapkan, dan harga untuk memastikan kejelasan sebelum melanjutkan.",
+    "step-3-title": "Iterasi",
+    "step-3-description": "Menjelajahi ide-ide dan arahan desain awal dikembangkan dan disempurnakan melalui kolaborasi.",
+    "step-4-title": "Pengerjaan",
+    "step-4-description": "Melanjutkan dengan eksekusi terstruktur. Kemajuan desain dan pengembangan berdasarkan rencana yang disepakati. Kami juga akan mengirimkan laporan kemajuan kami setiap minggu.",
+    "step-5-title": "Validasi & Revisi",
+    "step-5-description": "Meninjau, menyempurnakan, dan meningkatkan. Kami memvalidasi hasilnya bersama-sama dan menerapkan revisi untuk memastikan semuanya memenuhi harapan.",
+    "step-6-title": "Penyelesaian",
+    "step-6-description": "Penyerahan sistem final dengan performa terbaik. Infrastruktur Anda kini siap beroperasi dan mendukung ekspansi bisnis."
+  },
   "Metadata": {
     "title": "SBXOne - UI/UX & Web App Studio Desain",
     "description": "SBXOne Studio Desain UI/UX & Aplikasi Web yang menyediakan layanan desain dan pengembangan berkualitas tinggi untuk bisnis dari segala skala."

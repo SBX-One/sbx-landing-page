@@ -10,6 +10,7 @@ import Footer from "../_components/partials/Footer";
 import SmoothScroll from "../_components/SmoothScroll";
 import LoadingScreen from "../_components/LoadingScreen";
 import { LoadingProvider } from "../_components/LoadingContext";
+import Analytics from "../_components/Analytics";
 
 const pixelifySans = Pixelify_Sans({
   variable: "--font-pixelify-sans",
@@ -89,6 +90,7 @@ export default async function RootLayout({ children, params }: Props) {
       <body
         className={`${pixelifySans.variable} ${manrope.variable} antialiased ${pixelifySans.className} ${manrope.className}`}
       >
+        <Analytics />
         <NextIntlClientProvider messages={messages}>
           <LoadingProvider>
             <SmoothScroll />

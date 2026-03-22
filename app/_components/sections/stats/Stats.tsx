@@ -17,8 +17,8 @@ export default function Stats() {
 
   const statsData = [
     { value: 20, label: t("portofolio"), suffix: "+" },
-    { value: 95, label: t("trust"), suffix: "%" },
-    { value: 5, label: t("year"), suffix: "+" },
+    { value: 90, label: t("trust"), suffix: "%" },
+    { value: 3, label: t("year"), suffix: "+" },
   ];
 
   useGSAP(

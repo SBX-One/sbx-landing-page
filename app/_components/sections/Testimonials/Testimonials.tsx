@@ -19,10 +19,14 @@ if (typeof window !== "undefined") {
 
 // Desktop: scattered positions with random Y offsets + slight rotation for each card
 const desktopScatterStyles: React.CSSProperties[] = [
-  { transform: "translateY(-30px) translatex(30px) rotate(-1.5deg)" },
-  { transform: "translateY(200px) translatex(-80px) rotate(1.2deg)" },
-  { transform: "translateY(-40px) rotate(-0.6deg)" },
-  { transform: "translateY(200px) rotate(0.8deg)" },
+  { transform: "translateY(-30px) translateX(-20px) rotate(-1.5deg)" },
+  { transform: "translateY(200px) translateX(50px) rotate(1.2deg)" },
+  { transform: "translateY(-40px) translateX(-20px) rotate(-0.6deg)" },
+  { transform: "translateY(200px) translateX(50px) rotate(0.8deg)" },
+  { transform: "translateY(-40px) translateX(-20px) rotate(-0.6deg)" },
+  { transform: "translateY(200px) translateX(50px) rotate(0.8deg)" },
+  { transform: "translateY(-40px) translateX(-20px) rotate(-0.6deg)" },
+  { transform: "translateY(200px) translateX(50px) rotate(0.8deg)" },
 ];
 
 const testimonials = [
@@ -108,15 +112,21 @@ export default function Testimonials() {
         if (node.nodeType === 3) {
           const text = node.textContent || "";
           const fragment = document.createDocumentFragment();
-          text.split("").forEach((char) => {
+          text.split(" ").forEach((word, index, array) => {
+            if (word === "") return;
+
             const outer = document.createElement("span");
             outer.className = "inline-block overflow-hidden align-top";
             const inner = document.createElement("span");
             inner.className =
               "testimonial-heading-char inline-block translate-y-[110%]";
-            inner.innerHTML = char === " " ? "&nbsp;" : char;
+            inner.innerHTML = word;
             outer.appendChild(inner);
             fragment.appendChild(outer);
+
+            if (index < array.length - 1) {
+              fragment.appendChild(document.createTextNode(" "));
+            }
           });
           node.parentNode?.replaceChild(fragment, node);
         } else if (node.nodeType === 1) {
@@ -139,8 +149,8 @@ export default function Testimonials() {
       const chars = gsap.utils.toArray(".testimonial-heading-char");
       timeline.to(chars, {
         y: 0,
-        duration: 0.8,
-        stagger: 0.01,
+        duration: 1.8,
+        stagger: 0.06,
         ease: "power3.out",
       });
 
@@ -328,7 +338,7 @@ export default function Testimonials() {
         <Image
           src={particle3}
           alt=""
-          className="testimonial-particle testimonial-particle-1 w-25 md:w-50 absolute bottom-0 md:bottom-60 right-0 object-cover -z-50"
+          className="testimonial-particle testimonial-particle-1 w-25 absolute bottom-0 md:bottom-60 right-0 object-cover -z-50"
         />
         <Image
           src={particle4}

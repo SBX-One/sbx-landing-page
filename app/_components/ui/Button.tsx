@@ -124,7 +124,7 @@ export default function Button({
       )}
 
       <div className="relative overflow-hidden h-full flex flex-col justify-center">
-        <div className="transition-transform duration-200 cubic-bezier(0.19, 1, 0.22, 1) group-hover:-translate-y-full flex flex-col h-full items-center">
+        <div className="transition-transform duration-300 cubic-bezier(0.19, 1, 0.22, 1) group-hover:-translate-y-full flex flex-col h-full items-center">
           <span className="flex items-center h-full whitespace-nowrap min-w-max">
             {children}
           </span>
@@ -135,7 +135,7 @@ export default function Button({
       </div>
 
       {rightIcon && (
-        <div className="ml-2 transition-all duration-500 cubic-bezier(0.19, 1, 0.22, 1) group-hover:translate-x-1 group-hover:-translate-y-1">
+        <div className="ml-2 transition-all duration-500 cubic-bezier(0.19, 1, 0.22, 1) group-hover:translate-x-1">
           <Icon type="default" width={20} height={20} theme={iconTheme} />
         </div>
       )}

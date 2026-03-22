@@ -12,6 +12,7 @@ type PricingCardProps = {
   style?: "vertical" | "horizontal";
   size?: "sm" | "lg";
   ctaLabel?: string;
+  ctwaLink?: string;
 };
 
 export default function PricingCard({
@@ -22,6 +23,7 @@ export default function PricingCard({
   features,
   style = "vertical",
   ctaLabel = "Get Started",
+  ctwaLink,
 }: PricingCardProps) {
   const isHorizontal = style === "horizontal";
 
@@ -81,6 +83,9 @@ export default function PricingCard({
       <div className={` ${isHorizontal ? "mt-6 md:mt-8" : "mt-16"}`}>
         <div className="lg:hidden">
           <Button
+            as="link"
+            href={ctwaLink!}
+            target="_blank"
             variant="default"
             size="md"
             color="white"
@@ -93,6 +98,9 @@ export default function PricingCard({
         </div>
         <div className="hidden lg:flex">
           <Button
+            as="link"
+            href={ctwaLink!}
+            target="_blank"
             variant="default"
             size="lg"
             color="white"

@@ -105,6 +105,9 @@ export default function Footer() {
                   leftIcon={true}
                   style="standard"
                   className="w-fit"
+                  href={t("cta-link")}
+                  target="_blank"
+                  as="link"
                 >
                   {t("cta")}
                 </Button>

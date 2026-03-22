@@ -45,7 +45,7 @@ export default function Button({
   rightIcon = false,
   className = "",
   fullWidth = false,
-  target = "_blank",
+  target,
   ...props
 }: ButtonProps) {
   /**
@@ -147,14 +147,14 @@ export default function Button({
    */
   if (props.as === "link") {
     return (
-      <Link
+      <a
         href={props.href}
         target={target}
         className={`group ${classes}`}
         onClick={props.onClick}
       >
         {content}
-      </Link>
+      </a>
     );
   }
 

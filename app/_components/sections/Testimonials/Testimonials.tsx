@@ -27,27 +27,63 @@ const desktopScatterStyles: React.CSSProperties[] = [
 
 const testimonials = [
   {
-    name: "Andra Divano",
-    role: "CEO at Atrem Project",
-    text: "Going last sexy read accountable back six. Didn't productize game responsible pole my churning post email elephant. Expectations charts angel 30,000ft dive. Agile hear quick disband donuts.",
+    name: "Marcus T.",
+    role: "Managing Director",
+    text: "Our legacy platform was a massive bottleneck for years. SBX didn't just give it a new skin they re-engineered the entire core. The speed improvement was instantaneous, and for the first time, our digital infrastructure actually supports our growth instead of hindering it.",
     stars: 5,
   },
   {
-    name: "Sarah Lestari",
-    role: "Founder of Kreativa",
-    text: "Absolutely exceeded our expectations. The team delivered a stunning, high-quality website in record time. Our conversion rate doubled within the first month.",
+    name: "Sarah Jenkins",
+    role: "Operations Lead",
+    text: "Working with SBX and team was refreshing. No sugarcoating, just pure execution. They were brutally honest about what wouldn't work in our initial plan, and their alternative solution ended up saving us months of development time. Elite professionalism at its finest.",
     stars: 5,
   },
   {
-    name: "Rafi Prasetyo",
-    role: "CTO at NusaTech",
-    text: "Professional, creative, and incredibly responsive. They understood our vision from day one and brought it to life with pixel-perfect precision.",
+    name: "Andre Wijaya",
+    role: "Property Owner",
+    text: "Managing multiple properties used to be a nightmare of manual spreadsheets and late-night emails. SBX built us a custom management dashboard that automated 80% of our workflow. It’s clean, it’s fast, and it’s become the backbone of our daily operations.",
     stars: 5,
   },
   {
-    name: "Maya Sari",
-    role: "Marketing Lead at Bloom",
-    text: "Best investment we've made for our brand. The design is modern, the animations are smooth, and the overall user experience is top-notch.",
+    name: "Elena R.",
+    role: "Marketing Head",
+    text: "The White Sharks team has an incredible eye for detail. They took our vague concept and transformed it into a world-class UI/UX experience that our users love. Our engagement metrics have skyrocketed since the launch, proving that good design is a serious business investment.",
+    stars: 5,
+  },
+  {
+    name: "David Chen",
+    role: "Tech Founder",
+    text: "TAs a founder, I’ve dealt with many agencies that overpromise and underdeliver. SBX is the complete opposite. Their technical depth with React and Laravel is impressive, and the scalability of the code they delivered gives me total confidence for our future expansions.",
+    stars: 5,
+  },
+  {
+    name: "Siska Putri",
+    role: "General Manager",
+    text: "We were losing a significant number of leads because our old booking process was too clunky. SBX redesigned the entire journey, making it seamless and intuitive. The result? A 40% increase in direct bookings within the first month of going live.",
+    stars: 5,
+  },
+  {
+    name: "Robert H.",
+    role: "Project Coordinator",
+    text: "What sets SBX apart is their systematic approach. They don't just start coding; they audit, they architect, and then they execute with precision. It felt less like hiring a vendor and more like adding an elite technical unit to our own internal team.",
+    stars: 5,
+  },
+  {
+    name: "Julian M.",
+    role: "Creative Director",
+    text: "We needed a digital presence that reflected the premium nature of our services. Most agencies gave us generic templates, but SBX delivered a bespoke, high-end experience that immediately commands authority. Our online presence finally matches our offline reputation.",
+    stars: 5,
+  },
+  {
+    name: "Kevin C.",
+    role: "Business Development Lead",
+    text: "Our project required complex backend logic and real-time data synchronization. The Tiger Sharks Team handled the engineering with zero friction. The system is robust, secure, and performs flawlessly under high load exactly what we needed for our expansion.",
+    stars: 5,
+  },
+  {
+    name: "Amanda L.",
+    role: "Startup Founder",
+    text: "If you’re looking for someone to just 'build a website,' look elsewhere. But if you need an engineering partner to build a scalable digital powerhouse that drives actual business results, SBX is the only team you should be talking to.",
     stars: 5,
   },
 ];
@@ -311,7 +347,7 @@ export default function Testimonials() {
       </div>
 
       {/* Desktop: Scattered / Random layout */}
-      <div className="hidden lg:grid grid-cols-2 gap-x-96 px-4 md:px-8 lg:px-14 mb-16 relative z-10 min-h-[200vh]">
+      <div className="hidden lg:grid grid-cols-2 gap-x-80 px-4 md:px-8 lg:px-14 mb-16 relative z-10 min-h-[500vh]">
         {testimonials.map((item, idx) => (
           <div
             key={idx}
@@ -334,9 +370,9 @@ export default function Testimonials() {
         <div ref={topRowContainerRef} className="overflow-hidden">
           <div ref={topRowSliderRef} className="flex gap-4 w-max">
             {[
-              ...testimonials.slice(0, 2),
-              ...testimonials.slice(0, 2),
-              ...testimonials.slice(0, 2),
+              ...testimonials.slice(0, 5),
+              ...testimonials.slice(0, 5),
+              ...testimonials.slice(0, 5),
             ].map((item, idx) => (
               <div key={`top-${idx}`} className="shrink-0 w-75 md:w-90">
                 <SocialProof
@@ -353,9 +389,9 @@ export default function Testimonials() {
         <div ref={bottomRowContainerRef} className="overflow-hidden">
           <div ref={bottomRowSliderRef} className="flex gap-4 w-max">
             {[
-              ...testimonials.slice(2, 4),
-              ...testimonials.slice(2, 4),
-              ...testimonials.slice(2, 4),
+              ...testimonials.slice(5, 10),
+              ...testimonials.slice(5, 10),
+              ...testimonials.slice(5, 10),
             ].map((item, idx) => (
               <div key={`bottom-${idx}`} className="shrink-0 w-75 md:w-90">
                 <SocialProof

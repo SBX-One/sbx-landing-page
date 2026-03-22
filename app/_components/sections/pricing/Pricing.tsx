@@ -32,6 +32,7 @@ export default function Pricing() {
     price?: string;
     type?: "start" | "fixed";
     features: string[];
+    "ctwa-link": string;
   }
 
   interface Category {
@@ -259,6 +260,7 @@ export default function Pricing() {
                 type={plan.type}
                 features={plan.features}
                 ctaLabel={t("cta")}
+                ctwaLink={plan["ctwa-link"]}
               />
             </div>
           ))}
@@ -272,6 +274,7 @@ export default function Pricing() {
                 features={plan.features}
                 ctaLabel={t("cta")}
                 style="horizontal"
+                ctwaLink={plan["ctwa-link"]}
               />
             </div>
           ))}

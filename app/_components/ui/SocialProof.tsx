@@ -15,7 +15,7 @@ export default function SocialProof({
   stars = 5,
 }: SocialProofProps) {
   return (
-    <div className="p-6 bg-zinc-900 flex flex-col justify-between h-80 rounded-2xl">
+    <div className="p-6 bg-zinc-900 flex flex-col justify-between h-80 lg:w-md rounded-2xl">
       <div>
         <div className="flex items-center gap-1 text-yellow-400 mb-4 md:text-xl">
           {Array.from({ length: stars }).map((_, i) => (

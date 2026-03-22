@@ -160,7 +160,7 @@ export default function Hero() {
                     alt="Digital infrastructure illustration"
                     width={200}
                     height={24}
-                    className="hero-highlight-image rounded-full hover:scale-110 transition-all duration-300 ease-in-out h-full w-full object-cover translate-y-full"
+                    className="hero-highlight-image rounded-full  transition-all duration-300 ease-in-out h-full w-full object-cover translate-y-full"
                   />
                   {/* White overlay that slides up to reveal */}
                   <div className="hero-highlight-block absolute inset-0 bg-white z-10 rounded-full" />
@@ -199,6 +199,9 @@ export default function Hero() {
         {/* Desktop Buttons */}
         <div className="hero-content-item hidden md:flex items-center gap-3">
           <Button
+            as="link"
+            target="_blank"
+            href={t("ctwa-link")}
             variant="default"
             size="lg"
             color="primary"
@@ -209,7 +212,10 @@ export default function Hero() {
             {t("ctwa")}
           </Button>
           <Button
+            as="link"
+            target="_self"
             variant="outline"
+            href="#pricing"
             size="lg"
             color="white"
             style="standard"

@@ -109,6 +109,9 @@ export default function Faq() {
             </p>
             <div className="faq-content-item">
               <Button
+                as="link"
+                href={t("cta-link")}
+                target="_blank"
                 variant="outline"
                 color="white"
                 size="lg"
@@ -138,7 +141,15 @@ export default function Faq() {
         </div>
         <div className="faq-content-item lg:hidden">
           <p className="text-body-lg font-medium mb-4">{t("footer")}</p>
-          <Button variant="outline" color="white" size="md" style="standard">
+          <Button
+            as="link"
+            href={t("cta-link")}
+            target="_blank"
+            variant="outline"
+            color="white"
+            size="md"
+            style="standard"
+          >
             {t("cta")}
           </Button>
         </div>

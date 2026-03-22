@@ -51,7 +51,7 @@
             "features": [
               "Implementasi AOS Dynamic Animation",
               "Hosting Gratis Selama 6 Bulan",
-              "Domain Profesional (.com)",
+              "1 Tahun Domain Profesional (.com)",
               "Penyimpanan Cloud 1GB",
               "CTA Fokus untuk Konversi (WA/Form)",
               "Copywriting Marketing",
@@ -83,7 +83,7 @@
               "Desain Kustom",
               "Engineering Performa Tingkat Tinggi",
               "Optimasi SEO Teknis Menyeluruh",
-              "Ekspansi Hingga 3 Halaman Spesialis",
+              "Ekspansi Hingga 3 Halaman",
               "Fitur Interaktif Kustom (Sesuai Kebutuhan)",
               "Optimasi Kecepatan",
               "Animasi GSAP Kompleks & Kustom",
@@ -105,7 +105,7 @@
               "Arsitektur Strategis (4 Halaman Utama)",
               "Implementasi AOS Dynamic Animation",
               "Gratis Hosting 6 Bulan",
-              "Domain Profesional (.com)",
+              "1 Tahun Domain Profesional (.com)",
               "Penyimpanan Cloud Dedikasi 1GB",
               "Copywriting Bisnis Persuasif",
               "Desain Korporat Modern"
@@ -117,8 +117,8 @@
             "price": "IDR 2,400,000",
             "type": "fixed",
             "features": [
-              "Arsitektur Luas (Hingga 6 Halaman)",
               "Seluruh Fitur Starter Kit",
+              "Arsitektur Luas (Hingga 6 Halaman)",
               "Sistem Blog (CMS) Terintegrasi",
               "Formulir Kontak & Reservasi Pintar",
               "Hosting Performa Tinggi Gratis (1 Tahun)",
@@ -136,7 +136,6 @@
               "Arsitektur Komprehensif (Hingga 10 Halaman)",
               "Seluruh Fitur Business Pro",
               "Domain Eksklusif (.id)",
-              "Sistem Reservasi Interaktif Terintegrasi",
               "Engineering Performa Tingkat Tinggi",
               "Optimasi SEO Teknis Menyeluruh",
               "Desain Kustom",
@@ -157,10 +156,10 @@
             "type": "fixed",
             "features": [
               "Arsitektur Fungsional (4 Halaman Utama)",
-              "Sistem Form Booking WhatsApp atau Email Instan",
+              "Sistem Form Booking WhatsApp & Email Instan",
               "Implementasi AOS Narrative Animation",
               "Gratis Hosting 6 Bulan",
-              "Domain Profesional (.com)",
+              "1 Tahun Domain Profesional (.com)",
               "Penyimpanan Cloud Dedikasi 1GB",
               "Copywriting Konversi"
             ]
@@ -177,7 +176,8 @@
               "Penyimpanan Performa Tinggi 10GB",
               "Sistem Blog & SEO Terintegrasi",
               "Google Analytics",
-              "Hosting Performa Tinggi Gratis (1 Tahun)"
+              "Hosting Performa Tinggi Gratis (1 Tahun)",
+              "Sistem Kontak Otomatis"
             ]
           },
           {
@@ -213,7 +213,7 @@
               "Checkout Instan (WhatsApp/Email)",
               "Implementasi AOS Animation",
               "Gratis Hosting 6 Bulan",
-              "Domain Profesional (.com)",
+              "1 Tahun Domain Profesional (.com)",
               "Cloud Storage 2GB",
               "Layout Modern & Responsif"
             ]
@@ -227,7 +227,7 @@
               "Semua Fitur Starter Kit",
               "Dashboard Stok & Pesanan",
               "Formulir Kontak & Penawaran Otomatis",
-              "Performance Hosting 5GB",
+              "Performance Hosting Gratis (1 Tahun)",
               "Sistem Blog & SEO Core",
               "Google Analytics & Sales Tracking",
               "Animasi Produk Interaktif",
@@ -240,12 +240,13 @@
             "price": "Custom (Hubungi Kami)",
             "type": "",
             "features": [
-              "Integrasi Payment Gateway",
-              "Panel Kontrol Stok Lanjut",
-              "Optimasi Performa Tinggi",
-              "Strategi Domain Eksklusif (.id)",
-              "Mastery SEO & Marketing",
-              "Infrastruktur Cloud Premium"
+              "Otomasi Transaksi Tanpa Hambatan",
+              "Integrasi Pembayaran Multi-Metode",
+              "Sistem Manajemen Stok & Operasional Pintar",
+              "Optimasi Performa Kecepatan Tinggi",
+              "Domain .id Khusus Bisnis",
+              "Optimasi SEO Teknis & Pemasaran Menyeluruh",
+              "Infrastruktur Scalable Tanpa Batas"
             ]
           }
         ]
@@ -259,12 +260,12 @@
             "price": "IDR 1,500,000",
             "type": "start",
             "features": [
-              "Fondasi Struktur & Alur Navigasi User",
-              "Visual Eksklusif (Non-Template)",
-              "Responsif (Desktop & Mobile)",
-              "Prototype Interaktif",
-              "Komponen UI Kustom",
-              "Dokumentasi Desain (Figma)"
+              "Struktur Navigasi & Informasi Proffesional",
+              "Desain Visual Kustom",
+              "Optimasi Layout Desktop dan Mobile",
+              "Prototipe High-Fidelity Interaktif",
+              "Desain Interaktif & Mikro-Animasi",
+              "Design Siap Handoff Developer"
             ]
           },
           {
@@ -276,8 +277,8 @@
               "Sistem Komponen iOS/Android",
               "Desain Pixel-Perfect",
               "Micro-Interaction",
-              "Riset UX",
-              "Design System Scalable"
+              "Riset UX untuk Efisiensi Produk",
+              "Dokumentasi Aset & Komponen Desain"
             ]
           },
           {
@@ -285,11 +286,11 @@
             "price": "IDR 3,500,000",
             "type": "start",
             "features": [
-              "Visualisasi Data",
+              "Arsitektur Penyajian Data Interaktif",
               "Widget & Komponen Kustom",
-              "Role & Permission System",
-              "High-Density Layout",
-              "Interaction States Lanjutan"
+              "Alur Hak Akses Admin & Pengguna",
+              "Optimasi Layout Untuk Data Kompleks",
+              "Interaksi Elemen Dinamis"
             ]
           }
         ]

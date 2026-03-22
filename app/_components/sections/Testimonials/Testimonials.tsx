@@ -347,7 +347,7 @@ export default function Testimonials() {
       </div>
 
       {/* Desktop: Scattered / Random layout */}
-      <div className="hidden lg:grid grid-cols-2 gap-x-80 px-4 md:px-8 lg:px-14 mb-16 relative z-10 min-h-[500vh]">
+      <div className="hidden lg:grid grid-cols-2 gap-x-96 px-4 md:px-8 lg:px-14 mb-16 relative z-10 min-h-[500vh]">
         {testimonials.map((item, idx) => (
           <div
             key={idx}

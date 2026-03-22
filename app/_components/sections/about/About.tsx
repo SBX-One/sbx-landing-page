@@ -30,14 +30,21 @@ export default function About() {
           const text = node.textContent || "";
           const fragment = document.createDocumentFragment();
 
-          text.split("").forEach((char) => {
+          text.split(" ").forEach((word, index, array) => {
+            if (word === "") return;
+
             const outer = document.createElement("span");
             outer.className = "inline-block overflow-hidden align-top";
             const inner = document.createElement("span");
             inner.className = "about-char inline-block translate-y-[110%]";
-            inner.innerHTML = char === " " ? "&nbsp;" : char;
+            inner.innerHTML = word;
             outer.appendChild(inner);
             fragment.appendChild(outer);
+
+            // Add a space after each word (except the last one in this node)
+            if (index < array.length - 1) {
+              fragment.appendChild(document.createTextNode(" "));
+            }
           });
 
           node.parentNode?.replaceChild(fragment, node);
@@ -58,8 +65,8 @@ export default function About() {
           toggleActions: "play none none none",
         },
         y: 0,
-        duration: 1.2,
-        stagger: 0.01,
+        duration: 1.8,
+        stagger: 0.06,
         ease: "power3.out",
       });
     },

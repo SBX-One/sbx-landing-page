@@ -5,12 +5,12 @@ import Image from "next/image";
 /**
  * LIGHT ICONS
  */
-import defaultLight from "@/app/_assets/icon/light/Property 1=Default.svg";
-import checkLight from "@/app/_assets/icon/light/Property 1=check.svg";
-import closeLight from "@/app/_assets/icon/light/Property 1=close.svg";
-import downLight from "@/app/_assets/icon/light/Property 1=down.svg";
-import humbergerLight from "@/app/_assets/icon/light/Property 1=humberger.svg";
-import starLight from "@/app/_assets/icon/light/Property 1=star.svg";
+import defaultLight from "@/app/_assets/icon/light/icon=arrow.svg";
+import checkLight from "@/app/_assets/icon/light/icon=check.svg";
+import closeLight from "@/app/_assets/icon/light/icon=close.svg";
+import downLight from "@/app/_assets/icon/light/icon=down.svg";
+import humbergerLight from "@/app/_assets/icon/light/icon=humberger.svg";
+import starLight from "@/app/_assets/icon/light/icon=star.svg";
 import wrapLight from "@/app/_assets/icon/light/Union.svg";
 
 /**

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import Link from "next/link";
 import Icon from "./Icon";
 
 type Variant = "default" | "outline";
@@ -18,6 +18,8 @@ type BaseProps = {
   rightIcon?: boolean;
   className?: string;
   fullWidth?: boolean;
+  onClick?: () => void;
+  target?: "_blank" | "_self" | "_parent" | "_top";
 };
 
 /**
@@ -26,13 +28,11 @@ type BaseProps = {
 type ButtonProps =
   | (BaseProps & {
       as?: "button";
-      onClick?: () => void;
       href?: never;
     })
   | (BaseProps & {
       as: "link";
       href: string;
-      onClick?: never;
     });
 
 export default function Button({
@@ -45,6 +45,7 @@ export default function Button({
   rightIcon = false,
   className = "",
   fullWidth = false,
+  target = "_blank",
   ...props
 }: ButtonProps) {
   /**
@@ -146,9 +147,14 @@ export default function Button({
    */
   if (props.as === "link") {
     return (
-      <a href={props.href} className={`group ${classes}`}>
+      <Link
+        href={props.href}
+        target={target}
+        className={`group ${classes}`}
+        onClick={props.onClick}
+      >
         {content}
-      </a>
+      </Link>
     );
   }
 

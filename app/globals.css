@@ -104,6 +104,11 @@
   --font-manrope: var(--font-manrope);
 }
 
+html {
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-neutral-50);
@@ -184,4 +189,3 @@ body {
 @utility text-pixel-sm {
   @apply font-pixelify-sans text-[16px] leading-[110%];
 }
-

@@ -52,7 +52,7 @@ export default function ProjectCarousel() {
       gsap.from(slider.current.children, {
         scrollTrigger: {
           trigger: container.current,
-          start: "top 60%",
+          start: "top 90%",
           toggleActions: "play none none none",
         },
         y: 60,

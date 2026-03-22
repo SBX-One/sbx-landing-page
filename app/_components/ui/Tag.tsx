@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 type Style = "default" | "pixel";
@@ -8,6 +9,7 @@ type BaseProps = {
   style?: Style;
   size?: Size;
   className?: string;
+  onClick?: () => void;
 };
 
 /**
@@ -79,9 +81,14 @@ export default function Tag({
    */
   if (props.as === "link") {
     return (
-      <a href={props.href} className={classes}>
+      <Link
+        href={props.href}
+        target="_blank"
+        className={classes}
+        onClick={props.onClick}
+      >
         {children}
-      </a>
+      </Link>
     );
   }
 

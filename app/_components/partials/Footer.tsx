@@ -10,6 +10,7 @@ import Selector from "../ui/Selector";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Link from "next/link";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -122,12 +123,27 @@ export default function Footer() {
           <div ref={rightSideRef} className="lg:col-span-6">
             <ul>
               {[
-                { id: "01", label: "About" },
-                { id: "02", label: "Projects" },
-                { id: "03", label: "Pricing" },
+                { id: "01", label: "About", href: "#about" },
+                { id: "02", label: "Projects", href: "#projects" },
+                { id: "03", label: "Pricing", href: "#pricing" },
               ].map((item, index) => (
                 <li key={index} className="">
-                  <span className="hidden md:flex items-center justify-between py-8 border-b border-neutral-500">
+                  <Link
+                    href={item.href}
+                    className="hidden md:flex items-center justify-between py-8 border-b border-neutral-500"
+                  >
+                    <div className="flex items-center gap-5">
+                      <span className="md:text-pixel-base">[ {item.id} ]</span>
+                      <span className="text-heading-6 font-medium">
+                        {item.label}
+                      </span>
+                    </div>
+                    <Icon type="default" theme="light" height={32} width={32} />
+                  </Link>
+                  <Link
+                    href={item.href}
+                    className="flex md:hidden items-center justify-between py-8 border-b border-neutral-500"
+                  >
                     <div className="flex items-center gap-5">
                       <span className="font-pixelify-sans">[ {item.id} ]</span>
                       <span className="text-heading-6 font-medium">
@@ -135,16 +151,7 @@ export default function Footer() {
                       </span>
                     </div>
                     <Icon type="default" theme="light" height={32} width={32} />
-                  </span>
-                  <span className="flex md:hidden items-center justify-between py-8 border-b border-neutral-500">
-                    <div className="flex items-center gap-5">
-                      <span className="font-pixelify-sans">[ {item.id} ]</span>
-                      <span className="text-heading-6 font-medium">
-                        {item.label}
-                      </span>
-                    </div>
-                    <Icon type="default" theme="light" height={32} width={32} />
-                  </span>
+                  </Link>
                 </li>
               ))}
               <li className="flex items-center justify-between py-8 border-b border-neutral-500">
@@ -154,9 +161,18 @@ export default function Footer() {
                   </span>
                   <ul className="flex gap-1">
                     {[
-                      { label: "Instagram", href: "#" },
-                      { label: "Dribble", href: "#" },
-                      { label: "Behance", href: "#" },
+                      {
+                        label: "Instagram",
+                        href: "https://www.instagram.com/sbxoneteam",
+                      },
+                      {
+                        label: "Dribble",
+                        href: "https://dribbble.com/sbxoneteam",
+                      },
+                      {
+                        label: "Behance",
+                        href: "https://www.behance.net/sbxoneteam",
+                      },
                     ].map((item, index) => (
                       <li key={index}>
                         <Tag as="link" style="pixel" size="sm" href={item.href}>

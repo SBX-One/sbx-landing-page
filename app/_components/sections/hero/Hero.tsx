@@ -160,7 +160,7 @@ export default function Hero() {
                     alt="Digital infrastructure illustration"
                     width={200}
                     height={24}
-                    className="hero-highlight-image rounded-full h-full w-full object-cover translate-y-full"
+                    className="hero-highlight-image rounded-full hover:scale-110 transition-all duration-300 ease-in-out h-full w-full object-cover translate-y-full"
                   />
                   {/* White overlay that slides up to reveal */}
                   <div className="hero-highlight-block absolute inset-0 bg-white z-10 rounded-full" />

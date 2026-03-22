@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { IoMenu } from "react-icons/io5";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
@@ -11,6 +11,7 @@ import Icon from "./ui/Icon";
 import Tag from "./ui/Tag";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useTranslations } from "next-intl";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +19,7 @@ export default function MobileMenu() {
   const menuRef = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<(HTMLLIElement | null)[]>([]);
   const socialItemsRef = useRef<(HTMLLIElement | null)[]>([]);
+  const t = useTranslations("Header");
 
   useGSAP(
     () => {
@@ -27,7 +29,7 @@ export default function MobileMenu() {
         });
 
         tl.to(menuRef.current, {
-          yPercent: 90,
+          yPercent: 8,
           autoAlpha: 1,
           duration: 0.8,
         });
@@ -58,6 +60,18 @@ export default function MobileMenu() {
     { scope: container, dependencies: [isOpen] },
   );
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "unset";
+    }
+
+    return () => {
+      document.body.style.overflowY = "unset";
+    };
+  }, [isOpen]);
+
   return (
     <div ref={container} className="lg:hidden">
       <button onClick={() => setIsOpen(true)}>
@@ -66,7 +80,7 @@ export default function MobileMenu() {
 
       <div
         ref={menuRef}
-        className="fixed left-0 right-0 -top-180 min-h-screen z-50 bg-neutral-900 p-4 py-12 pb-16 flex flex-col justify-between invisible opacity-0"
+        className="fixed left-0 right-0 -top-full min-h-screen z-50 bg-neutral-900 p-4 py-12 pb-16 flex flex-col justify-between invisible opacity-0"
       >
         <div className="flex flex-col gap-16">
           <div className="flex items-center justify-between">
@@ -85,7 +99,8 @@ export default function MobileMenu() {
                 style="standard"
                 size="md"
                 leftIcon={true}
-                href="/about"
+                href={t("cta-link")}
+                onClick={() => setIsOpen(false)}
               >
                 Start a Project
               </Button>
@@ -99,9 +114,18 @@ export default function MobileMenu() {
           </div>
           <ul className="flex gap-2">
             {[
-              { label: "Instagram", href: "#" },
-              { label: "Dribble", href: "#" },
-              { label: "Behance", href: "#" },
+              {
+                label: "Instagram",
+                href: "https://www.instagram.com/sbxoneteam",
+              },
+              {
+                label: "Dribble",
+                href: "https://dribbble.com/sbxonestudio",
+              },
+              {
+                label: "Behance",
+                href: "https://www.behance.net/sbxonestudio",
+              },
             ].map((item, index) => (
               <li
                 key={index}
@@ -109,7 +133,13 @@ export default function MobileMenu() {
                   socialItemsRef.current[index] = el;
                 }}
               >
-                <Tag as="link" style="pixel" size="sm" href={item.href}>
+                <Tag
+                  as="link"
+                  style="pixel"
+                  size="sm"
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                >
                   {item.label}
                 </Tag>
               </li>
@@ -119,10 +149,10 @@ export default function MobileMenu() {
         <div>
           <ul>
             {[
-              { id: "01", label: "About" },
-              { id: "02", label: "Projects" },
-              { id: "03", label: "Pricing" },
-              { id: "04", label: "FAQ" },
+              { id: "01", label: "About", href: "#about" },
+              { id: "02", label: "Projects", href: "#projects" },
+              { id: "03", label: "Pricing", href: "#pricing" },
+              { id: "04", label: "FAQ", href: "#faq" },
             ].map((item, index) => (
               <li
                 key={index}
@@ -131,12 +161,16 @@ export default function MobileMenu() {
                 }}
                 className="flex items-center justify-between py-8 border-b border-neutral-500"
               >
-                <div className="flex items-center gap-5">
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-5"
+                  onClick={() => setIsOpen(false)}
+                >
                   <span className="font-pixelify-sans">[ {item.id} ]</span>
                   <span className="text-heading-6 font-medium">
                     {item.label}
                   </span>
-                </div>
+                </Link>
                 <Icon type="default" theme="light" height={32} width={32} />
               </li>
             ))}

@@ -34,7 +34,6 @@ export default function Projects() {
     () => {
       if (!containerRef.current || !headingRef.current) return;
 
-      const isDesktop = window.innerWidth >= 1024;
       const headingElement = headingRef.current;
 
       // Recursive text split for character animation

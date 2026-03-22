@@ -372,6 +372,9 @@
     "title": "SBXOne - UI/UX & Web App Studio",
     "description": "SBXOne is a UI/UX & Web App Studio that provides high-quality design and development services to businesses of all sizes."
   },
+  "Header": {
+    "cta-link": "https://wa.me/6287849664571?text=Hi%20Team%2C%20I'd%20like%20to%20start%20a%20new%20project%20with%20SBX%20One.%20Could%20you%20explain%20the%20workflow%20and%20estimated%20timeline%3F"
+  },
   "Footer": {
     "title": "Have a Project? <br /> Let&apos;s Light it Up!",
     "description": "Feel free to reach our if you want to collaborate with us, or simply have a chat",

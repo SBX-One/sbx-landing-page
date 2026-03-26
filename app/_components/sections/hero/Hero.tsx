@@ -12,19 +12,32 @@ import particle1 from "@/app/_assets/hero/Frame 1984079743.png";
 import particle2 from "@/app/_assets/hero/Frame 1984079749.png";
 import particle3 from "@/app/_assets/hero/Frame 1984079750.png";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useLoading } from "../../LoadingContext";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function Hero() {
   const t = useTranslations("Hero");
   const sectionRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<HTMLDivElement>(null);
   const { isLoadingDone } = useLoading();
 
   useGSAP(
     () => {
       if (!isLoadingDone) return;
+
+      // Quick setters for high-performance parallax
+      const xSet1 = gsap.quickSetter(".hero-particle-1", "x", "px");
+      const ySet1 = gsap.quickSetter(".hero-particle-1", "y", "px");
+      const xSet2 = gsap.quickSetter(".hero-particle-2", "x", "px");
+      const ySet2 = gsap.quickSetter(".hero-particle-2", "y", "px");
+      const xSet3 = gsap.quickSetter(".hero-particle-3", "x", "px");
+      const ySet3 = gsap.quickSetter(".hero-particle-3", "y", "px");
+
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       gsap.set(".hero-particle", { opacity: 0, scale: 0.8 });
@@ -65,27 +78,28 @@ export default function Hero() {
           "<",
         );
 
+      let mouseX = 0;
+      let mouseY = 0;
       const handleMouseMove = (e: MouseEvent) => {
-        const { clientX, clientY } = e;
-        const xPos = (clientX / window.innerWidth - 0.5) * 40;
-        const yPos = (clientY / window.innerHeight - 0.5) * 40;
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 40;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 40;
+      };
 
-        gsap.to(".hero-particle-1", {
-          x: xPos * 0.5,
-          y: yPos * 0.5,
-          duration: 2,
-        });
-        gsap.to(".hero-particle-2", { x: -xPos, y: -yPos, duration: 2.5 });
-        gsap.to(".hero-particle-3", {
-          x: xPos * 0.8,
-          y: -yPos * 0.8,
-          duration: 1.8,
-        });
+      // Ticker for smooth, throttled parallax
+      const tickerUpdate = () => {
+        xSet1(mouseX * 0.5);
+        ySet1(mouseY * 0.5);
+        xSet2(-mouseX);
+        ySet2(-mouseY);
+        xSet3(mouseX * 0.8);
+        ySet3(-mouseY * 0.8);
       };
 
       window.addEventListener("mousemove", handleMouseMove);
+      gsap.ticker.add(tickerUpdate);
 
-      gsap.to(".hero-particle", {
+      // Floating animation with ScrollTrigger to pause it when off-screen
+      const floatingAnim = gsap.to(".hero-particle", {
         y: "+=20",
         duration: "random(2, 4)",
         repeat: -1,
@@ -97,7 +111,19 @@ export default function Hero() {
         },
       });
 
-      return () => window.removeEventListener("mousemove", handleMouseMove);
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        onToggle: (self) =>
+          self.isActive ? floatingAnim.play() : floatingAnim.pause(),
+      });
+
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+        gsap.ticker.remove(tickerUpdate);
+        floatingAnim.kill();
+      };
     },
     { scope: sectionRef, dependencies: [isLoadingDone] },
   );
@@ -160,6 +186,8 @@ export default function Hero() {
                     alt="Digital infrastructure illustration"
                     width={200}
                     height={24}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 200px"
                     className="hero-highlight-image rounded-full  transition-all duration-300 ease-in-out h-full w-full object-cover translate-y-full"
                   />
                   {/* White overlay that slides up to reveal */}

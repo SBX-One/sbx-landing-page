@@ -27,18 +27,19 @@ export default function Why() {
 
   useGSAP(
     () => {
+      if (!container.current) return;
       // Animate the cards entering staggered
       const cards = gsap.utils.toArray(".why-card");
       gsap.from(cards, {
         scrollTrigger: {
           trigger: container.current,
-          start: "top 60%",
+          start: "top 80%",
           toggleActions: "play none none none",
         },
-        y: 100,
+        y: 60,
         opacity: 0,
-        duration: 1.2,
-        stagger: 0.2,
+        duration: 1,
+        stagger: 0.15,
         ease: "power3.out",
       });
 
@@ -51,8 +52,8 @@ export default function Why() {
         },
         scale: 0,
         opacity: 0,
-        duration: 1,
-        stagger: 0.3,
+        duration: 0.8,
+        stagger: 0.2,
         ease: "back.out(1.7)",
       });
 
@@ -63,33 +64,18 @@ export default function Why() {
       gsap.to(".why-particle", {
         scrollTrigger: {
           trigger: container.current,
-          start: "top 30%",
+          start: "top 80%",
           toggleActions: "play none none none",
         },
         opacity: 0.5,
         scale: 1,
-        duration: 1.4,
-        stagger: 0.4,
+        duration: 1.2,
+        stagger: 0.3,
         ease: "power3.out",
       });
 
-      // Specifically animate tech icons upward sequentially
-      const techIcons = gsap.utils.toArray(".tech-icon");
-      gsap.from(techIcons, {
-        scrollTrigger: {
-          trigger: ".why-card:nth-child(2)",
-          start: "top 75%",
-          toggleActions: "play none none none",
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "back.out(1.7)",
-      });
-
-      // Steady floating animation for pixels and particles
-      gsap.to([".pixel-icon", ".why-particle"], {
+      // Steady floating animation - paused when off-screen
+      const floatingAnim = gsap.to([".pixel-icon", ".why-particle"], {
         y: "+=20",
         duration: "random(2, 4)",
         repeat: -1,
@@ -101,28 +87,40 @@ export default function Why() {
         },
       });
 
-      // Interactive Parallax for particles
-      const handleMouseMove = (e: MouseEvent) => {
-        const { clientX, clientY } = e;
-        const xPos = (clientX / window.innerWidth - 0.5) * 50;
-        const yPos = (clientY / window.innerHeight - 0.5) * 50;
+      ScrollTrigger.create({
+        trigger: container.current,
+        start: "top bottom",
+        end: "bottom top",
+        onToggle: (self) => (self.isActive ? floatingAnim.play() : floatingAnim.pause()),
+      });
 
-        gsap.to(".why-particle-1", {
-          x: xPos * 0.4,
-          y: yPos * 0.4,
-          duration: 2,
-          ease: "power2.out",
-        });
-        gsap.to(".why-particle-2", {
-          x: -xPos * 0.6,
-          y: -yPos * 0.6,
-          duration: 2.5,
-          ease: "power2.out",
-        });
+      // Parallax quicksetters
+      const xSet1 = gsap.quickSetter(".why-particle-1", "x", "px");
+      const ySet1 = gsap.quickSetter(".why-particle-1", "y", "px");
+      const xSet2 = gsap.quickSetter(".why-particle-2", "x", "px");
+      const ySet2 = gsap.quickSetter(".why-particle-2", "y", "px");
+
+      let mouseX = 0, mouseY = 0;
+      const onMouseMove = (e: MouseEvent) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 50;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 50;
       };
 
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
+      const tickerUpdate = () => {
+        xSet1(mouseX * 0.4);
+        ySet1(mouseY * 0.4);
+        xSet2(-mouseX * 0.6);
+        ySet2(-mouseY * 0.6);
+      };
+
+      window.addEventListener("mousemove", onMouseMove);
+      gsap.ticker.add(tickerUpdate);
+
+      return () => {
+        window.removeEventListener("mousemove", onMouseMove);
+        gsap.ticker.remove(tickerUpdate);
+        floatingAnim.kill();
+      };
     },
     { scope: container },
   );

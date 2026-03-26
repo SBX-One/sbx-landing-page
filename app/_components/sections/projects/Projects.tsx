@@ -32,38 +32,7 @@ export default function Projects() {
 
   useGSAP(
     () => {
-      if (!containerRef.current || !headingRef.current) return;
-
-      const headingElement = headingRef.current;
-
-      // Recursive text split for character animation
-      const recursiveSplit = (node: Node) => {
-        if (node.nodeType === 3) {
-          const text = node.textContent || "";
-          const fragment = document.createDocumentFragment();
-          text.split(" ").forEach((word, index, array) => {
-            if (word === "") return;
-
-            const outer = document.createElement("span");
-            outer.className = "inline-block overflow-hidden align-top";
-            const inner = document.createElement("span");
-            inner.className =
-              "project-heading-char inline-block translate-y-[110%]";
-            inner.innerHTML = word;
-            outer.appendChild(inner);
-            fragment.appendChild(outer);
-
-            if (index < array.length - 1) {
-              fragment.appendChild(document.createTextNode(" "));
-            }
-          });
-          node.parentNode?.replaceChild(fragment, node);
-        } else if (node.nodeType === 1) {
-          Array.from(node.childNodes).forEach(recursiveSplit);
-        }
-      };
-
-      recursiveSplit(headingElement);
+      if (!containerRef.current) return;
 
       // --- Entrance Timeline ---
       const timeline = gsap.timeline({
@@ -74,31 +43,28 @@ export default function Projects() {
         },
       });
 
-      // Heading animation (character by character)
-      const chars = gsap.utils.toArray(".project-heading-char");
-      timeline.to(chars, {
+      // Heading animation
+      timeline.to(".project-heading-char", {
         y: 0,
-        duration: 1.8,
-        stagger: 0.06,
+        duration: 1.2,
+        stagger: 0.03,
         ease: "power3.out",
       });
 
-      // Individual Card Animation (Triggers when each card enters the viewport)
-      const cards = gsap.utils.toArray(".project-card-wrapper");
-      cards.forEach((card: any) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 95%",
-            toggleActions: "play none none none",
-          },
-          opacity: 0,
-          scale: 0.9,
-          y: 50,
-          filter: "blur(10px)",
-          duration: 1.5,
-          ease: "expo.out",
-        });
+      // Consolodated Card Animation
+      gsap.from(".project-card-wrapper", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 20%",
+          toggleActions: "play none none none",
+        },
+        opacity: 0,
+        scale: 0.9,
+        y: 50,
+        filter: "blur(10px)",
+        duration: 1.2,
+        stagger: 0.1,
+        ease: "expo.out",
       });
 
       // Particle entrance
@@ -109,18 +75,18 @@ export default function Projects() {
           start: "top 50%",
           toggleActions: "play none none none",
         },
-        opacity: (i, target) => {
+        opacity: (i, target: HTMLElement) => {
           if (target.classList.contains("ellipse-particle")) return 1;
           return 0.5;
         },
         scale: 1,
-        duration: 2,
+        duration: 1.5,
         stagger: 0.2,
         ease: "power3.out",
       });
 
-      // Steady floating particles
-      gsap.to(".projects-particle", {
+      // Steady floating particles - paused off-screen
+      const floatingAnim = gsap.to(".projects-particle", {
         y: "+=25",
         x: "+=15",
         duration: "random(3, 5)",
@@ -133,7 +99,15 @@ export default function Projects() {
         },
       });
 
-      // Reveal Section Content From Black (Triggers when entering section)
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        onToggle: (self) =>
+          self.isActive ? floatingAnim.play() : floatingAnim.pause(),
+      });
+
+      // Reveal Section Content From Black
       gsap.fromTo(
         overlayRef.current,
         { opacity: 0.2 },
@@ -149,36 +123,42 @@ export default function Projects() {
         },
       );
 
-      // Mouse Parallax
-      const handleMouseMove = (e: MouseEvent) => {
-        const { clientX, clientY } = e;
-        const xPos = (clientX / window.innerWidth - 0.5) * 60;
-        const yPos = (clientY / window.innerHeight - 0.5) * 60;
+      // Mouse Parallax (Throttled)
+      const xSet1 = gsap.quickSetter(".projects-particle-1", "x", "px");
+      const ySet1 = gsap.quickSetter(".projects-particle-1", "y", "px");
+      const xSet2 = gsap.quickSetter(".projects-particle-2", "x", "px");
+      const ySet2 = gsap.quickSetter(".projects-particle-2", "y", "px");
+      const xSetE1 = gsap.quickSetter(".ellipse-particle-1", "x", "px");
+      const ySetE1 = gsap.quickSetter(".ellipse-particle-1", "y", "px");
+      const xSetE2 = gsap.quickSetter(".ellipse-particle-2", "x", "px");
+      const ySetE2 = gsap.quickSetter(".ellipse-particle-2", "y", "px");
 
-        gsap.to(".projects-particle-1", {
-          x: xPos * 0.4,
-          y: yPos * 0.4,
-          duration: 1.5,
-        });
-        gsap.to(".projects-particle-2", {
-          x: -xPos * 0.6,
-          y: -yPos * 0.6,
-          duration: 2,
-        });
-        gsap.to(".ellipse-particle-1", {
-          x: xPos * 0.2,
-          y: yPos * 0.2,
-          duration: 1.5,
-        });
-        gsap.to(".ellipse-particle-2", {
-          x: -xPos * 0.3,
-          y: -yPos * 0.3,
-          duration: 2.5,
-        });
+      let mouseX = 0,
+        mouseY = 0;
+      const onMouseMove = (e: MouseEvent) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 60;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 60;
       };
 
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
+      const tickerUpdate = () => {
+        xSet1(mouseX * 0.4);
+        ySet1(mouseY * 0.4);
+        xSet2(-mouseX * 0.6);
+        ySet2(-mouseY * 0.6);
+        xSetE1(mouseX * 0.2);
+        ySetE1(mouseY * 0.2);
+        xSetE2(-mouseX * 0.3);
+        ySetE2(-mouseY * 0.3);
+      };
+
+      window.addEventListener("mousemove", onMouseMove);
+      gsap.ticker.add(tickerUpdate);
+
+      return () => {
+        window.removeEventListener("mousemove", onMouseMove);
+        gsap.ticker.remove(tickerUpdate);
+        floatingAnim.kill();
+      };
     },
     { scope: containerRef },
   );
@@ -238,7 +218,19 @@ export default function Projects() {
             ref={headingRef}
             className="text-center text-heading-4 md:text-heading-1 lg:w-[70%] whitespace-pre-line font-medium leading-tight md:leading-tight"
           >
-            {t("heading")}
+            {t("heading")
+              .split(" ")
+              .map((word, wordIdx) => (
+                <span
+                  key={wordIdx}
+                  className="inline-block overflow-hidden align-top"
+                >
+                  <span className="project-heading-char inline-block translate-y-[110%]">
+                    {word}
+                  </span>
+                  <span className="inline-block">&nbsp;</span>
+                </span>
+              ))}
           </h1>
         </div>
       </div>
@@ -263,11 +255,11 @@ export default function Projects() {
       <div className="hidden lg:grid grid-cols-2 gap-x-12 gap-y-32 2xl:container mx-auto px-4 md:px-8 lg:px-14 relative z-20 pb-300">
         {[
           { img: project1, title: "Anna Hendra" },
-          { img: project2, title: "Anna Hendra" },
-          { img: project3, title: "Anna Hendra" },
-          { img: project4, title: "Anna Hendra" },
-          { img: project5, title: "Anna Hendra" },
-          { img: project6, title: "Anna Hendra" },
+          { img: project2, title: "Amanda Terrada" },
+          { img: project3, title: "Oasys" },
+          { img: project4, title: "Mola" },
+          { img: project5, title: "Vaulted" },
+          { img: project6, title: "Nova Agency" },
         ].map((proj, idx) => (
           <div
             key={idx}

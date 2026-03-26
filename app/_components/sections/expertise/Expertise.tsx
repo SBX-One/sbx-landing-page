@@ -42,11 +42,11 @@ export default function Expertise() {
 
       tl.from(
         ".expertise-heading",
-        { opacity: 0, y: 200, duration: 1.8 },
+        { opacity: 0, y: 100, duration: 1.2 },
         "-=0.6",
       ).from(
         ".expertise-accordion",
-        { opacity: 0, y: 60, stagger: 0.4, duration: 1.2 },
+        { opacity: 0, y: 40, stagger: 0.2, duration: 1 },
         "-=0.6",
       );
 
@@ -55,17 +55,17 @@ export default function Expertise() {
       gsap.to(".expertise-particle", {
         scrollTrigger: {
           trigger: container.current,
-          start: "top 80%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
         opacity: 0.5,
         scale: 1,
-        duration: 1.5,
-        stagger: 0.3,
+        duration: 1.2,
+        stagger: 0.2,
       });
 
-      // Floating Particles
-      gsap.to(".expertise-particle", {
+      // Floating Particles - paused when off-screen
+      const floatingAnim = gsap.to(".expertise-particle", {
         y: "+=20",
         duration: "random(2, 4)",
         repeat: -1,
@@ -74,21 +74,36 @@ export default function Expertise() {
         stagger: { each: 0.5, from: "random" },
       });
 
-      const handleMouseMove = (e: MouseEvent) => {
-        // Parallax for particles
-        const { clientX, clientY } = e;
-        const xPos = (clientX / window.innerWidth - 0.5) * 50;
-        const yPos = (clientY / window.innerHeight - 0.5) * 50;
+      ScrollTrigger.create({
+        trigger: container.current,
+        start: "top bottom",
+        end: "bottom top",
+        onToggle: (self) => (self.isActive ? floatingAnim.play() : floatingAnim.pause()),
+      });
 
-        gsap.to(".expertise-particle-1", {
-          x: xPos * 0.4,
-          y: yPos * 0.4,
-          duration: 1.5,
-        });
+      // Parallax Quicksetters
+      const xSet1 = gsap.quickSetter(".expertise-particle-1", "x", "px");
+      const ySet1 = gsap.quickSetter(".expertise-particle-1", "y", "px");
+
+      let mouseX = 0, mouseY = 0;
+      const onMouseMove = (e: MouseEvent) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 50;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 50;
       };
 
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
+      const tickerUpdate = () => {
+        xSet1(mouseX * 0.4);
+        ySet1(mouseY * 0.4);
+      };
+
+      window.addEventListener("mousemove", onMouseMove);
+      gsap.ticker.add(tickerUpdate);
+
+      return () => {
+        window.removeEventListener("mousemove", onMouseMove);
+        gsap.ticker.remove(tickerUpdate);
+        floatingAnim.kill();
+      };
     },
     { scope: container },
   );

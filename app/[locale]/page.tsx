@@ -1,13 +1,15 @@
-import About from "../_components/sections/about/About";
-import Expertise from "../_components/sections/expertise/Expertise";
+import dynamic from "next/dynamic";
 import Hero from "../_components/sections/hero/Hero";
-import HowItWorks from "../_components/sections/how/HowItWorks";
-import Pricing from "../_components/sections/pricing/Pricing";
-import Projects from "../_components/sections/projects/Projects";
-import Stats from "../_components/sections/stats/Stats";
-import Why from "../_components/sections/why/Why";
-import Faq from "../_components/sections/faq/Faq";
-import Testimonials from "../_components/sections/Testimonials/Testimonials";
+
+const Stats = dynamic(() => import("../_components/sections/stats/Stats"));
+const About = dynamic(() => import("../_components/sections/about/About"));
+const Why = dynamic(() => import("../_components/sections/why/Why"));
+const Expertise = dynamic(() => import("../_components/sections/expertise/Expertise"));
+const Projects = dynamic(() => import("../_components/sections/projects/Projects"));
+const Pricing = dynamic(() => import("../_components/sections/pricing/Pricing"));
+const HowItWorks = dynamic(() => import("../_components/sections/how/HowItWorks"));
+const Faq = dynamic(() => import("../_components/sections/faq/Faq"));
+const Testimonials = dynamic(() => import("../_components/sections/Testimonials/Testimonials"));
 
 export default function Home() {
   return (

@@ -103,38 +103,7 @@ export default function Testimonials() {
 
   useGSAP(
     () => {
-      if (!containerRef.current || !headingRef.current) return;
-
-      const headingElement = headingRef.current;
-
-      // Recursive text split for character animation
-      const recursiveSplit = (node: Node) => {
-        if (node.nodeType === 3) {
-          const text = node.textContent || "";
-          const fragment = document.createDocumentFragment();
-          text.split(" ").forEach((word, index, array) => {
-            if (word === "") return;
-
-            const outer = document.createElement("span");
-            outer.className = "inline-block overflow-hidden align-top";
-            const inner = document.createElement("span");
-            inner.className =
-              "testimonial-heading-char inline-block translate-y-[110%]";
-            inner.innerHTML = word;
-            outer.appendChild(inner);
-            fragment.appendChild(outer);
-
-            if (index < array.length - 1) {
-              fragment.appendChild(document.createTextNode(" "));
-            }
-          });
-          node.parentNode?.replaceChild(fragment, node);
-        } else if (node.nodeType === 1) {
-          Array.from(node.childNodes).forEach(recursiveSplit);
-        }
-      };
-
-      recursiveSplit(headingElement);
+      if (!containerRef.current) return;
 
       // --- Entrance Timeline ---
       const timeline = gsap.timeline({
@@ -145,33 +114,28 @@ export default function Testimonials() {
         },
       });
 
-      // Heading animation (character by character)
-      const chars = gsap.utils.toArray(".testimonial-heading-char");
-      timeline.to(chars, {
+      // Heading animation (staggered words/chars)
+      timeline.to(".testimonial-heading-char", {
         y: 0,
-        duration: 1.8,
-        stagger: 0.06,
+        duration: 1.2,
+        stagger: 0.03,
         ease: "power3.out",
       });
 
-      // Individual Card Animation (Triggers when each card enters the viewport)
-      const cards = gsap.utils.toArray<HTMLElement>(
-        ".testimonial-card-wrapper",
-      );
-      cards.forEach((card) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 95%",
-            toggleActions: "play none none none",
-          },
-          opacity: 0,
-          scale: 0.9,
-          y: 50,
-          filter: "blur(10px)",
-          duration: 1.5,
-          ease: "expo.out",
-        });
+      // Consolodated Card Animation using Batch or simple stagger
+      gsap.from(".testimonial-card-wrapper", {
+        scrollTrigger: {
+          trigger: ".hidden.lg\\:grid", // Desktop grid container
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+        opacity: 0,
+        scale: 0.9,
+        y: 50,
+        filter: "blur(10px)",
+        duration: 1.2,
+        stagger: 0.1,
+        ease: "expo.out",
       });
 
       // Particle entrance
@@ -184,13 +148,13 @@ export default function Testimonials() {
         },
         opacity: 1,
         scale: 1,
-        duration: 2,
+        duration: 1.5,
         stagger: 0.2,
         ease: "power3.out",
       });
 
-      // Steady floating particles
-      gsap.to(".testimonial-particle", {
+      // Steady floating particles - paused when off-screen
+      const floatingAnim = gsap.to(".testimonial-particle", {
         y: "+=25",
         x: "+=15",
         duration: "random(3, 5)",
@@ -203,117 +167,109 @@ export default function Testimonials() {
         },
       });
 
-      // --- Mobile Marquee Rows (GSAP, like hero carousel) ---
-      // Top row: scrolls LEFT
-      if (topRowSliderRef.current) {
-        const topTotalWidth = topRowSliderRef.current.scrollWidth / 3;
-        const topAnim = gsap.to(topRowSliderRef.current, {
-          x: `-=${topTotalWidth}`,
-          duration: 30,
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        onToggle: (self) => (self.isActive ? floatingAnim.play() : floatingAnim.pause()),
+      });
+
+      // --- Marquee Rows ---
+      const setupMarquee = (
+        slider: HTMLElement,
+        container: HTMLElement,
+        direction: "left" | "right",
+      ) => {
+        const totalWidth = slider.scrollWidth / 3;
+        if (direction === "right") gsap.set(slider, { x: -totalWidth });
+
+        const anim = gsap.to(slider, {
+          x: direction === "left" ? `-=${totalWidth}` : `+=${totalWidth}`,
+          duration: 35, // Slower for smoother feel
           ease: "none",
           repeat: -1,
           modifiers: {
-            x: gsap.utils.unitize((x) => parseFloat(x) % topTotalWidth),
+            x: gsap.utils.unitize((x) => {
+              const val = parseFloat(x);
+              return direction === "left"
+                ? val % totalWidth
+                : -totalWidth + (val % totalWidth);
+            }),
           },
         });
 
         // Entrance reveal
-        gsap.from(topRowSliderRef.current.children, {
+        gsap.from(slider.children, {
           scrollTrigger: {
-            trigger: topRowContainerRef.current,
-            start: "top 85%",
+            trigger: container,
+            start: "top 90%",
             toggleActions: "play none none none",
           },
-          y: 40,
+          y: 30,
           opacity: 0,
-          duration: 1.2,
-          stagger: 0.1,
+          duration: 1,
+          stagger: 0.05,
           ease: "power3.out",
         });
 
-        // Hover to slow
-        const topEnter = () =>
-          gsap.to(topAnim, { timeScale: 0.1, duration: 1, ease: "power2.out" });
-        const topLeave = () =>
-          gsap.to(topAnim, { timeScale: 1, duration: 1, ease: "power2.inOut" });
-        topRowContainerRef.current?.addEventListener("mouseenter", topEnter);
-        topRowContainerRef.current?.addEventListener("mouseleave", topLeave);
-      }
+        const onEnter = () => gsap.to(anim, { timeScale: 0.1, duration: 1 });
+        const onLeave = () => gsap.to(anim, { timeScale: 1, duration: 1 });
 
-      // Bottom row: scrolls RIGHT
-      if (bottomRowSliderRef.current) {
-        const bottomTotalWidth = bottomRowSliderRef.current.scrollWidth / 3;
-        // Start offset so it scrolls in the opposite direction
-        gsap.set(bottomRowSliderRef.current, { x: -bottomTotalWidth });
-        const bottomAnim = gsap.to(bottomRowSliderRef.current, {
-          x: `+=${bottomTotalWidth}`,
-          duration: 30,
-          ease: "none",
-          repeat: -1,
-          modifiers: {
-            x: gsap.utils.unitize(
-              (x) => -bottomTotalWidth + (parseFloat(x) % bottomTotalWidth),
-            ),
-          },
+        container.addEventListener("mouseenter", onEnter);
+        container.addEventListener("mouseleave", onLeave);
+
+        // Pause marquee when off-screen
+        ScrollTrigger.create({
+          trigger: container,
+          start: "top bottom",
+          end: "bottom top",
+          onToggle: (self) => (self.isActive ? anim.play() : anim.pause()),
         });
 
-        // Entrance reveal
-        gsap.from(bottomRowSliderRef.current.children, {
-          scrollTrigger: {
-            trigger: bottomRowContainerRef.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-          y: 40,
-          opacity: 0,
-          duration: 1.2,
-          stagger: 0.1,
-          ease: "power3.out",
-        });
-
-        // Hover to slow
-        const bottomEnter = () =>
-          gsap.to(bottomAnim, {
-            timeScale: 0.1,
-            duration: 1,
-            ease: "power2.out",
-          });
-        const bottomLeave = () =>
-          gsap.to(bottomAnim, {
-            timeScale: 1,
-            duration: 1,
-            ease: "power2.inOut",
-          });
-        bottomRowContainerRef.current?.addEventListener(
-          "mouseenter",
-          bottomEnter,
-        );
-        bottomRowContainerRef.current?.addEventListener(
-          "mouseleave",
-          bottomLeave,
-        );
-      }
-
-      // Mouse Parallax (Desktop)
-      const handleMouseMove = (e: MouseEvent) => {
-        const { clientX, clientY } = e;
-        const xPos = (clientX / window.innerWidth - 0.5) * 60;
-        const yPos = (clientY / window.innerHeight - 0.5) * 60;
-
-        gsap.to(".testimonial-particle-1", {
-          x: xPos * 0.3,
-          y: yPos * 0.3,
-          duration: 1.5,
-        });
-        gsap.to(".testimonial-particle-2", {
-          x: -xPos * 0.4,
-          y: -yPos * 0.4,
-          duration: 2,
-        });
+        return { anim, cleanup: () => {
+          container.removeEventListener("mouseenter", onEnter);
+          container.removeEventListener("mouseleave", onLeave);
+          anim.kill();
+        }};
       };
 
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
+      const topMarquee = topRowSliderRef.current && topRowContainerRef.current 
+        ? setupMarquee(topRowSliderRef.current, topRowContainerRef.current, "left")
+        : null;
+      
+      const bottomMarquee = bottomRowSliderRef.current && bottomRowContainerRef.current
+        ? setupMarquee(bottomRowSliderRef.current, bottomRowContainerRef.current, "right")
+        : null;
+
+      // Mouse Parallax (Throttled)
+      const xSet1 = gsap.quickSetter(".testimonial-particle-1", "x", "px");
+      const ySet1 = gsap.quickSetter(".testimonial-particle-1", "y", "px");
+      const xSet2 = gsap.quickSetter(".testimonial-particle-2", "x", "px");
+      const ySet2 = gsap.quickSetter(".testimonial-particle-2", "y", "px");
+
+      let mouseX = 0, mouseY = 0;
+      const onMouseMove = (e: MouseEvent) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 60;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 60;
+      };
+
+      const tickerUpdate = () => {
+        xSet1(mouseX * 0.3);
+        ySet1(mouseY * 0.3);
+        xSet2(-mouseX * 0.4);
+        ySet2(-mouseY * 0.4);
+      };
+
+      window.addEventListener("mousemove", onMouseMove);
+      gsap.ticker.add(tickerUpdate);
+
+      return () => {
+        window.removeEventListener("mousemove", onMouseMove);
+        gsap.ticker.remove(tickerUpdate);
+        topMarquee?.cleanup();
+        bottomMarquee?.cleanup();
+        floatingAnim.kill();
+      };
     },
     { scope: containerRef },
   );
@@ -351,7 +307,20 @@ export default function Testimonials() {
             ref={headingRef}
             className="lg:text-center text-heading-5 md:text-display lg:w-[60%] whitespace-pre-line font-medium leading-tight md:leading-tight"
           >
-            {t("heading")}
+            {t("heading")
+              .split(" ")
+              .map((word, wordIdx) => (
+                <span
+                  key={wordIdx}
+                  className="inline-block overflow-hidden align-top"
+                >
+                  <span className="testimonial-heading-char inline-block translate-y-[110%]">
+                    {word}
+                  </span>
+                  {/* Add space between words */}
+                  <span className="inline-block">&nbsp;</span>
+                </span>
+              ))}
           </h1>
         </div>
       </div>

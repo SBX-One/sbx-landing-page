@@ -16,6 +16,7 @@ import preview4 from "@/maintenance_support_preview_1773851634431.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useLoading } from "../../LoadingContext";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -24,12 +25,13 @@ if (typeof window !== "undefined") {
 export default function Expertise() {
   const t = useTranslations("Expertise");
   const container = useRef<HTMLElement>(null);
+  const { isLoadingDone } = useLoading();
 
   const images = [preview1, preview2, preview3, preview4];
 
   useGSAP(
     () => {
-      if (!container.current) return;
+      if (!container.current || !isLoadingDone) return;
       
       const isMobile = window.innerWidth < 1024;
 
@@ -115,7 +117,7 @@ export default function Expertise() {
         floatingAnim?.kill();
       };
     },
-    { scope: container },
+    { scope: container, dependencies: [isLoadingDone] },
   );
 
   return (

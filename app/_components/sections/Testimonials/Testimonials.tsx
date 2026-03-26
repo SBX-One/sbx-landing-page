@@ -138,6 +138,19 @@ export default function Testimonials() {
         ease: "expo.out",
       });
 
+      // Heading animation - Simple slide up
+      gsap.from(".testimonial-heading", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+      });
+
       // Particle entrance
       gsap.set(".testimonial-particle", { opacity: 0, scale: 0.5 });
       gsap.to(".testimonial-particle", {
@@ -153,27 +166,32 @@ export default function Testimonials() {
         ease: "power3.out",
       });
 
-      // Steady floating particles - paused when off-screen
-      const floatingAnim = gsap.to(".testimonial-particle", {
-        y: "+=25",
-        x: "+=15",
-        duration: "random(3, 5)",
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: {
-          each: 0.5,
-          from: "random",
-        },
-      });
+      const isMobile = window.innerWidth < 1024;
 
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        onToggle: (self) =>
-          self.isActive ? floatingAnim.play() : floatingAnim.pause(),
-      });
+      // Steady floating particles - Only on Desktop
+      let floatingAnim: gsap.core.Tween | null = null;
+      if (!isMobile) {
+        floatingAnim = gsap.to(".testimonial-particle", {
+          y: "+=25",
+          x: "+=15",
+          duration: "random(3, 5)",
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.5,
+            from: "random",
+          },
+        });
+
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          onToggle: (self) =>
+            self.isActive ? floatingAnim?.play() : floatingAnim?.pause(),
+        });
+      }
 
       // --- Marquee Rows ---
       const setupMarquee = (
@@ -257,7 +275,6 @@ export default function Testimonials() {
             )
           : null;
 
-      // Mouse Parallax (Throttled)
       const xSet1 = gsap.quickSetter(".testimonial-particle-1", "x", "px");
       const ySet1 = gsap.quickSetter(".testimonial-particle-1", "y", "px");
       const xSet2 = gsap.quickSetter(".testimonial-particle-2", "x", "px");
@@ -277,15 +294,19 @@ export default function Testimonials() {
         ySet2(-mouseY * 0.4);
       };
 
-      window.addEventListener("mousemove", onMouseMove);
-      gsap.ticker.add(tickerUpdate);
+      if (!isMobile) {
+        window.addEventListener("mousemove", onMouseMove);
+        gsap.ticker.add(tickerUpdate);
+      }
 
       return () => {
-        window.removeEventListener("mousemove", onMouseMove);
-        gsap.ticker.remove(tickerUpdate);
+        if (!isMobile) {
+          window.removeEventListener("mousemove", onMouseMove);
+          gsap.ticker.remove(tickerUpdate);
+        }
         topMarquee?.cleanup();
         bottomMarquee?.cleanup();
-        floatingAnim.kill();
+        floatingAnim?.kill();
       };
     },
     { scope: containerRef },
@@ -322,22 +343,9 @@ export default function Testimonials() {
           <SectionTitle title={t("title")} />
           <h2
             ref={headingRef}
-            className="text-center text-heading-4 md:text-heading-1 lg:w-[60%] whitespace-pre-line font-medium leading-tight md:leading-tight"
+            className="testimonial-heading text-center text-heading-4 md:text-heading-1 lg:w-[60%] whitespace-pre-line font-medium leading-tight md:leading-tight"
           >
-            {t("heading")
-              .split(" ")
-              .map((word, wordIdx) => (
-                <span
-                  key={wordIdx}
-                  className="inline-block overflow-hidden align-top"
-                >
-                  <span className="testimonial-heading-char inline-block translate-y-[110%]">
-                    {word}
-                  </span>
-                  {/* Add space between words */}
-                  <span className="inline-block">&nbsp;</span>
-                </span>
-              ))}
+            {t("heading")}
           </h2>
         </div>
       </div>

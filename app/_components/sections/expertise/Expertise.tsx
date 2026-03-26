@@ -30,12 +30,14 @@ export default function Expertise() {
   useGSAP(
     () => {
       if (!container.current) return;
+      
+      const isMobile = window.innerWidth < 1024;
 
       // Section Entrance
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: container.current,
-          start: "top 80%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
       });
@@ -55,7 +57,7 @@ export default function Expertise() {
       gsap.to(".expertise-particle", {
         scrollTrigger: {
           trigger: container.current,
-          start: "top 85%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
         opacity: 0.5,
@@ -64,28 +66,32 @@ export default function Expertise() {
         stagger: 0.2,
       });
 
-      // Floating Particles - paused when off-screen
-      const floatingAnim = gsap.to(".expertise-particle", {
-        y: "+=20",
-        duration: "random(2, 4)",
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: { each: 0.5, from: "random" },
-      });
+      // Floating Particles - Only on Desktop
+      let floatingAnim: gsap.core.Tween | null = null;
+      if (!isMobile) {
+        floatingAnim = gsap.to(".expertise-particle", {
+          y: "+=20",
+          duration: "random(2, 4)",
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          stagger: { each: 0.5, from: "random" },
+        });
 
-      ScrollTrigger.create({
-        trigger: container.current,
-        start: "top bottom",
-        end: "bottom top",
-        onToggle: (self) => (self.isActive ? floatingAnim.play() : floatingAnim.pause()),
-      });
+        ScrollTrigger.create({
+          trigger: container.current,
+          start: "top bottom",
+          end: "bottom top",
+          onToggle: (self) =>
+            self.isActive ? floatingAnim?.play() : floatingAnim?.pause(),
+        });
+      }
 
-      // Parallax Quicksetters
       const xSet1 = gsap.quickSetter(".expertise-particle-1", "x", "px");
       const ySet1 = gsap.quickSetter(".expertise-particle-1", "y", "px");
 
-      let mouseX = 0, mouseY = 0;
+      let mouseX = 0,
+        mouseY = 0;
       const onMouseMove = (e: MouseEvent) => {
         mouseX = (e.clientX / window.innerWidth - 0.5) * 50;
         mouseY = (e.clientY / window.innerHeight - 0.5) * 50;
@@ -96,13 +102,17 @@ export default function Expertise() {
         ySet1(mouseY * 0.4);
       };
 
-      window.addEventListener("mousemove", onMouseMove);
-      gsap.ticker.add(tickerUpdate);
+      if (!isMobile) {
+        window.addEventListener("mousemove", onMouseMove);
+        gsap.ticker.add(tickerUpdate);
+      }
 
       return () => {
-        window.removeEventListener("mousemove", onMouseMove);
-        gsap.ticker.remove(tickerUpdate);
-        floatingAnim.kill();
+        if (!isMobile) {
+          window.removeEventListener("mousemove", onMouseMove);
+          gsap.ticker.remove(tickerUpdate);
+        }
+        floatingAnim?.kill();
       };
     },
     { scope: container },

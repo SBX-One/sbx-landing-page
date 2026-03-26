@@ -20,53 +20,17 @@ export default function About() {
     () => {
       if (!textRef.current) return;
 
-      const textElement = textRef.current;
-
-      /**
-       * Recursively splits text nodes into spans to animate each character
-       */
-      const recursiveSplit = (node: Node) => {
-        if (node.nodeType === 3) {
-          const text = node.textContent || "";
-          const fragment = document.createDocumentFragment();
-
-          text.split(" ").forEach((word, index, array) => {
-            if (word === "") return;
-
-            const outer = document.createElement("span");
-            outer.className = "inline-block overflow-hidden align-top";
-            const inner = document.createElement("span");
-            inner.className = "about-char inline-block translate-y-[110%]";
-            inner.innerHTML = word;
-            outer.appendChild(inner);
-            fragment.appendChild(outer);
-
-            // Add a space after each word (except the last one in this node)
-            if (index < array.length - 1) {
-              fragment.appendChild(document.createTextNode(" "));
-            }
-          });
-
-          node.parentNode?.replaceChild(fragment, node);
-        } else if (node.nodeType === 1) {
-          Array.from(node.childNodes).forEach(recursiveSplit);
-        }
-      };
-
-      // Apply character splitting to the text element
-      recursiveSplit(textElement);
-
-      // Animate the characters
-      const chars = gsap.utils.toArray(".about-char");
-      gsap.to(chars, {
+      // Simple stagger for heading and content
+      gsap.from(".about-content-item", {
         scrollTrigger: {
-          trigger: textElement,
-          start: "top 80%",
+          trigger: containerRef.current,
+          start: "top 60%",
           toggleActions: "play none none none",
         },
-        y: 0,
-        duration: 1.8,
-        stagger: 0.06,
+        opacity: 0,
+        y: 100,
+        duration: 1.2,
+        stagger: 0.2,
         ease: "power3.out",
       });
     },
@@ -80,19 +44,12 @@ export default function About() {
       className="px-4 md:px-8 lg:px-14 py-12 md:py-25 2xl:container mx-auto"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 about-content-item">
           <SectionTitle title={t("title")} />
         </div>
-        <div className="lg:col-span-10">
-          <p className="sr-only">
-            {t.rich("description", {
-              highlight: (chunks) => chunks,
-              br: () => "\n",
-            })}
-          </p>
+        <div className="lg:col-span-10 about-content-item">
           <p
             ref={textRef}
-            aria-hidden="true"
             className="text-heading-6 md:text-heading-3 font-medium whitespace-pre-line "
           >
             {t.rich("description", {

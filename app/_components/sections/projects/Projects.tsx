@@ -34,20 +34,22 @@ export default function Projects() {
     () => {
       if (!containerRef.current) return;
 
+      const isMobile = window.innerWidth < 1024;
+
       // --- Entrance Timeline ---
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 40%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
       });
 
-      // Heading animation
-      timeline.to(".project-heading-char", {
-        y: 0,
+      // Heading animation - Simple slide up
+      timeline.from(".project-heading", {
+        y: 100,
+        opacity: 0,
         duration: 1.2,
-        stagger: 0.03,
         ease: "power3.out",
       });
 
@@ -85,27 +87,30 @@ export default function Projects() {
         ease: "power3.out",
       });
 
-      // Steady floating particles - paused off-screen
-      const floatingAnim = gsap.to(".projects-particle", {
-        y: "+=25",
-        x: "+=15",
-        duration: "random(3, 5)",
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: {
-          each: 0.5,
-          from: "random",
-        },
-      });
+      // Steady floating particles - Only on Desktop
+      let floatingAnim: gsap.core.Tween | null = null;
+      if (!isMobile) {
+        floatingAnim = gsap.to(".projects-particle", {
+          y: "+=25",
+          x: "+=15",
+          duration: "random(3, 5)",
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.5,
+            from: "random",
+          },
+        });
 
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        onToggle: (self) =>
-          self.isActive ? floatingAnim.play() : floatingAnim.pause(),
-      });
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          onToggle: (self) =>
+            self.isActive ? floatingAnim?.play() : floatingAnim?.pause(),
+        });
+      }
 
       // Reveal Section Content From Black
       gsap.fromTo(
@@ -123,7 +128,6 @@ export default function Projects() {
         },
       );
 
-      // Mouse Parallax (Throttled)
       const xSet1 = gsap.quickSetter(".projects-particle-1", "x", "px");
       const ySet1 = gsap.quickSetter(".projects-particle-1", "y", "px");
       const xSet2 = gsap.quickSetter(".projects-particle-2", "x", "px");
@@ -151,13 +155,17 @@ export default function Projects() {
         ySetE2(-mouseY * 0.3);
       };
 
-      window.addEventListener("mousemove", onMouseMove);
-      gsap.ticker.add(tickerUpdate);
+      if (!isMobile) {
+        window.addEventListener("mousemove", onMouseMove);
+        gsap.ticker.add(tickerUpdate);
+      }
 
       return () => {
-        window.removeEventListener("mousemove", onMouseMove);
-        gsap.ticker.remove(tickerUpdate);
-        floatingAnim.kill();
+        if (!isMobile) {
+          window.removeEventListener("mousemove", onMouseMove);
+          gsap.ticker.remove(tickerUpdate);
+        }
+        floatingAnim?.kill();
       };
     },
     { scope: containerRef },
@@ -216,21 +224,9 @@ export default function Projects() {
           <SectionTitle title={t("title")} />
           <h2
             ref={headingRef}
-            className="text-center text-heading-4 md:text-heading-1 lg:w-[70%] whitespace-pre-line font-medium leading-tight md:leading-tight"
+            className="project-heading text-center text-heading-4 md:text-heading-1 lg:w-[70%] whitespace-pre-line font-medium leading-tight md:leading-tight"
           >
-            {t("heading")
-              .split(" ")
-              .map((word, wordIdx) => (
-                <span
-                  key={wordIdx}
-                  className="inline-block overflow-hidden align-top"
-                >
-                  <span className="project-heading-char inline-block translate-y-[110%]">
-                    {word}
-                  </span>
-                  <span className="inline-block">&nbsp;</span>
-                </span>
-              ))}
+            {t("heading")}
           </h2>
         </div>
       </div>

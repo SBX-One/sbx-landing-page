@@ -15,11 +15,13 @@ import Analytics from "../_components/Analytics";
 const pixelifySans = Pixelify_Sans({
   variable: "--font-pixelify-sans",
   subsets: ["latin"],
+  display: "swap", // Show system font while loading
 });
 
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
+  display: "swap", // Show system font while loading
 });
 
 export async function generateMetadata({
@@ -97,8 +99,22 @@ export async function generateMetadata({
         },
       ],
     },
+    verification: {
+      google: "google-site-verification-id", // Ganti dengan ID asli nanti
+    },
+    // DNS Preconnect for faster resource loading
+    other: {
+      "dns-prefetch": "https://www.googletagmanager.com",
+    },
   };
 }
+
+export const viewport = {
+  themeColor: "#0A0A0A",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5, // Allow zooming for accessibility but maintain stability
+};
 
 type Props = {
   children: React.ReactNode;

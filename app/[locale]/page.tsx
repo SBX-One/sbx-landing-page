@@ -44,6 +44,14 @@ const Testimonials = dynamic(
   },
 );
 
+// Caching strategy: Revalidate every 1 hour (ISR)
+export const revalidate = 3600;
+
+// Tell Next.js which locales to pre-render statically for faster load times
+export async function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "id" }];
+}
+
 export default function Home() {
   return (
     <>

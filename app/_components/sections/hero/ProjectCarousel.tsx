@@ -16,20 +16,22 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function ProjectCarousel() {
+export default function ProjectCarousel({ isStarted }: { isStarted?: boolean }) {
   const container = useRef<HTMLDivElement>(null);
   const slider = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      if (!slider.current) return;
+      if (!slider.current || !isStarted) return;
 
-      // Gunakan 3 set secara konsisten untuk stabilitas dan infinite effect
+      const isMobile = window.innerWidth < 1024;
+      
+      // Use consistent 3 sets for infinite effect
       const totalWidth = slider.current.scrollWidth / 3;
 
       const animation = gsap.to(slider.current, {
         x: `-=${totalWidth}`,
-        duration: 35,
+        duration: isMobile ? 25 : 35, // Faster on mobile for perspective, but simpler
         ease: "none",
         repeat: -1,
         modifiers: {
@@ -46,8 +48,10 @@ export default function ProjectCarousel() {
           self.isActive ? animation.play() : animation.pause(),
       });
 
-      // Subtle skew for modern feel during motion
-      gsap.set(slider.current.children, { skewX: -3 });
+      // Subtle skew - only on desktop for extra performance on mobile
+      if (!isMobile) {
+        gsap.set(slider.current.children, { skewX: -3 });
+      }
 
       // Entrance Reveal on Scroll
       gsap.from(slider.current.children, {
@@ -56,16 +60,16 @@ export default function ProjectCarousel() {
           start: "top 95%",
           toggleActions: "play none none none",
         },
-        y: 40,
+        y: 20,
         opacity: 0,
-        duration: 1,
+        duration: 0.8,
         stagger: 0.05,
         ease: "power3.out",
       });
 
       return () => animation.kill();
     },
-    { scope: container },
+    { scope: container, dependencies: [isStarted] },
   );
 
   const onEnter = () => {
@@ -89,7 +93,11 @@ export default function ProjectCarousel() {
       onMouseLeave={onLeave}
       className="relative w-full overflow-hidden py-12 md:py-20"
     >
-      <div ref={slider} className="flex gap-6 w-max">
+      <div
+        ref={slider}
+        className="flex gap-6 w-max"
+        style={{ willChange: "transform" }}
+      >
         {[...projects, ...projects, ...projects].map((image, index) => (
           <div
             key={index}

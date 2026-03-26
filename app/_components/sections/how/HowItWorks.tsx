@@ -28,49 +28,19 @@ export default function HowItWorks() {
     () => {
       if (!containerRef.current || !headingRef.current) return;
 
-      // Text Split for Heading
-      const recursiveSplit = (node: Node) => {
-        if (node.nodeType === 3) {
-          const text = node.textContent || "";
-          const fragment = document.createDocumentFragment();
-          text.split(" ").forEach((word, index, array) => {
-            if (word === "") return;
-
-            const outer = document.createElement("span");
-            outer.className = "inline-block overflow-hidden align-top";
-            const inner = document.createElement("span");
-            inner.className =
-              "how-heading-char inline-block translate-y-[110%]";
-            inner.innerHTML = word;
-            outer.appendChild(inner);
-            fragment.appendChild(outer);
-
-            if (index < array.length - 1) {
-              fragment.appendChild(document.createTextNode(" "));
-            }
-          });
-          node.parentNode?.replaceChild(fragment, node);
-        } else if (node.nodeType === 1) {
-          Array.from(node.childNodes).forEach(recursiveSplit);
-        }
-      };
-
-      recursiveSplit(headingRef.current);
-
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 70%",
+          start: "top 60%",
           toggleActions: "play none none none",
         },
       });
 
-      // Heading animation
-      const chars = gsap.utils.toArray(".how-heading-char");
-      timeline.to(chars, {
-        y: 0,
-        duration: 1.8,
-        stagger: 0.06,
+      // Heading animation - Simple slide up
+      timeline.from(".how-heading", {
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
         ease: "power3.out",
       });
 
@@ -135,18 +105,20 @@ export default function HowItWorks() {
         ease: "back.out(1.7)",
       });
 
-      // Steady floating
-      gsap.to(".how-particle", {
-        y: "+=30",
-        x: "+=20",
-        rotate: 15,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+       const isMobile = window.innerWidth < 1024;
 
-      // Mouse Parallax
+      // Steady floating - Only on Desktop
+      if (!isMobile) {
+        gsap.to(".how-particle", {
+          y: "+=30",
+          x: "+=20",
+          rotate: 15,
+          duration: 4,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      }
       const handleMouseMove = (e: MouseEvent) => {
         const { clientX, clientY } = e;
         const xPos = (clientX / window.innerWidth - 0.5) * 50;
@@ -159,8 +131,14 @@ export default function HowItWorks() {
         });
       };
 
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
+      if (!isMobile) {
+        window.addEventListener("mousemove", handleMouseMove);
+      }
+      return () => {
+        if (!isMobile) {
+          window.removeEventListener("mousemove", handleMouseMove);
+        }
+      };
     },
     { scope: containerRef },
   );
@@ -175,7 +153,7 @@ export default function HowItWorks() {
           <SectionTitle title={t("title")} />
           <h2
             ref={headingRef}
-            className="text-heading-5 md:text-heading-1 font-medium lg:w-[80%]"
+            className="how-heading text-heading-5 md:text-heading-1 font-medium lg:w-[80%]"
           >
             {t("heading")}
           </h2>

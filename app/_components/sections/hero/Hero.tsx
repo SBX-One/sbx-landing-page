@@ -40,9 +40,7 @@ export default function Hero() {
 
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-      gsap.set(".hero-particle", { opacity: 0, scale: 0.8 });
-      gsap.set(".hero-content-item", { opacity: 0, y: 30 });
-
+      // Animate from the hidden state (opacity-0 and translate-y-8 set in JSX)
       tl.to(".hero-particle", {
         opacity: 1,
         scale: 1,
@@ -78,6 +76,16 @@ export default function Hero() {
           "<",
         );
 
+      // Fade in the carousel container at the end
+      tl.to(".hero-carousel", {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+      }, "-=0.5");
+
+      const isMobile = window.innerWidth < 1024;
+      
       let mouseX = 0;
       let mouseY = 0;
       const handleMouseMove = (e: MouseEvent) => {
@@ -85,7 +93,7 @@ export default function Hero() {
         mouseY = (e.clientY / window.innerHeight - 0.5) * 40;
       };
 
-      // Ticker for smooth, throttled parallax
+      // Only add mouse parallax on desktop
       const tickerUpdate = () => {
         xSet1(mouseX * 0.5);
         ySet1(mouseY * 0.5);
@@ -95,34 +103,41 @@ export default function Hero() {
         ySet3(-mouseY * 0.8);
       };
 
-      window.addEventListener("mousemove", handleMouseMove);
-      gsap.ticker.add(tickerUpdate);
+      if (!isMobile) {
+        window.addEventListener("mousemove", handleMouseMove);
+        gsap.ticker.add(tickerUpdate);
+      }
 
-      // Floating animation with ScrollTrigger to pause it when off-screen
-      const floatingAnim = gsap.to(".hero-particle", {
-        y: "+=20",
-        duration: "random(2, 4)",
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        stagger: {
-          each: 0.5,
-          from: "random",
-        },
-      });
+      // Floating animation - ONLY on desktop to save mobile CPU
+      let floatingAnim: gsap.core.Tween | null = null;
+      if (!isMobile) {
+        floatingAnim = gsap.to(".hero-particle", {
+          y: "+=20",
+          duration: "random(2, 4)",
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.5,
+            from: "random",
+          },
+        });
 
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        onToggle: (self) =>
-          self.isActive ? floatingAnim.play() : floatingAnim.pause(),
-      });
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          onToggle: (self) =>
+            self.isActive ? floatingAnim?.play() : floatingAnim?.pause(),
+        });
+      }
 
       return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-        gsap.ticker.remove(tickerUpdate);
-        floatingAnim.kill();
+        if (!isMobile) {
+          window.removeEventListener("mousemove", handleMouseMove);
+          gsap.ticker.remove(tickerUpdate);
+        }
+        floatingAnim?.kill();
       };
     },
     { scope: sectionRef, dependencies: [isLoadingDone] },
@@ -143,40 +158,42 @@ export default function Hero() {
           alt="decoration"
           width={1200}
           height={800}
-          className="hero-particle min-w-300 lg:w-full h-full rounded-full absolute -top-120 -left-160 lg:-top-170 lg:-left-120 object-cover opacity-50"
+          priority
+          className="hero-particle min-w-300 lg:w-full h-full rounded-full absolute -top-120 -left-160 lg:-top-170 lg:-left-120 object-cover opacity-0 scale-90"
         />
         <Image
           src={particle1}
           alt="decoration"
           width={200}
           height={200}
-          className="hero-particle hero-particle-1 absolute top-90 -right-4 lg:top-24 lg:right-12 size-24 lg:size-50 object-cover"
+          priority
+          className="hero-particle hero-particle-1 absolute top-90 -right-4 lg:top-24 lg:right-12 size-24 lg:size-50 object-cover opacity-0 scale-90"
         />
         <Image
           src={particle2}
           alt="decoration"
           width={200}
           height={200}
-          className="hero-particle hero-particle-2 absolute top-210 md:top-100 left-10 md:left-40 size-24 lg:size-50 object-cover"
+          className="hero-particle hero-particle-2 absolute top-210 md:top-100 left-10 md:left-40 size-24 lg:size-50 object-cover opacity-0 scale-90"
         />
         <Image
           src={particle3}
           alt="decoration"
           width={200}
           height={200}
-          className="hero-particle hero-particle-3 absolute -top-4 lg:top-160 -right-4 lg:right-64 size-24 lg:size-50 object-cover"
+          className="hero-particle hero-particle-3 absolute -top-4 lg:top-160 -right-4 lg:right-64 size-24 lg:size-50 object-cover opacity-0 scale-90"
         />
       </div>
 
       <div className="px-4 md:px-8 lg:px-14 py-6 md:py-6 lg:py-8 2xl:container mx-auto flex flex-col lg:items-center gap-6 md:gap-12 mb-16">
-        <div className="hero-content-item flex items-center gap-6 md:gap-12 -mb-4">
+        <div className="hero-content-item flex items-center gap-6 md:gap-12 -mb-4 opacity-0 translate-y-8">
           <AvatarStack />
           <p className="text-body-caption md:text-body-lg text-neutral-300 font-medium">
             {t("trust")}
           </p>
         </div>
         <div className="lg:flex flex-col items-center lg:text-center">
-          <h1 className="hero-content-item text-heading-3 md:text-display font-semibold mb-6 md:mb-8 md:w-[85%]">
+          <h1 className="hero-content-item text-heading-3 md:text-display font-semibold mb-6 md:mb-8 md:w-[85%] opacity-0 translate-y-8">
             {t.rich("title", {
               highlight: () => (
                 <span className="hidden lg:inline-flex items-center rounded-full overflow-hidden relative h-18 w-50 align-middle mx-2 shadow-2xl">
@@ -196,13 +213,13 @@ export default function Hero() {
               ),
             })}
           </h1>
-          <p className="hero-content-item text-body-sm md:text-body-base font-medium text-neutral-100 lg:w-[47%]">
+          <p className="hero-content-item text-body-sm md:text-body-base font-medium text-neutral-100 lg:w-[47%] opacity-0 translate-y-8">
             {t("description")}
           </p>
         </div>
 
         {/* Mobile Buttons */}
-        <div className="hero-content-item flex md:hidden items-center gap-3">
+        <div className="hero-content-item flex md:hidden items-center gap-3 opacity-0 translate-y-8">
           <Button
             variant="default"
             size="md"
@@ -225,7 +242,7 @@ export default function Hero() {
         </div>
 
         {/* Desktop Buttons */}
-        <div className="hero-content-item hidden md:flex items-center gap-3">
+        <div className="hero-content-item hidden md:flex items-center gap-3 opacity-0 translate-y-8">
           <Button
             as="link"
             target="_blank"
@@ -254,8 +271,8 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="hero-carousel">
-        <ProjectCarousel />
+      <div className="hero-carousel opacity-0 translate-y-8">
+        <ProjectCarousel isStarted={isLoadingDone} />
       </div>
     </section>
   );

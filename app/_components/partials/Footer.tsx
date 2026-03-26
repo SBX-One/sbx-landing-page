@@ -66,6 +66,32 @@ export default function Footer() {
         },
         "-=0.4",
       );
+
+      // Particle Entrance
+      gsap.from(".footer-particle", {
+        opacity: 0,
+        scale: 0.8,
+        duration: 1.5,
+        stagger: 0.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: footerRef.current,
+          start: "top 70%",
+        },
+      });
+
+      // Continuous Bobbing - ONLY for Desktop
+      const isMobile = window.innerWidth < 1024;
+      if (!isMobile) {
+        gsap.to(".footer-particle", {
+          y: "+=20",
+          duration: "random(2, 4)",
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          stagger: { each: 0.5, from: "random" },
+        });
+      }
     },
     { scope: footerRef },
   );
@@ -200,24 +226,24 @@ export default function Footer() {
       </div>
       <Image
         src={particle1}
-        alt="Footer"
+        alt="Footer Decoration"
         width={250}
         height={174}
-        className="absolute -bottom-5 lg:-bottom-10 left-0 lg:left-auto lg:-right-2 w-36 md:w-62.5"
+        className="footer-particle absolute -bottom-5 lg:-bottom-10 left-0 lg:left-auto lg:-right-2 w-36 md:w-62.5"
       />
       <Image
         src={particle2}
-        alt="Footer"
+        alt="Footer Decoration"
         width={200}
         height={200}
-        className="absolute top-0 right-10 lg:right-auto lg:left-70 w-25 lg:w-50"
+        className="footer-particle absolute top-0 right-10 lg:right-auto lg:left-70 w-25 lg:w-50"
       />
       <Image
         src={particle3}
-        alt="Footer"
+        alt="Footer Decoration"
         width={200}
         height={145}
-        className="absolute top-100 lg:top-110 w-25 lg:w-50 left-70 lg:left-90"
+        className="footer-particle absolute top-100 lg:top-110 w-25 lg:w-50 left-70 lg:left-90"
       />
     </footer>
   );

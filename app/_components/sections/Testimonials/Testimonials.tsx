@@ -19,14 +19,14 @@ if (typeof window !== "undefined") {
 
 // Desktop: scattered positions with random Y offsets + slight rotation for each card
 const desktopScatterStyles: React.CSSProperties[] = [
-  { transform: "translateY(-30px) translateX(-20px) rotate(-1.5deg)" },
-  { transform: "translateY(200px) translateX(50px) rotate(1.2deg)" },
-  { transform: "translateY(-40px) translateX(-20px) rotate(-0.6deg)" },
-  { transform: "translateY(200px) translateX(50px) rotate(0.8deg)" },
-  { transform: "translateY(-40px) translateX(-20px) rotate(-0.6deg)" },
-  { transform: "translateY(200px) translateX(50px) rotate(0.8deg)" },
-  { transform: "translateY(-40px) translateX(-20px) rotate(-0.6deg)" },
-  { transform: "translateY(200px) translateX(50px) rotate(0.8deg)" },
+  { transform: "translateY(-30px)  rotate(-1.5deg)" },
+  { transform: "translateY(200px)  rotate(1.2deg)" },
+  { transform: "translateY(-40px)  rotate(-0.6deg)" },
+  { transform: "translateY(200px)  rotate(0.8deg)" },
+  { transform: "translateY(-40px)  rotate(-0.6deg)" },
+  { transform: "translateY(200px)  rotate(0.8deg)" },
+  { transform: "translateY(-40px)  rotate(-0.6deg)" },
+  { transform: "translateY(200px)  rotate(0.8deg)" },
 ];
 
 const testimonials = [
@@ -171,7 +171,8 @@ export default function Testimonials() {
         trigger: containerRef.current,
         start: "top bottom",
         end: "bottom top",
-        onToggle: (self) => (self.isActive ? floatingAnim.play() : floatingAnim.pause()),
+        onToggle: (self) =>
+          self.isActive ? floatingAnim.play() : floatingAnim.pause(),
       });
 
       // --- Marquee Rows ---
@@ -228,20 +229,33 @@ export default function Testimonials() {
           onToggle: (self) => (self.isActive ? anim.play() : anim.pause()),
         });
 
-        return { anim, cleanup: () => {
-          container.removeEventListener("mouseenter", onEnter);
-          container.removeEventListener("mouseleave", onLeave);
-          anim.kill();
-        }};
+        return {
+          anim,
+          cleanup: () => {
+            container.removeEventListener("mouseenter", onEnter);
+            container.removeEventListener("mouseleave", onLeave);
+            anim.kill();
+          },
+        };
       };
 
-      const topMarquee = topRowSliderRef.current && topRowContainerRef.current 
-        ? setupMarquee(topRowSliderRef.current, topRowContainerRef.current, "left")
-        : null;
-      
-      const bottomMarquee = bottomRowSliderRef.current && bottomRowContainerRef.current
-        ? setupMarquee(bottomRowSliderRef.current, bottomRowContainerRef.current, "right")
-        : null;
+      const topMarquee =
+        topRowSliderRef.current && topRowContainerRef.current
+          ? setupMarquee(
+              topRowSliderRef.current,
+              topRowContainerRef.current,
+              "left",
+            )
+          : null;
+
+      const bottomMarquee =
+        bottomRowSliderRef.current && bottomRowContainerRef.current
+          ? setupMarquee(
+              bottomRowSliderRef.current,
+              bottomRowContainerRef.current,
+              "right",
+            )
+          : null;
 
       // Mouse Parallax (Throttled)
       const xSet1 = gsap.quickSetter(".testimonial-particle-1", "x", "px");
@@ -249,7 +263,8 @@ export default function Testimonials() {
       const xSet2 = gsap.quickSetter(".testimonial-particle-2", "x", "px");
       const ySet2 = gsap.quickSetter(".testimonial-particle-2", "y", "px");
 
-      let mouseX = 0, mouseY = 0;
+      let mouseX = 0,
+        mouseY = 0;
       const onMouseMove = (e: MouseEvent) => {
         mouseX = (e.clientX / window.innerWidth - 0.5) * 60;
         mouseY = (e.clientY / window.innerHeight - 0.5) * 60;
@@ -305,9 +320,9 @@ export default function Testimonials() {
         />
         <div className="flex flex-col justify-center lg:items-center gap-8 px-4 md:px-8 lg:px-14 py-12 md:py-25">
           <SectionTitle title={t("title")} />
-          <h1
+          <h2
             ref={headingRef}
-            className="lg:text-center text-heading-5 md:text-display lg:w-[60%] whitespace-pre-line font-medium leading-tight md:leading-tight"
+            className="text-center text-heading-4 md:text-heading-1 lg:w-[60%] whitespace-pre-line font-medium leading-tight md:leading-tight"
           >
             {t("heading")
               .split(" ")
@@ -323,12 +338,12 @@ export default function Testimonials() {
                   <span className="inline-block">&nbsp;</span>
                 </span>
               ))}
-          </h1>
+          </h2>
         </div>
       </div>
 
       {/* Desktop: Scattered / Random layout */}
-      <div className="hidden lg:grid grid-cols-2 gap-x-96 px-4 md:px-8 lg:px-14 mb-16 relative z-10 min-h-[500vh]">
+      <div className="hidden lg:flex flex-wrap justify-evenly  xl:gap-x-96  px-4 md:px-8 lg:px-14 mb-16 relative z-10 min-h-[500vh]">
         {testimonials.map((item, idx) => (
           <div
             key={idx}
@@ -350,37 +365,35 @@ export default function Testimonials() {
         {/* Top row — scrolls to the left */}
         <div ref={topRowContainerRef} className="overflow-hidden">
           <div ref={topRowSliderRef} className="flex gap-4 w-max">
-            {[
-              ...testimonials.slice(0, 5),
-              ...testimonials.slice(0, 5),
-            ].map((item, idx) => (
-              <div key={`top-${idx}`} className="shrink-0 w-75 md:w-90">
-                <SocialProof
-                  name={item.name}
-                  role={item.role}
-                  text={item.text}
-                  stars={item.stars}
-                />
-              </div>
-            ))}
+            {[...testimonials.slice(0, 5), ...testimonials.slice(0, 5)].map(
+              (item, idx) => (
+                <div key={`top-${idx}`} className="shrink-0 w-75 md:w-90">
+                  <SocialProof
+                    name={item.name}
+                    role={item.role}
+                    text={item.text}
+                    stars={item.stars}
+                  />
+                </div>
+              ),
+            )}
           </div>
         </div>
         {/* Bottom row — scrolls to the right */}
         <div ref={bottomRowContainerRef} className="overflow-hidden">
           <div ref={bottomRowSliderRef} className="flex gap-4 w-max">
-            {[
-              ...testimonials.slice(5, 10),
-              ...testimonials.slice(5, 10),
-            ].map((item, idx) => (
-              <div key={`bottom-${idx}`} className="shrink-0 w-75 md:w-90">
-                <SocialProof
-                  name={item.name}
-                  role={item.role}
-                  text={item.text}
-                  stars={item.stars}
-                />
-              </div>
-            ))}
+            {[...testimonials.slice(5, 10), ...testimonials.slice(5, 10)].map(
+              (item, idx) => (
+                <div key={`bottom-${idx}`} className="shrink-0 w-75 md:w-90">
+                  <SocialProof
+                    name={item.name}
+                    role={item.role}
+                    text={item.text}
+                    stars={item.stars}
+                  />
+                </div>
+              ),
+            )}
           </div>
         </div>
       </div>

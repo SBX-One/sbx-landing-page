@@ -6,11 +6,13 @@ import { useTranslations } from "next-intl";
 import Button from "../ui/Button";
 import Tag from "../ui/Tag";
 import Icon from "../ui/Icon";
-import Selector from "../ui/Selector";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
+import particle1 from "@/app/_assets/footer/Frame 1984079771.svg";
+import particle2 from "@/app/_assets/footer/Frame 1984079772.svg";
+import particle3 from "@/app/_assets/footer/Frame 1984079773.svg";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -71,7 +73,7 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="px-4 md:px-8 lg:px-14 py-6 md:py-6 lg:py-8 lg:pt-24 bg-neutral-900 min-h-[85vh] overflow-hidden"
+      className="px-4 md:px-8 lg:px-14 py-6 md:py-6 lg:py-8 lg:pt-24 bg-neutral-900 relative min-h-[85vh] overflow-hidden"
     >
       <div className="2xl:container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 lg:mb-24">
@@ -79,7 +81,7 @@ export default function Footer() {
             <div className="flex items-center gap-4 mb-6">
               <Image
                 src="/logo.svg"
-                alt="Logo"
+                alt="SBX One Studio Logo"
                 width={999}
                 height={999}
                 className="w-12 md:w-8 lg:w-12"
@@ -90,7 +92,7 @@ export default function Footer() {
             </div>
             <div>
               <div className="flex flex-col gap-8 mb-9">
-                <h1
+                <h2
                   dangerouslySetInnerHTML={{ __html: t("title") }}
                   className="text-heading-3 md:text-heading-2 lg:text-heading-1 font-semibold"
                 />
@@ -196,6 +198,27 @@ export default function Footer() {
           @ 2025 SBX One. All rights reserved
         </strong>
       </div>
+      <Image
+        src={particle1}
+        alt="Footer"
+        width={250}
+        height={174}
+        className="absolute -bottom-5 lg:-bottom-10 left-0 lg:left-auto lg:-right-2 w-36 md:w-62.5"
+      />
+      <Image
+        src={particle2}
+        alt="Footer"
+        width={200}
+        height={200}
+        className="absolute top-0 right-10 lg:right-auto lg:left-70 w-25 lg:w-50"
+      />
+      <Image
+        src={particle3}
+        alt="Footer"
+        width={200}
+        height={145}
+        className="absolute top-100 lg:top-110 w-25 lg:w-50 left-70 lg:left-90"
+      />
     </footer>
   );
 }

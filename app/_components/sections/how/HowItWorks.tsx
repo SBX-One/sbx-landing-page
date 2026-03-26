@@ -173,12 +173,12 @@ export default function HowItWorks() {
       <div className="sticky top-0 pb-40">
         <div className="flex flex-col items-center text-center gap-8 mb-100 px-4 sticky top-30 md:top-40">
           <SectionTitle title={t("title")} />
-          <h1
+          <h2
             ref={headingRef}
             className="text-heading-5 md:text-heading-1 font-medium lg:w-[80%]"
           >
             {t("heading")}
-          </h1>
+          </h2>
           <Image
             src={particle}
             alt=""
@@ -303,7 +303,7 @@ export default function HowItWorks() {
             <Image
               src={step6}
               alt=""
-              className="w-[465.6px] h-72.75 absolute top-0 -left-4 hidden lg:block"
+              className="w-[465.6px] h-70 absolute top-6 -left-4 hidden lg:block"
             />
           </div>
         </div>

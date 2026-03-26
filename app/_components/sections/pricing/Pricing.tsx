@@ -223,12 +223,12 @@ export default function Pricing() {
           <SectionTitle title={t("title")} />
         </div>
         <div className="lg:col-span-9">
-          <h1
+          <h2
             ref={headingRef}
-            className="text-heading-5 lg:text-heading-1 font-medium mb-6"
+            className="text-heading-5 md:text-heading-1 font-medium lg:w-[80%] mb-6"
           >
             {t("heading")}
-          </h1>
+          </h2>
           <div className="pricing-testimonial-stats flex items-center gap-6 md:gap-10">
             <AvatarStack />
             <p className="text-body-base text-neutral-400">

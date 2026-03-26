@@ -214,7 +214,7 @@ export default function Projects() {
 
         <div className="flex flex-col justify-center items-center gap-6 mb-16 px-4 md:px-8 lg:px-14 py-12 md:py-25">
           <SectionTitle title={t("title")} />
-          <h1
+          <h2
             ref={headingRef}
             className="text-center text-heading-4 md:text-heading-1 lg:w-[70%] whitespace-pre-line font-medium leading-tight md:leading-tight"
           >
@@ -231,7 +231,7 @@ export default function Projects() {
                   <span className="inline-block">&nbsp;</span>
                 </span>
               ))}
-          </h1>
+          </h2>
         </div>
       </div>
 

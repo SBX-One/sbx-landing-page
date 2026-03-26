@@ -2,8 +2,9 @@ import { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://sbxonestudio.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sbxonestudio.com";
+  // Ensure the URL starts with https://
+  const baseUrl = siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`;
   const locales = routing.locales;
 
   // Since we only have one page (home page) for now, we just list the home page for each locale.

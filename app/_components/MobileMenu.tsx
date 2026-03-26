@@ -80,7 +80,7 @@ export default function MobileMenu() {
 
       <div
         ref={menuRef}
-        className="fixed left-0 right-0 -top-full min-h-screen z-50 bg-neutral-900 p-4 py-12 pb-16 flex flex-col justify-between invisible opacity-0"
+        className="fixed left-0 right-0 -top-18 min-h-screen z-50 bg-neutral-900 p-4 py-12 pb-16 flex flex-col justify-between invisible opacity-0"
       >
         <div className="flex flex-col gap-16">
           <div className="flex items-center justify-between">

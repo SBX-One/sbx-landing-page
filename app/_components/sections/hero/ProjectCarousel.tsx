@@ -24,8 +24,8 @@ export default function ProjectCarousel() {
     () => {
       if (!slider.current) return;
 
-      const divisor = window.innerWidth < 1024 ? 2 : 3;
-      const totalWidth = slider.current.scrollWidth / divisor;
+      // Gunakan 3 set secara konsisten untuk stabilitas dan infinite effect
+      const totalWidth = slider.current.scrollWidth / 3;
 
       const animation = gsap.to(slider.current, {
         x: `-=${totalWidth}`,
@@ -37,7 +37,7 @@ export default function ProjectCarousel() {
         },
       });
 
-      // Pause animation when off-screen
+      // Pause animation when off-screen to save resources
       ScrollTrigger.create({
         trigger: container.current,
         start: "top bottom",
@@ -46,7 +46,7 @@ export default function ProjectCarousel() {
           self.isActive ? animation.play() : animation.pause(),
       });
 
-      // Subtle skew for modern feel
+      // Subtle skew for modern feel during motion
       gsap.set(slider.current.children, { skewX: -3 });
 
       // Entrance Reveal on Scroll
@@ -90,10 +90,7 @@ export default function ProjectCarousel() {
       className="relative w-full overflow-hidden py-12 md:py-20"
     >
       <div ref={slider} className="flex gap-6 w-max">
-        {(typeof window !== "undefined" && window.innerWidth < 1024
-          ? [...projects, ...projects]
-          : [...projects, ...projects, ...projects]
-        ).map((image, index) => (
+        {[...projects, ...projects, ...projects].map((image, index) => (
           <div
             key={index}
             className="w-80 md:w-164 h-50 md:h-110 shrink-0 overflow-hidden rounded-3xl border border-white/5 shadow-2xl"
@@ -105,13 +102,11 @@ export default function ProjectCarousel() {
               height={500}
               sizes="(max-width: 768px) 320px, 800px"
               className="h-full w-full object-cover hover:scale-[1.05] transition-transform duration-700 ease-out "
+              priority={index < 3}
             />
           </div>
         ))}
       </div>
-
-      {/* <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-background via-transparent to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-background via-transparent to-transparent z-10 pointer-events-none"></div> */}
     </div>
   );
 }

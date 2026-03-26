@@ -95,9 +95,9 @@ export default function Faq() {
             <div className="faq-content-item mb-8 lg:mb-0">
               <SectionTitle title="faq" />
             </div>
-            <h1 className="faq-content-item text-heading-5 md:text-heading-1 font-medium">
+            <h2 className="faq-content-item text-heading-5 md:text-heading-1 font-medium">
               {t("title")}
-            </h1>
+            </h2>
           </div>
           <div className="hidden lg:flex flex-col gap-5">
             <div className="faq-mockup-wrapper rounded-xl overflow-hidden relative">

@@ -43,11 +43,30 @@ export async function generateMetadata({
       },
     },
     keywords: [
-      "agensi website",
+      "SBX One Studio",
+      "SBXOne",
+      "UI/UX Design Studio Bali",
+      "Web App Development Indonesia",
+      "Website Modernization",
+      "Next.js Development Agency",
+      "Gen-Z Digital Agency",
+      "High-Performance Websites",
+      "agensi website bali",
       "moderenisasi website",
-      "buat website",
+      "buat website profesional",
       "layanan website",
     ],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
 
     openGraph: {
       title: t("title"),

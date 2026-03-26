@@ -130,9 +130,9 @@ export default function Expertise() {
           <SectionTitle title={t("title")} />
         </div>
         <div className="expertise-heading lg:col-span-9">
-          <h1 className="text-heading-4 md:text-heading-1 font-medium">
+          <h2 className="text-heading-4 md:text-heading-1 font-medium">
             {t("heading")}
-          </h1>
+          </h2>
         </div>
       </div>
 

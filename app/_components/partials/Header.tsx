@@ -16,7 +16,7 @@ export default function Header() {
           <a href="#" className="flex items-center gap-4">
             <Image
               src="/logo.svg"
-              alt="Logo"
+              alt="SBX One Studio Logo"
               width={999}
               height={999}
               className="w-6 md:w-8 lg:w-12"

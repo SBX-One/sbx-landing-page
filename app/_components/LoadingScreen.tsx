@@ -28,7 +28,7 @@ export default function LoadingScreen() {
         setIsDone(true);
       },
       defaults: {
-        duration: isMobile ? 0.6 : 0.8, // Significantly faster animations on mobile
+        duration: isMobile ? 0.4 : 0.8, // Significantly faster animations on mobile
       },
     });
 

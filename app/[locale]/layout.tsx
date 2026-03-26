@@ -53,7 +53,7 @@ export async function generateMetadata({
       "Next.js Development Agency",
       "Gen-Z Digital Agency",
       "High-Performance Websites",
-      "agensi website bali",
+      "studio website bali",
       "moderenisasi website",
       "buat website profesional",
       "layanan website",

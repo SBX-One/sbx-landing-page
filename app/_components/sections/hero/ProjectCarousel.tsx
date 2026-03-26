@@ -24,7 +24,8 @@ export default function ProjectCarousel() {
     () => {
       if (!slider.current) return;
 
-      const totalWidth = slider.current.scrollWidth / 3;
+      const divisor = window.innerWidth < 1024 ? 2 : 3;
+      const totalWidth = slider.current.scrollWidth / divisor;
 
       const animation = gsap.to(slider.current, {
         x: `-=${totalWidth}`,
@@ -87,7 +88,10 @@ export default function ProjectCarousel() {
       className="relative w-full overflow-hidden py-12 md:py-20"
     >
       <div ref={slider} className="flex gap-6 w-max">
-        {[...projects, ...projects, ...projects].map((image, index) => (
+        {(typeof window !== "undefined" && window.innerWidth < 1024
+          ? [...projects, ...projects]
+          : [...projects, ...projects, ...projects]
+        ).map((image, index) => (
           <div
             key={index}
             className="w-80 md:w-164 h-50 md:h-110 shrink-0 overflow-hidden rounded-3xl border border-white/5 shadow-2xl"

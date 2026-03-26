@@ -180,7 +180,9 @@ export default function Testimonials() {
         container: HTMLElement,
         direction: "left" | "right",
       ) => {
-        const totalWidth = slider.scrollWidth / 3;
+        // Divide by 2 because we now only use 2 sets of clones for better mobile performance
+        const divisor = window.innerWidth < 1024 ? 2 : 3;
+        const totalWidth = slider.scrollWidth / divisor;
         if (direction === "right") gsap.set(slider, { x: -totalWidth });
 
         const anim = gsap.to(slider, {
@@ -351,7 +353,6 @@ export default function Testimonials() {
             {[
               ...testimonials.slice(0, 5),
               ...testimonials.slice(0, 5),
-              ...testimonials.slice(0, 5),
             ].map((item, idx) => (
               <div key={`top-${idx}`} className="shrink-0 w-75 md:w-90">
                 <SocialProof
@@ -368,7 +369,6 @@ export default function Testimonials() {
         <div ref={bottomRowContainerRef} className="overflow-hidden">
           <div ref={bottomRowSliderRef} className="flex gap-4 w-max">
             {[
-              ...testimonials.slice(5, 10),
               ...testimonials.slice(5, 10),
               ...testimonials.slice(5, 10),
             ].map((item, idx) => (

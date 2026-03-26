@@ -15,15 +15,21 @@ export default function LoadingScreen() {
   const { setLoadingDone } = useLoading();
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 1024;
+    
     // Lock scroll during loading
     document.body.style.overflow = "hidden";
 
+    // Create a faster timeline for mobile
     const tl = gsap.timeline({
       onComplete: () => {
         document.body.style.overflow = "";
         setLoadingDone();
         setIsDone(true);
       },
+      defaults: {
+        duration: isMobile ? 0.6 : 1, // Significantly faster animations on mobile
+      }
     });
 
     // Initial state
@@ -45,7 +51,7 @@ export default function LoadingScreen() {
       .to(glowRef.current, {
         scale: 1.2,
         opacity: 0.6,
-        duration: 1,
+        duration: isMobile ? 0.4 : 1,
         ease: "power2.out",
       })
       // Logo entrance
@@ -55,10 +61,10 @@ export default function LoadingScreen() {
           scale: 1,
           opacity: 1,
           filter: "blur(0px)",
-          duration: 1.2,
+          duration: isMobile ? 0.6 : 1.2,
           ease: "expo.out",
         },
-        "-=0.8",
+        "-=0.6",
       )
       // Brand text
       .to(
@@ -66,30 +72,30 @@ export default function LoadingScreen() {
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: isMobile ? 0.3 : 0.6,
           ease: "power3.out",
         },
         "-=0.4",
       )
-      // Progress bar fill
+      // Progress bar fill (Make this faster on mobile)
       .to(progressRef.current, {
         scaleX: 1,
-        duration: 1.4,
+        duration: isMobile ? 0.8 : 1.4,
         ease: "power2.inOut",
       })
       // Hold for a brief moment
-      .to({}, { duration: 0.3 })
+      .to({}, { duration: isMobile ? 0.1 : 0.3 })
       // Logo pulse out
       .to(logoRef.current, {
         scale: 1.15,
-        duration: 0.3,
+        duration: 0.2,
         ease: "power2.in",
       })
       .to(logoRef.current, {
         scale: 0.8,
         opacity: 0,
         filter: "blur(10px)",
-        duration: 0.4,
+        duration: 0.3,
         ease: "power2.in",
       })
       // Fade out text and progress
@@ -98,7 +104,7 @@ export default function LoadingScreen() {
         {
           opacity: 0,
           y: -10,
-          duration: 0.3,
+          duration: 0.2,
           ease: "power2.in",
         },
         "<",
@@ -109,7 +115,7 @@ export default function LoadingScreen() {
         {
           scale: 0,
           opacity: 0,
-          duration: 0.4,
+          duration: 0.3,
           ease: "power2.in",
         },
         "<",
@@ -117,7 +123,7 @@ export default function LoadingScreen() {
       // Overlay reveal — split curtain
       .to(overlayRef.current, {
         clipPath: "inset(0 0 100% 0)",
-        duration: 0.8,
+        duration: isMobile ? 0.5 : 0.8,
         ease: "power4.inOut",
       });
 

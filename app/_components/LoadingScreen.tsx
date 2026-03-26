@@ -120,12 +120,17 @@ export default function LoadingScreen() {
         },
         "<",
       )
-      // Overlay reveal — split curtain
+      // Overlay reveal
       .to(overlayRef.current, {
-        clipPath: "inset(0 0 100% 0)",
-        duration: isMobile ? 0.5 : 0.8,
+        yPercent: -100,
+        duration: isMobile ? 0.4 : 0.8,
         ease: "power4.inOut",
       });
+
+    // Make the entire timeline play 3x faster on mobile to avoid blocking FCP/LCP
+    if (isMobile) {
+      tl.timeScale(3.5);
+    }
 
     return () => {
       tl.kill();
@@ -138,11 +143,10 @@ export default function LoadingScreen() {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-9999 flex flex-col items-center justify-center"
+      className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-neutral-900"
       style={{
         background:
           "radial-gradient(ellipse at center, #0a0a1a 0%, #050505 70%)",
-        clipPath: "inset(0 0 0% 0)",
       }}
     >
       {/* Background glow */}

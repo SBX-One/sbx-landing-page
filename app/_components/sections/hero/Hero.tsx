@@ -40,23 +40,13 @@ export default function Hero() {
 
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-      // Animate from the hidden state (opacity-0 and translate-y-8 set in JSX)
-      tl.to(".hero-particle", {
+      // Start content animation immediately for faster LCP
+      tl.to(".hero-content-item", {
         opacity: 1,
-        scale: 1,
-        duration: 1.8,
-        stagger: 0.2,
+        y: 0,
+        duration: 1.2,
+        stagger: 0.15,
       })
-        .to(
-          ".hero-content-item",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.2,
-            stagger: 0.15,
-          },
-          "-=1.2",
-        )
         .to(
           ".hero-highlight-block",
           {
@@ -65,6 +55,17 @@ export default function Hero() {
             ease: "power4.inOut",
           },
           "-=0.8",
+        )
+        // Background particles animate later and parallel
+        .to(
+          ".hero-particle",
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 1.8,
+            stagger: 0.2,
+          },
+          "-=1.5",
         )
         .to(
           ".hero-highlight-image",
@@ -158,7 +159,6 @@ export default function Hero() {
           alt=""
           width={1200}
           height={800}
-          priority
           className="hero-particle min-w-300 lg:w-full h-full rounded-full absolute -top-120 -left-160 lg:-top-170 lg:-left-120 object-cover opacity-0 scale-90"
         />
         <Image
@@ -166,7 +166,6 @@ export default function Hero() {
           alt=""
           width={200}
           height={200}
-          priority
           className="hero-particle hero-particle-1 absolute top-90 -right-4 lg:top-24 lg:right-12 size-24 lg:size-50 object-cover opacity-0 scale-90"
         />
         <Image

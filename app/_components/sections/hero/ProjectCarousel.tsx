@@ -16,7 +16,11 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function ProjectCarousel({ isStarted }: { isStarted?: boolean }) {
+export default function ProjectCarousel({
+  isStarted,
+}: {
+  isStarted?: boolean;
+}) {
   const container = useRef<HTMLDivElement>(null);
   const slider = useRef<HTMLDivElement>(null);
 
@@ -25,7 +29,7 @@ export default function ProjectCarousel({ isStarted }: { isStarted?: boolean }) 
       if (!slider.current || !isStarted) return;
 
       const isMobile = window.innerWidth < 1024;
-      
+
       // Use consistent 3 sets for infinite effect
       const totalWidth = slider.current.scrollWidth / 3;
 
@@ -75,13 +79,13 @@ export default function ProjectCarousel({ isStarted }: { isStarted?: boolean }) 
   const onEnter = () => {
     const anim = gsap.getTweensOf(slider.current)[0];
     if (anim)
-      gsap.to(anim, { timeScale: 0.1, duration: 1, ease: "power2.out" });
+      gsap.to(anim, { timeScale: 0.1, duration: 0.6, ease: "power2.out" });
   };
 
   const onLeave = () => {
     const anim = gsap.getTweensOf(slider.current)[0];
     if (anim)
-      gsap.to(anim, { timeScale: 1, duration: 1, ease: "power2.inOut" });
+      gsap.to(anim, { timeScale: 1, duration: 0.6, ease: "power2.inOut" });
   };
 
   const projects = [mockup1, mockup2, mockup3, mockup4, mockup5, mockup6];

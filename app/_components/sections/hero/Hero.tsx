@@ -155,7 +155,7 @@ export default function Hero() {
       >
         <Image
           src={particleELipse}
-          alt="decoration"
+          alt=""
           width={1200}
           height={800}
           priority
@@ -163,7 +163,7 @@ export default function Hero() {
         />
         <Image
           src={particle1}
-          alt="decoration"
+          alt=""
           width={200}
           height={200}
           priority
@@ -171,14 +171,14 @@ export default function Hero() {
         />
         <Image
           src={particle2}
-          alt="decoration"
+          alt=""
           width={200}
           height={200}
           className="hero-particle hero-particle-2 absolute top-210 md:top-100 left-10 md:left-40 size-24 lg:size-50 object-cover opacity-0 scale-90"
         />
         <Image
           src={particle3}
-          alt="decoration"
+          alt=""
           width={200}
           height={200}
           className="hero-particle hero-particle-3 absolute -top-4 lg:top-160 -right-4 lg:right-64 size-24 lg:size-50 object-cover opacity-0 scale-90"

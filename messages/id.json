@@ -391,7 +391,17 @@
     "description": "SBXOne Studio Desain UI/UX & Aplikasi Web yang menyediakan layanan desain dan pengembangan berkualitas tinggi untuk bisnis dari segala skala."
   },
   "Header": {
-    "cta-link": "https://wa.me/6287849664571?text=Halo%20Kak%2C%20saya%20ingin%20memulai%20proyek%20baru%20bersama%20SBX%20One.%20Bisa%20bantu%20jelaskan%20alur%20kerjasama%20dan%20estimasi%20waktunya%3F"
+    "cta": "Start a Project",
+    "cta-link": "https://wa.me/6287849664571?text=Halo%20Kak%2C%20saya%20ingin%20memulai%20proyek%20baru%20bersama%20SBX%20One.%20Bisa%20bantu%20jelaskan%20alur%20kerjasama%20dan%20estimasi%20waktunya%3F",
+    "nav": {
+      "aria-label": "Main Navigation",
+      "about": "About",
+      "expertise": "Expertise",
+      "projects": "Projects",
+      "pricing": "Pricing",
+      "faq": "FAQ",
+      "testimonials": "Testimonials"
+    }
   },
   "Footer": {
     "title": "Siap Memulai <br /> Transformasi Digital?",

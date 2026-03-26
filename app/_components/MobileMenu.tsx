@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import { IoMenu } from "react-icons/io5";
-import { IoIosArrowRoundForward } from "react-icons/io";
-import { IoClose } from "react-icons/io5";
 import Button from "./ui/Button";
 import Icon from "./ui/Icon";
 import Tag from "./ui/Tag";
@@ -74,22 +72,23 @@ export default function MobileMenu() {
 
   return (
     <div ref={container} className="lg:hidden">
-      <button onClick={() => setIsOpen(true)}>
+      <button onClick={() => setIsOpen(true)} aria-label="Open Menu">
         <IoMenu className="text-3xl" />
       </button>
 
       <div
         ref={menuRef}
-        className="fixed left-0 right-0 -top-18 min-h-screen z-50 bg-neutral-900 p-4 py-12 pb-16 flex flex-col justify-between invisible opacity-0"
+        aria-hidden={!isOpen}
+        className="fixed left-0 right-0 -top-18 min-h-screen z-999 bg-neutral-900 p-4 py-12 pb-16 flex flex-col justify-between invisible opacity-0"
       >
         <div className="flex flex-col gap-16">
           <div className="flex items-center justify-between">
             <Image
               src="/logo.svg"
-              alt="Logo"
-              width={999}
-              height={999}
-              className="w-12"
+              alt="SBX One Studio Logo"
+              width={120}
+              height={120}
+              className="w-12 h-12"
             />
 
             <div className="flex items-center gap-3">
@@ -102,11 +101,12 @@ export default function MobileMenu() {
                 href={t("cta-link")}
                 onClick={() => setIsOpen(false)}
               >
-                Start a Project
+                {t("cta")}
               </Button>
               <button
-                className="bg-neutral-600 p-3 rounded-full"
+                className="bg-neutral-800 p-3 rounded-full border border-neutral-700"
                 onClick={() => setIsOpen(false)}
+                aria-label="Close Menu"
               >
                 <Icon type="close" theme="light" height={24} width={24} />
               </button>

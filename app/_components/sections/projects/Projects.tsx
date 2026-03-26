@@ -19,7 +19,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useLoading } from "../../LoadingContext";
+
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -30,11 +30,11 @@ export default function Projects() {
   const containerRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const { isLoadingDone } = useLoading();
+
 
   useGSAP(
     () => {
-      if (!containerRef.current || !isLoadingDone) return;
+      if (!containerRef.current) return;
 
       const isMobile = window.innerWidth < 1024;
 
@@ -170,7 +170,7 @@ export default function Projects() {
         floatingAnim?.kill();
       };
     },
-    { scope: containerRef, dependencies: [isLoadingDone] },
+    { scope: containerRef },
   );
 
   return (

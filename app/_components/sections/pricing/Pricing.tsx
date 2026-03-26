@@ -13,7 +13,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useLoading } from "../../LoadingContext";
+
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -25,7 +25,7 @@ export default function Pricing() {
   const containerRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
-  const { isLoadingDone } = useLoading();
+
 
   // Define types for pricing structure
   interface Plan {
@@ -59,7 +59,7 @@ export default function Pricing() {
   // Animations logic
   useGSAP(
     () => {
-      if (!containerRef.current || !headingRef.current || !isLoadingDone) return;
+      if (!containerRef.current || !headingRef.current) return;
 
       const timeline = gsap.timeline({
         scrollTrigger: {
@@ -169,7 +169,7 @@ export default function Pricing() {
         }
       };
     },
-    { scope: containerRef, dependencies: [isLoadingDone] },
+    { scope: containerRef },
   );
 
   useGSAP(() => {

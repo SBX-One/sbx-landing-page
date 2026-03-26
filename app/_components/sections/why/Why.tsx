@@ -16,7 +16,7 @@ import particle2 from "@/app/_assets/why/particle2.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useLoading } from "../../LoadingContext";
+
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -25,11 +25,11 @@ if (typeof window !== "undefined") {
 export default function Why() {
   const t = useTranslations("Why");
   const container = useRef<HTMLElement>(null);
-  const { isLoadingDone } = useLoading();
+
 
   useGSAP(
     () => {
-      if (!container.current || !isLoadingDone) return;
+      if (!container.current) return;
 
       const isMobile = window.innerWidth < 1024;
       // Animate the cards entering staggered
@@ -135,7 +135,7 @@ export default function Why() {
         floatingAnim?.kill();
       };
     },
-    { scope: container, dependencies: [isLoadingDone] },
+    { scope: container },
   );
 
   return (

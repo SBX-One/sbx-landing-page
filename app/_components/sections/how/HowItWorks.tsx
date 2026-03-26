@@ -14,7 +14,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useLoading } from "../../LoadingContext";
+
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -24,11 +24,11 @@ export default function HowItWorks() {
   const t = useTranslations("HowItWorks");
   const containerRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const { isLoadingDone } = useLoading();
+
 
   useGSAP(
     () => {
-      if (!containerRef.current || !headingRef.current || !isLoadingDone) return;
+      if (!containerRef.current || !headingRef.current) return;
 
       const timeline = gsap.timeline({
         scrollTrigger: {
@@ -142,7 +142,7 @@ export default function HowItWorks() {
         }
       };
     },
-    { scope: containerRef, dependencies: [isLoadingDone] },
+    { scope: containerRef },
   );
 
   return (

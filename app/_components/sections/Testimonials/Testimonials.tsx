@@ -12,7 +12,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useLoading } from "../../LoadingContext";
+
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -102,11 +102,11 @@ export default function Testimonials() {
   const bottomRowContainerRef = useRef<HTMLDivElement>(null);
   const bottomRowSliderRef = useRef<HTMLDivElement>(null);
 
-  const { isLoadingDone } = useLoading();
+
 
   useGSAP(
     () => {
-      if (!containerRef.current || !headingRef.current || !isLoadingDone) return;
+      if (!containerRef.current || !headingRef.current) return;
 
       // --- Entrance Timeline ---
       const timeline = gsap.timeline({
@@ -312,7 +312,7 @@ export default function Testimonials() {
         floatingAnim?.kill();
       };
     },
-    { scope: containerRef, dependencies: [isLoadingDone] },
+    { scope: containerRef },
   );
 
   return (

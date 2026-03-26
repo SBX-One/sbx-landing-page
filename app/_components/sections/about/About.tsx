@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useLoading } from "../../LoadingContext";
+
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -17,11 +17,11 @@ export default function About() {
   const containerRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
 
-  const { isLoadingDone } = useLoading();
+
 
   useGSAP(
     () => {
-      if (!containerRef.current || !isLoadingDone) return;
+      if (!containerRef.current) return;
 
       // Simple stagger for heading and content
       gsap.from(".about-content-item", {
@@ -37,7 +37,7 @@ export default function About() {
         ease: "power3.out",
       });
     },
-    { scope: containerRef, dependencies: [isLoadingDone] },
+    { scope: containerRef },
   );
 
   return (

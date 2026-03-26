@@ -2,12 +2,12 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import mockup1 from "@/app/_assets/mockups/Anna Hendra.png";
-import mockup2 from "@/app/_assets/mockups/Free Laptop Mockup.png";
-import mockup3 from "@/app/_assets/mockups/Indra Okyanto - Macbook Mockup.png";
-import mockup4 from "@/app/_assets/mockups/Mockup 1.png";
-import mockup5 from "@/app/_assets/mockups/Mockup 3.png";
-import mockup6 from "@/app/_assets/mockups/Mockup Ipad.png";
+import mockup1 from "@/app/_assets/mockups/Anna Hendra.webp";
+import mockup2 from "@/app/_assets/mockups/Free Laptop Mockup.webp";
+import mockup3 from "@/app/_assets/mockups/Indra Okyanto - Macbook Mockup.webp";
+import mockup4 from "@/app/_assets/mockups/Mockup 1.webp";
+import mockup5 from "@/app/_assets/mockups/Mockup 3.webp";
+import mockup6 from "@/app/_assets/mockups/Mockup Ipad.webp";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -42,7 +42,8 @@ export default function ProjectCarousel() {
         trigger: container.current,
         start: "top bottom",
         end: "bottom top",
-        onToggle: (self) => (self.isActive ? animation.play() : animation.pause()),
+        onToggle: (self) =>
+          self.isActive ? animation.play() : animation.pause(),
       });
 
       // Subtle skew for modern feel
@@ -69,7 +70,8 @@ export default function ProjectCarousel() {
 
   const onEnter = () => {
     const anim = gsap.getTweensOf(slider.current)[0];
-    if (anim) gsap.to(anim, { timeScale: 0.1, duration: 1, ease: "power2.out" });
+    if (anim)
+      gsap.to(anim, { timeScale: 0.1, duration: 1, ease: "power2.out" });
   };
 
   const onLeave = () => {

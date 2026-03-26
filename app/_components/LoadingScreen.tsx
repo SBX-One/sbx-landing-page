@@ -16,7 +16,7 @@ export default function LoadingScreen() {
 
   useEffect(() => {
     const isMobile = window.innerWidth < 1024;
-    
+
     // Lock scroll during loading
     document.body.style.overflow = "hidden";
 
@@ -28,8 +28,8 @@ export default function LoadingScreen() {
         setIsDone(true);
       },
       defaults: {
-        duration: isMobile ? 0.6 : 1, // Significantly faster animations on mobile
-      }
+        duration: isMobile ? 0.6 : 0.8, // Significantly faster animations on mobile
+      },
     });
 
     // Initial state
@@ -51,7 +51,7 @@ export default function LoadingScreen() {
       .to(glowRef.current, {
         scale: 1.2,
         opacity: 0.6,
-        duration: isMobile ? 0.4 : 1,
+        duration: isMobile ? 0.4 : 0.8,
         ease: "power2.out",
       })
       // Logo entrance
@@ -61,7 +61,7 @@ export default function LoadingScreen() {
           scale: 1,
           opacity: 1,
           filter: "blur(0px)",
-          duration: isMobile ? 0.6 : 1.2,
+          duration: isMobile ? 0.6 : 0.8,
           ease: "expo.out",
         },
         "-=0.6",
@@ -80,7 +80,7 @@ export default function LoadingScreen() {
       // Progress bar fill (Make this faster on mobile)
       .to(progressRef.current, {
         scaleX: 1,
-        duration: isMobile ? 0.8 : 1.4,
+        duration: isMobile ? 0.8 : 1,
         ease: "power2.inOut",
       })
       // Hold for a brief moment

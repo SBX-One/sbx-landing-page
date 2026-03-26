@@ -5,7 +5,7 @@ import AvatarStack from "../../AvatarStack";
 import { useTranslations } from "next-intl";
 import Button from "../../ui/Button";
 import Image from "next/image";
-import mockup from "@/app/_assets/mockups/Free Laptop Mockup.png";
+import mockup from "@/app/_assets/mockups/Free Laptop Mockup.webp";
 import ProjectCarousel from "./ProjectCarousel";
 import particleELipse from "@/app/_assets/hero/Ellipse 15.svg";
 import particle1 from "@/app/_assets/hero/Frame 1984079743.png";

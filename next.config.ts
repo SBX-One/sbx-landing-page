@@ -8,8 +8,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Beri tahu browser untuk menyimpan cache aset SVG, WEBP, PNG selama 1 Tahun!
-        source: "/(.*\\.(svg|webp|png|jpg|jpeg|gif))",
+        source: "/_next/image",
         headers: [
           {
             key: "Cache-Control",
@@ -18,8 +17,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Cache Font (woff, woff2)
-        source: "/(.*\\.(woff|woff2|ttf|otf))",
+        source: "/_next/static/:path*",
         headers: [
           {
             key: "Cache-Control",
@@ -28,8 +26,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Cache JS / CSS 
-        source: "/_next/static/(.*)",
+        source: "/logo.svg",
         headers: [
           {
             key: "Cache-Control",

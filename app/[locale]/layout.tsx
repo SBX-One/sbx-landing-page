@@ -83,7 +83,7 @@ export async function generateMetadata({
       ],
       type: "website",
       locale: locale,
-      siteName: t("title"),
+      siteName: "SBXOne",
     },
 
     twitter: {
@@ -99,8 +99,9 @@ export async function generateMetadata({
         },
       ],
     },
-    verification: {
-      google: "google-site-verification-id", // Ganti dengan ID asli nanti
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
     },
     // DNS Preconnect for faster resource loading
     other: {
@@ -113,7 +114,7 @@ export const viewport = {
   themeColor: "#0A0A0A",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5, // Allow zooming for accessibility but maintain stability
+  maximumScale: 5,
 };
 
 type Props = {

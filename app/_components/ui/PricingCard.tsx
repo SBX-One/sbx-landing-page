@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
-import { FiCheck } from "react-icons/fi";
 import Icon from "./Icon";
+import * as fpixel from "@/app/_lib/fpixel";
 
 type PricingCardProps = {
   title: string;
@@ -26,6 +26,15 @@ export default function PricingCard({
   ctwaLink,
 }: PricingCardProps) {
   const isHorizontal = style === "horizontal";
+
+  const handleTrackLead = () => {
+    fpixel.event("Lead", {
+      content_name: title,
+      content_category: "Pricing",
+      value: price ? parseFloat(price.replace(/[^0-9.]/g, "")) : 0,
+      currency: "IDR",
+    });
+  };
 
   return (
     <div className="flex flex-col h-full justify-between bg-neutral-900 hover:bg-secondary-600 transition-all duration-200 rounded-2xl p-6 md:p-10 ">
@@ -92,6 +101,7 @@ export default function PricingCard({
             fullWidth
             leftIcon
             style="standard"
+            onClick={handleTrackLead}
           >
             {ctaLabel}
           </Button>
@@ -107,6 +117,7 @@ export default function PricingCard({
             fullWidth={!isHorizontal}
             leftIcon
             style="standard"
+            onClick={handleTrackLead}
           >
             {ctaLabel}
           </Button>

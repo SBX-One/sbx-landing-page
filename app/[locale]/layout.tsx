@@ -11,6 +11,8 @@ import SmoothScroll from "../_components/SmoothScroll";
 import LoadingScreen from "../_components/LoadingScreen";
 import { LoadingProvider } from "../_components/LoadingContext";
 import Analytics from "../_components/Analytics";
+import FacebookPixel from "../_components/FacebookPixel";
+import { Suspense } from "react";
 
 const pixelifySans = Pixelify_Sans({
   variable: "--font-pixelify-sans",
@@ -136,6 +138,9 @@ export default async function RootLayout({ children, params }: Props) {
         className={`${pixelifySans.variable} ${manrope.variable} antialiased ${pixelifySans.className} ${manrope.className}`}
       >
         <Analytics />
+        <Suspense fallback={null}>
+          <FacebookPixel />
+        </Suspense>
         <NextIntlClientProvider messages={messages}>
           <LoadingProvider>
             <SmoothScroll />

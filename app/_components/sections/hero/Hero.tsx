@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import AvatarStack from "../../AvatarStack";
 import { useTranslations } from "next-intl";
 import Button from "../../ui/Button";
+import * as fpixel from "@/app/_lib/fpixel";
 import Image from "next/image";
 import mockup from "@/app/_assets/mockups/Free Laptop Mockup.webp";
 import ProjectCarousel from "./ProjectCarousel";
@@ -144,6 +145,13 @@ export default function Hero() {
     { scope: sectionRef, dependencies: [isLoadingDone] },
   );
 
+  const handleTrackLead = (label: string) => {
+    fpixel.event("Lead", {
+      content_name: label,
+      content_category: "Hero",
+    });
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -220,16 +228,22 @@ export default function Hero() {
         {/* Mobile Buttons */}
         <div className="hero-content-item flex md:hidden items-center gap-3 opacity-0 translate-y-8">
           <Button
+            as="link"
+            href={t("ctwa-link")}
+            target="_blank"
             variant="default"
             size="md"
             color="primary"
             rightIcon={true}
             style="standard"
             className="w-fit"
+            onClick={() => handleTrackLead("Hero WhatsApp Mobile")}
           >
             {t("ctwa")}
           </Button>
           <Button
+            as="link"
+            href="#pricing"
             variant="outline"
             size="md"
             color="white"
@@ -252,6 +266,7 @@ export default function Hero() {
             rightIcon={true}
             style="standard"
             className="w-fit"
+            onClick={() => handleTrackLead("Hero WhatsApp Desktop")}
           >
             {t("ctwa")}
           </Button>

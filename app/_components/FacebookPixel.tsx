@@ -1,19 +1,26 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 import * as fpixel from "../_lib/fpixel";
 
 export default function FacebookPixel() {
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    fpixel.pageview();
-  }, [pathname, searchParams]);
+    setMounted(true);
+  }, []);
 
-  if (!fpixel.FB_PIXEL_ID) return null;
+  useEffect(() => {
+    if (mounted) {
+      fpixel.pageview();
+    }
+  }, [pathname, searchParams, mounted]);
+
+  if (!fpixel.FB_PIXEL_ID || !mounted) return null;
 
   return (
     <>
